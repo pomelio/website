@@ -8,6 +8,15 @@ import std.date as dt;
 
 let ppath = web.path();
 
+let fidx = str.last_index_of(ppath, '/');
+if fidx == -1 {
+  throw({
+    message: 'markdown not found.'
+  });
+}
+let doc_name = str.substring(ppath, fidx + 1);
+
+
 let side_bar_data = github.get_app_content('/docs/side_bar.json');
 
 let side_bar_json = parse_json(side_bar_data);
@@ -23,7 +32,7 @@ for (let i = 0; i < len(sections); i++) {
   let topics = section['topics'];
   topics = arr.map(topics, |t|=>{
     
-    return {...t, active: t['md'] == ppath};
+    return {...t, md: '/' + __APP__ + '/' + t['md'], active: t['md'] == doc_name};
   });
   
   let title = section['title'];
@@ -42,13 +51,7 @@ let project = parse_json(project_json);
 let header = mch.render_template('/docs/template/header.mustache');
 let footer = mch.render_template('/docs/template/footer.mustache');
 
-let fidx = str.last_index_of(ppath, '/');
-if fidx == -1 {
-  throw({
-    message: 'markdown not found.'
-  });
-}
-let doc_name = str.substring(ppath, fidx + 1);
+
 let PAGE_IDENTIFIER = ppath;
 
 let DOC_PATH = ppath;
