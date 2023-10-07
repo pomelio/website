@@ -1,0 +1,39 @@
+import ext.web as web;
+import std.string as str;
+import std.array as arr;
+
+
+let apps = [
+  'cookbook'
+];
+
+let ppath = web.path();
+let method = web.method();
+
+let app = arr.find(apps, |a| => str.starts_with(ppath, '/' + a));
+
+let match_result = web.match('/comment/:id');
+
+if app {
+  dispatch(app, '/index', {});
+} elsif ppath == '/login' {
+  dispatch(__APP__, '/auth/login', {});
+} elsif str.starts_with(ppath, '/public') {
+  web.send_file(__APP__, ppath);
+} elsif ppath == '/auth/github' {
+  dispatch(__APP__, '/auth/github', {});
+} elsif ppath == '/auth/github/callback' {
+  dispatch(__APP__, '/auth/callback', {from: 'github'});
+} elsif ppath == '/auth/google' {
+  dispatch(__APP__, '/auth/google', {});
+} elsif ppath == '/auth/google/callback' {
+  dispatch(__APP__, '/auth/callback', {from:'google'});
+} elsif method == 'POST' && ppath == '/comment/save' {
+  dispatch(__APP__, '/comment/save', {});
+} elsif method == 'POST' && ppath == '/comment/remove' {
+  dispatch(__APP__, '/comment/remove', {});
+} elsif method == 'GET' &&  web.match('/comment/:id') {
+  dispatch(__APP__, '/comment/get', {});
+} else {
+  web.set_status(404);
+}
