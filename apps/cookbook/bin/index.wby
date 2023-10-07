@@ -6,7 +6,7 @@ let appLen = len('/' + __APP__);
 ppath = str.substring(ppath, appLen);
 
 if str.ends_with(ppath, '.md') {
-  dispatch(__APP__, '/markdown', {});
+  dispatch(__APP__, '/article', {});
 } elsif str.starts_with(ppath, '/public') {
   web.send_file(__APP__, ppath);
 } else {
