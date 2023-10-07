@@ -18,15 +18,15 @@ if !id {
 }
 
 
-let comment_docs_path = '/docs/data/comment.json';
+let comment_docs_path = '/comment.json';
 let comment_docs = [];
 
-let comment_docs_json = github.get_content(comment_docs_path);
+let comment_docs_json = github.get_global_content(comment_docs_path);
 if comment_docs_json != undefined {
   comment_docs = parse_json(comment_docs_json);
 }
 
 comment_docs = arr.filter(comment_docs, |u| => u['id'] != id);
-github.save_text(comment_docs_path, stringify_json(comment_docs));
+github.save_global_text(comment_docs_path, stringify_json(comment_docs));
 
 web.body({status: 'OK'});

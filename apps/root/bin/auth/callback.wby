@@ -43,17 +43,17 @@ if from == 'google' {
 
 
 
-let project_json = github.get_content('/docs/data/project.json');
+let project_json = github.get_global_content('/project.json');
 let project = parse_json(project_json);
 
-let header = mch.renderTemplate('/docs/header.mustache');
-let footer = mch.renderTemplate('/docs/footer.mustache');
+let header = mch.render_template('/docs/template/header.mustache');
+let footer = mch.render_template('/docs/template/footer.mustache');
 
 
 let user_info_docs_path = '/docs/data/user_info.json';
 let user_info_docs = [];
 
-let user_info_docs_json = github.get_content(user_info_docs_path);
+let user_info_docs_json = github.get_global_content(user_info_docs_path);
 if user_info_docs_json != undefined {
       user_info_docs = parse_json(user_info_docs_json);
 }
@@ -62,7 +62,7 @@ let user_info_doc = arr.find(user_info_docs, |u| => u['id'] == user_info['id']);
 if !user_info_doc || user_info_doc != user_info {
       user_info_docs = arr.filter(user_info_docs, |u| => u['id'] != user_info['id']);
       arr.push(user_info_docs, user_info);
-      github.save_text(user_info_docs_path, stringify_json(user_info_docs));
+      github.save_global_text(user_info_docs_path, stringify_json(user_info_docs));
 }
 
 let user_id = user_info['id'];
@@ -73,6 +73,6 @@ user_info['token'] = user_token;
 
 let user_info_json = stringify_json(user_info);
 
-let html = mch.renderTemplate('/docs/login_callback.mustache');
+let html = mch.render_template('/docs/template/auth/login_callback.mustache');
 
 web.body(html);
