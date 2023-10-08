@@ -46,11 +46,11 @@ if from == 'google' {
 let project_json = github.get_global_content('/project.json');
 let project = parse_json(project_json);
 
-let header = mch.render_template('/docs/template/header.mustache');
-let footer = mch.render_template('/docs/template/footer.mustache');
+let header = mch.render_template('/template/header.mustache');
+let footer = mch.render_template('/template/footer.mustache');
 
 
-let user_info_docs_path = '/docs/data/user_info.json';
+let user_info_docs_path = '/user_info.json';
 let user_info_docs = [];
 
 let user_info_docs_json = github.get_global_content(user_info_docs_path);
@@ -73,6 +73,6 @@ user_info['token'] = user_token;
 
 let user_info_json = stringify_json(user_info);
 
-let html = mch.render_template('/docs/template/auth/login_callback.mustache');
+let html = mch.render_template('/template/auth/login_callback.mustache');
 
 web.body(html);

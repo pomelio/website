@@ -1,0 +1,105 @@
+import ext.github as github;
+import std.string as string;
+import ext.web as web;
+import std.array as array;
+import ext.mustache as mch;
+import ext.MarkDownIt as md;
+
+
+
+let project_json = github.get_content('/docs/data/project.json');
+let project = parse_json(project_json);
+
+let followers = project['followers'];
+if !followers {
+  followers = [];
+}
+
+let followers_count = len(followers);
+let followers_slice_len = followers_count > 20 ? 20 : followers_count;
+followers = array.slice(followers, 0,  followers_slice_len);
+
+let user_info_json = github.get_content('/docs/data/user_info.json');
+let user_info_list = parse_json(user_info_json);
+
+let follower_list = array.filter(user_info_list, |u| => array.includes(followers, u['id']));
+let followers_html = mch.renderTemplate('/docs/blogs_followers.mustache');
+
+
+let blogs = project['blogs'];
+
+let {page} = web.query();
+
+let PAGE_COUNT = 20;
+
+if !page {
+    page = 0;
+}
+
+let HOST_NAME = web.hostname();
+
+let blogs_count = len(blogs);
+let offset = page * PAGE_COUNT;
+
+let end = offset + PAGE_COUNT;
+
+if end > blogs_count {
+    end = blogs_count;
+}
+
+blogs = array.slice(blogs, offset, end);
+
+let tmpCard = mch.init('/docs/blog_card.mustache');
+
+let cards = [];
+
+for (let i = 0; i < len(blogs); i++) {
+  let blog = blogs[i];
+
+  let md_result = md.render('/docs/blogs/' + blog);
+  let metas = md.get_metas(md_result);
+
+  let is_player_card = false;
+  let is_summary_card = false;
+  let is_summary_image_card = false;
+
+  let player_url = null;
+  let image_url = null;
+  let video = metas['video'];
+  let image = metas['image'];
+  let title = metas['title'];
+  let description = metas['description'];
+
+  if video {
+    is_player_card = true;
+    is_summary_card = false;
+    is_summary_image_card = false;
+
+    let youtubeID = video['youtubeID'];
+    image_url = 'https://img.youtube.com/vi/' + youtubeID + '/0.jpg';
+  } elsif image {
+    is_player_card = false;
+    is_summary_card = false;
+    is_summary_image_card = true;
+    
+    image_url = image['src'];
+  } else {
+    is_player_card = false;
+    is_summary_card = true;
+    is_summary_image_card = false;
+    
+  }
+  
+  let card_html = mch.render(tmpCard);
+  array.push(cards, card_html);
+}
+
+let blogs_html = array.join(cards, '');
+
+let header_html = mch.renderTemplate('/docs/header.mustache');
+let footer_html = mch.renderTemplate('/docs/footer.mustache');
+
+let html = mch.renderTemplate('/docs/blogs.mustache');
+
+web.body(html);
+

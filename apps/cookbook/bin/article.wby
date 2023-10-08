@@ -17,14 +17,14 @@ if fidx == -1 {
 let doc_name = str.substring(ppath, fidx + 1);
 
 
-let side_bar_data = github.get_app_content('/docs/side_bar.json');
+let side_bar_data = github.get_app_content('/side_bar.json');
 
 let side_bar_json = parse_json(side_bar_data);
 
 let sections = side_bar_json['sections'];
 
 let section_html_list = [];
-let tmplSection = mch.init('/docs/template/sidebar_section.mustache');
+let tmplSection = mch.init('/template/sidebar_section.mustache');
 
 for (let i = 0; i < len(sections); i++) {
   let section = sections[i];
@@ -43,13 +43,13 @@ for (let i = 0; i < len(sections); i++) {
 let title = side_bar_json['title'];
 let sections_html = arr.join(section_html_list, '');
 
-let side_bar_html = mch.render_template('/docs/template/sidebar.mustache');
+let side_bar_html = mch.render_template('/template/sidebar.mustache');
 
 let project_json = github.get_global_content('/project.json');
 let project = parse_json(project_json);
 
-let header = mch.render_template('/docs/template/header.mustache');
-let footer = mch.render_template('/docs/template/footer.mustache');
+let header = mch.render_template('/template/header.mustache');
+let footer = mch.render_template('/template/footer.mustache');
 
 
 let PAGE_IDENTIFIER = ppath;
@@ -76,7 +76,7 @@ if user_info_docs_json != undefined {
 
 let comments_html = [];
 
-let tmplComment = mch.init('/docs/template/comment.mustache');
+let tmplComment = mch.init('/template/comment.mustache');
 
 for (let i = 0; i < len(comments); i++) {
   let comment = comments[i];
@@ -89,10 +89,10 @@ for (let i = 0; i < len(comments); i++) {
 
 comments_html = arr.join(comments_html, '');
 
-let md_result = md.render('/docs/articles/' + doc_name);
+let md_result = md.render('/articles/' + doc_name);
 let content = md.get_html(md_result);
 let metas = md.get_metas(md_result);
 
-let html = mch.render_template('/docs/template/article.mustache');
+let html = mch.render_template('/template/article.mustache');
 
 web.body(html);
