@@ -3,12 +3,14 @@ import std.string as str;
 
 let ppath = web.path();
 let appLen = len('/' + __APP__);
-ppath = str.substring(ppath, appLen);
+apppath = str.substring(ppath, appLen);
 
-if str.ends_with(ppath, '.md') {
-  dispatch(__APP__, '/article', {});
-} elsif str.starts_with(ppath, '/public') {
-  web.send_file(__APP__, ppath);
+if ppath == '/blog' {
+  dispatch(__APP__, '/blogs', {});
+} elsif str.ends_with(ppath, '.md') {
+  dispatch(__APP__, '/blog', {});
+} elsif str.starts_with(apppath, '/public') {
+  web.send_file(__APP__, apppath);
 } else {
   web.set_status(404);
 }
