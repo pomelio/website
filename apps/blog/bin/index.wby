@@ -3,7 +3,7 @@ import std.string as str;
 
 let ppath = web.path();
 let appLen = len('/' + __APP__);
-apppath = str.substring(ppath, appLen);
+let apppath = str.substring(ppath, appLen);
 
 if ppath == '/blog' {
   dispatch(__APP__, '/blogs', {});
