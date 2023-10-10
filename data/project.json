@@ -6,6 +6,12 @@
     "blog": {
         "name": "Pagwe",
         "description": "News",
-        "image": "/public/images/pagwe-logo.png"
+        "image": "/public/images/pagwe-logo.png",
+        "blogs":[
+            "debug.md",
+            "entry_point.md",
+            "modules.md",
+            "statements.md"
+        ]
     }
 }

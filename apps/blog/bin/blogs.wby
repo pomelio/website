@@ -31,7 +31,7 @@ let follower_list = array.filter(user_info_list, |u| => array.includes(followers
 let followers_html = mch.render_template('/template/blogs_followers.mustache');
 
 
-let blogs = project['blogs'];
+let blogs = blog['blogs'];
 
 let {page} = web.query();
 
