@@ -15,6 +15,11 @@ if !followers {
   followers = [];
 }
 
+let blog = {};
+if project['blog'] {
+  blog = project['blog'];
+}
+
 let followers_count = len(followers);
 let followers_slice_len = followers_count > 20 ? 20 : followers_count;
 followers = array.slice(followers, 0,  followers_slice_len);

@@ -2,5 +2,10 @@
     "title": "pagewe",
     "website": "www.pagwe.net",
     "image": "/public/images/pagwe-logo.png",
-    "login":["github", "google"]
+    "login":["github", "google"],
+    "blog": {
+        "name": "Pagwe",
+        "description": "News",
+        "image": "/public/images/pagwe-logo.png"
+    }
 }
