@@ -5,7 +5,7 @@ let ppath = web.path();
 let appLen = len('/' + __APP__);
 let apppath = str.substring(ppath, appLen);
 
-if ppath == '/blog' {
+if apppath == '/' || apppath == '' {
   dispatch(__APP__, '/blogs', {});
 } elsif str.ends_with(ppath, '.md') {
   dispatch(__APP__, '/blog', {});

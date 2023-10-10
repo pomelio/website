@@ -28,7 +28,7 @@ let user_info_json = github.get_global_content('/user_info.json');
 let user_info_list = parse_json(user_info_json);
 
 let follower_list = array.filter(user_info_list, |u| => array.includes(followers, u['id']));
-let followers_html = mch.renderTemplate('/docs/blogs_followers.mustache');
+let followers_html = mch.render_template('/template/blogs_followers.mustache');
 
 
 let blogs = project['blogs'];
@@ -101,10 +101,10 @@ for (let i = 0; i < len(blogs); i++) {
 
 let blogs_html = array.join(cards, '');
 
-let header_html = mch.renderTemplate('/docs/header.mustache');
-let footer_html = mch.renderTemplate('/docs/footer.mustache');
+let header_html = mch.render_template('/template/header.mustache');
+let footer_html = mch.render_template('/template/footer.mustache');
 
-let html = mch.renderTemplate('/docs/blogs.mustache');
+let html = mch.render_template('/template/blogs.mustache');
 
 web.body(html);
 
