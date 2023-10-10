@@ -101,7 +101,7 @@ for (let i = 0; i < len(blogs); i++) {
 
 let blogs_html = array.join(cards, '');
 
-let social_panel_html = mch.render_template('/template/social_panel_html.mustache');
+let social_panel_html = mch.render_template('/template/social_panel.mustache');
 let header_html = mch.render_template('/template/header.mustache');
 let footer_html = mch.render_template('/template/footer.mustache');
 
