@@ -17,8 +17,6 @@ $(document).ready(
         
         $(component_id).replaceWith(html);
 
-        initDropdowns();
-
         $("#logout").click((e) => {
             e.preventDefault();
             logout();
@@ -91,8 +89,6 @@ $(document).ready(
             let html = renderLoginPanel();
         
             $(component_id).replaceWith(html);
-
-            initDropdowns();
 
             $(document).trigger('my-account', []);
     
