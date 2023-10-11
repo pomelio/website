@@ -6,7 +6,7 @@
     "blog": {
         "name": "Pagwe",
         "description": "News",
-        "image": "/public/images/pagwe-logo.png",
+        "image": "/blog/public/img/avatar.png",
         "blogs":[
             "debug.md",
             "entry_point.md",
