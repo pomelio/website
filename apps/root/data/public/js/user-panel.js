@@ -7,9 +7,7 @@ $(document).ready(
         if (myAccount) {
             html = renderUserPanel(myAccount);
             $('#user-panel').replaceWith(html);
-            $("#user-panel-menu").on( "click", function() {
-                $("#user-panel-menu").toggleClass('hidden');
-            });
+            
             let account = JSON.parse(myAccount);
             $(document).trigger('my-account', [account]);
 
@@ -103,3 +101,11 @@ $(document).ready(
 
     }
 );
+
+$(document).on('my-account', (event, account) => {
+    if (account) {
+        $("#user-panel-menu").on( "click", function() {
+            $("#user-panel-menu").toggleClass('hidden');
+        });
+    }
+})
