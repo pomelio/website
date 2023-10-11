@@ -104,7 +104,7 @@ $(document).ready(
 
 $(document).on('my-account', (event, account) => {
     if (account) {
-        $("#user-panel-menu").on( "click", function() {
+        $("#user-panel-menu").click( e => {
             $("#user-panel-menu").toggleClass('hidden');
         });
     }
