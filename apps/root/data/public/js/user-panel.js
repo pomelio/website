@@ -54,7 +54,7 @@ $(document).ready(
             
             
             let html = `
-        <div id="user-panel" class="ml-3 w-32">
+        <div id="user-panel" class="ml-3 w-40">
             <div class="text-right">
                 <button type="button"
                     class="text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
