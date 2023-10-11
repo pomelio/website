@@ -1,14 +1,12 @@
 $(document).ready(
     function(){
 
-        const component_id = '#user-panel';
-
         var myAccount = localStorage.getItem('my-account');
 
         
         if (myAccount) {
             html = renderUserPanel(myAccount);
-            $(component_id).replaceWith(html);
+            $('#user-panel').replaceWith(html);
             $("#user-panel-menu").click( e => {
                 $("#user-panel-menu").toggleClass('hidden');
             });
@@ -17,7 +15,7 @@ $(document).ready(
 
         } else {
             html = renderLoginPanel();
-            $(component_id).replaceWith(html);
+            $('#user-panel').replaceWith(html);
             $(document).trigger('my-account', []);
         }
         
@@ -93,7 +91,7 @@ $(document).ready(
             localStorage.removeItem('my-account');
             let html = renderLoginPanel();
         
-            $(component_id).replaceWith(html);
+            $('#user-panel').replaceWith(html);
 
             $(document).trigger('my-account', []);
     
