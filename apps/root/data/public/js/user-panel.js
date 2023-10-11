@@ -8,14 +8,20 @@ $(document).ready(
         
         if (myAccount) {
             html = renderUserPanel(myAccount);
+            $(component_id).replaceWith(html);
+            $("#user-panel-menu").click( e => {
+                $("#user-panel-menu").toggleClass('hidden');
+            });
             let account = JSON.parse(myAccount);
             $(document).trigger('my-account', [account]);
+
         } else {
             html = renderLoginPanel();
+            $(component_id).replaceWith(html);
             $(document).trigger('my-account', []);
         }
         
-        $(component_id).replaceWith(html);
+        
 
         $("#logout").click((e) => {
             e.preventDefault();
@@ -61,7 +67,7 @@ $(document).ready(
                 </button>
             </div>
 
-            <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600">
+            <div id="user-panel-menu" class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600">
                 <div class="px-4 py-3" role="none">
                     <p class="text-sm text-gray-900 dark:text-white" role="none">
                         ${name}
