@@ -54,7 +54,7 @@ $(document).ready(
             
             
             let html = `
-        <div id="user-panel" class="flex items-center ml-3">
+        <div id="user-panel" class="ml-3">
             <div>
                 <button type="button"
                     class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
@@ -64,7 +64,7 @@ $(document).ready(
                         src="${picture}" alt="user photo">
                 </button>
             </div>
-            <div class="relative d">
+            <div class="relative">
             <div id="user-panel-menu" class="absolute z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600">
                 <div class="px-4 py-3" role="none">
                     <p class="text-sm text-gray-900 dark:text-white" role="none">
