@@ -44,7 +44,7 @@ $(document).on('my-account', (event, account) => {
         loading(true);
         axios({
             method: 'GET',
-            url: '/follower_toggle',
+            url: 'follower_toggle',
             data,
             headers,
         }).then(result => {
