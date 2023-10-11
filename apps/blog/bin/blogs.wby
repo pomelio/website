@@ -20,6 +20,8 @@ if project['blog'] {
   blog = project['blog'];
 }
 
+let social_panel_html = mch.render_template('/template/social_panel.mustache');
+
 let followers_count = len(followers);
 let followers_slice_len = followers_count > 20 ? 20 : followers_count;
 followers = array.slice(followers, 0,  followers_slice_len);
@@ -101,7 +103,7 @@ for (let i = 0; i < len(blogs); i++) {
 
 let blogs_html = array.join(cards, '');
 
-let social_panel_html = mch.render_template('/template/social_panel.mustache');
+
 let header_html = mch.render_template('/template/header.mustache');
 let footer_html = mch.render_template('/template/footer.mustache');
 
