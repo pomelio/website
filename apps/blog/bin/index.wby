@@ -2,6 +2,7 @@ import ext.web as web;
 import std.string as str;
 
 let ppath = web.path();
+let method = web.method();
 let appLen = len('/' + __APP__);
 let apppath = str.substring(ppath, appLen);
 
