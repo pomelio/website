@@ -67,9 +67,9 @@ let tmp_card = mch.init('/template/blog_card.mustache');
 let cards = [];
 
 for (let i = 0; i < len(blogs); i++) {
-  let b = blogs[i];
+  let markdown_file = blogs[i];
 
-  let md_result = md.render('/blogs/' + b);
+  let md_result = md.render('/blogs/' + markdown_file);
   let metas = md.get_metas(md_result);
 
   let is_player_card = false;
