@@ -22,8 +22,6 @@ if project['blog'] {
   blog = project['blog'];
 }
 
-let social_panel_html = mch.render_template('/template/social_panel.mustache');
-
 let followers_count = len(followers);
 let followers_slice_len = followers_count > 20 ? 20 : followers_count;
 followers = array.slice(followers, 0,  followers_slice_len);
@@ -69,9 +67,9 @@ let tmp_card = mch.init('/template/blog_card.mustache');
 let cards = [];
 
 for (let i = 0; i < len(blogs); i++) {
-  let blog = blogs[i];
+  let b = blogs[i];
 
-  let md_result = md.render('/blogs/' + blog);
+  let md_result = md.render('/blogs/' + b);
   let metas = md.get_metas(md_result);
 
   let is_player_card = false;
