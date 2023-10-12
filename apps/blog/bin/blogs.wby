@@ -68,7 +68,7 @@ for (let i = 0; i < len(comments); i++) {
   let comment = comments[i];
   comment['value'] = md.render_source(comment['value']);
   let comment_time = dt.from_now(dt.from_number(comment['create_time']));
-  let user = array.find(user_info_docs, |u| => u['id'] == comment['user_id']);
+  let user = array.find(user_info_list, |u| => u['id'] == comment['user_id']);
   let comment_html = mch.render(tmpl_comment);
   array.push(comments_html, comment_html);
 }
