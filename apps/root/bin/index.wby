@@ -8,30 +8,30 @@ let apps = [
   'blog'
 ];
 
-let ppath = web.path();
+let web_path = web.path();
 let method = web.method();
 
-let app = arr.find(apps, |a| => str.starts_with(ppath, '/' + a));
+let app = arr.find(apps, |a| => str.starts_with(web_path, '/' + a));
 
 let match_result = web.match('/comment/:id');
 
 if app {
   dispatch(app, '/index', {});
-} elsif ppath == '/login' {
+} elsif web_path == '/login' {
   dispatch(__APP__, '/auth/login', {});
-} elsif str.starts_with(ppath, '/public') {
-  web.send_file(__APP__, ppath);
-} elsif ppath == '/auth/github' {
+} elsif str.starts_with(web_path, '/public') {
+  web.send_file(__APP__, web_path);
+} elsif web_path == '/auth/github' {
   dispatch(__APP__, '/auth/github', {});
-} elsif ppath == '/auth/github/callback' {
+} elsif web_path == '/auth/github/callback' {
   dispatch(__APP__, '/auth/callback', {from: 'github'});
-} elsif ppath == '/auth/google' {
+} elsif web_path == '/auth/google' {
   dispatch(__APP__, '/auth/google', {});
-} elsif ppath == '/auth/google/callback' {
+} elsif web_path == '/auth/google/callback' {
   dispatch(__APP__, '/auth/callback', {from:'google'});
-} elsif method == 'POST' && ppath == '/comment/save' {
+} elsif method == 'POST' && web_path == '/comment/save' {
   dispatch(__APP__, '/comment/save', {});
-} elsif method == 'POST' && ppath == '/comment/remove' {
+} elsif method == 'POST' && web_path == '/comment/remove' {
   dispatch(__APP__, '/comment/remove', {});
 } elsif method == 'GET' &&  web.match('/comment/:id') {
   dispatch(__APP__, '/comment/get', {});

@@ -146,9 +146,9 @@ import ext.mustache as mch;
 import ext.Docs as docs;
 import std.array as arr;
 
-let ppath = web.path();
-if ppath == '/' {
-  ppath = '/docs/start.md';
+let web_path = web.path();
+if web_path == '/' {
+  web_path = '/docs/start.md';
 }
 
 let side_bar_data = docs.get_data('/docs/side_bar.json');
@@ -163,7 +163,7 @@ for (let i = 0; i < len(sections); i++) {
   let section = sections[i];
   let topics = section['topics'];
   topics = arr.map(topics, |t|=>{
-    return {...t, active: t['md'] == ppath};
+    return {...t, active: t['md'] == web_path};
   });
   
   let title = section['title'];
@@ -176,10 +176,10 @@ let sections_html = arr.join(section_html_list, '');
 
 let side_bar_html = mch.render('/docs/sidebar.mustache');
 
-let PAGE_URL = 'https://' + web.hostname() + ppath;
-let PAGE_IDENTIFIER = ppath;
+let PAGE_URL = 'https://' + web.hostname() + web_path;
+let PAGE_IDENTIFIER = web_path;
 
-let md_result = md.render(ppath);
+let md_result = md.render(web_path);
 let title = md.get_meta(md_result, 'title');
 let content = md.get_html(md_result);
 if title == undefined {
@@ -211,7 +211,7 @@ web.body(html);
 - line 21: loop a `sections` array variable.
 - line 22: get a `section` map variable
 - line 23: get the `topics` array variable from a `section` variable.
-- line 24 - 26: map each `topic` of a section and add a `active` property to the topic when the topic's `md` string value same as the current request's `path` which is saved in the `ppath` variable. we will high light the `topic` link of the topic when the current topic's `markdown` document is rendered.
+- line 24 - 26: map each `topic` of a section and add a `active` property to the topic when the topic's `md` string value same as the current request's `path` which is saved in the `web_path` variable. we will high light the `topic` link of the topic when the current topic's `markdown` document is rendered.
 - line 28: get the section's `title`
 - line 29: render the `section` template into a `html`, the `section` template path is `/docs/sidebar_section.mustache`. The template will use the above variables `title` and `topics`
 - line 30: add the section's html into the sections html array.

@@ -35,8 +35,8 @@ import ext.PathRegexp as preg;
 import ext.web as web;
 
 //   path: /abc/123
-let ppath = web.path();
-let match_result = preg.match('/abc/:name', ppath);
+let web_path = web.path();
+let match_result = preg.match('/abc/:name', web_path);
 if match_result {
     let name = preg.get_param(match_result, 'name');
     assert(name == '123');
@@ -70,8 +70,8 @@ import ext.PathRegexp as preg;
 import ext.web as web;
 
 //   path: /abc/123
-let ppath = web.path();
-let match_result = preg.match('/abc/:name', ppath);
+let web_path = web.path();
+let match_result = preg.match('/abc/:name', web_path);
 if match_result {
     let pvariables = preg.get_param(match_result);
     assert(pvariables['name'] == '123');

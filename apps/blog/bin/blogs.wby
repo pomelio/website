@@ -58,7 +58,7 @@ if end > blogs_count {
 
 blogs = array.slice(blogs, offset, end);
 
-let tmpCard = mch.init('/template/blog_card.mustache');
+let tmp_card = mch.init('/template/blog_card.mustache');
 
 let cards = [];
 
@@ -99,7 +99,7 @@ for (let i = 0; i < len(blogs); i++) {
     
   }
   
-  let card_html = mch.render(tmpCard);
+  let card_html = mch.render(tmp_card);
   array.push(cards, card_html);
 }
 

@@ -17,34 +17,6 @@ if fidx == -1 {
 let doc_name = str.substring(web_path, fidx + 1);
 
 
-let side_bar_data = github.get_app_content('/side_bar.json');
-
-let side_bar_json = parse_json(side_bar_data);
-
-let sections = side_bar_json['sections'];
-
-let section_html_list = [];
-let tmplSection = mch.init('/template/sidebar_section.mustache');
-
-for (let i = 0; i < len(sections); i++) {
-  let section = sections[i];
-  
-  let topics = section['topics'];
-  topics = arr.map(topics, |t|=>{
-    
-    return {...t, md: '/' + __APP__ + '/' + t['md'], active: t['md'] == doc_name};
-  });
-  
-  let title = section['title'];
-  let section_html = mch.render(tmplSection);
-  arr.push(section_html_list, section_html);
-}
-
-let title = side_bar_json['title'];
-let sections_html = arr.join(section_html_list, '');
-
-let side_bar_html = mch.render_template('/template/sidebar.mustache');
-
 let project_json = github.get_global_content('/project.json');
 let project = parse_json(project_json);
 
@@ -89,10 +61,10 @@ for (let i = 0; i < len(comments); i++) {
 
 comments_html = arr.join(comments_html, '');
 
-let md_result = md.render('/articles/' + doc_name);
+let md_result = md.render('/blogs/' + doc_name);
 let content = md.get_html(md_result);
 let metas = md.get_metas(md_result);
 
-let html = mch.render_template('/template/article.mustache');
+let html = mch.render_template('/template/blog.mustache');
 
 web.body(html);

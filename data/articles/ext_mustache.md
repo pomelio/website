@@ -22,9 +22,9 @@ import ext.mustache as mch;
 import ext.Docs as docs;
 import std.array as arr;
 
-let ppath = web.path();
-if ppath == '/' {
-  ppath = '/docs/start.md';
+let web_path = web.path();
+if web_path == '/' {
+  web_path = '/docs/start.md';
 }
 
 let side_bar_data = docs.get_data('/docs/side_bar.json');
@@ -39,7 +39,7 @@ for (let i = 0; i < len(sections); i++) {
   let section = sections[i];
   let topics = section['topics'];
   topics = arr.map(topics, |t|=>{
-    return {...t, active: t['md'] == ppath};
+    return {...t, active: t['md'] == web_path};
   });
   
   let title = section['title'];
@@ -52,10 +52,10 @@ let sections_html = arr.join(section_html_list, '');
 
 let side_bar_html = mch.render('/docs/sidebar.mustache');
 
-let PAGE_URL = 'https://' + web.hostname() + ppath;
-let PAGE_IDENTIFIER = ppath;
+let PAGE_URL = 'https://' + web.hostname() + web_path;
+let PAGE_IDENTIFIER = web_path;
 
-let md_result = md.render(ppath);
+let md_result = md.render(web_path);
 let title = md.get_meta(md_result, 'title');
 let content = md.get_html(md_result);
 if title == undefined {

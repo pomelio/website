@@ -181,19 +181,19 @@ import ext.web as web;
 import std.string as str;
 
 
-let ppath = web.path();
+let web_path = web.path();
 
-if ppath == '/' {
-  ppath = '/docs/start.md';
+if web_path == '/' {
+  web_path = '/docs/start.md';
 }
 
-if str.ends_with(ppath, '.md') {
+if str.ends_with(web_path, '.md') {
   dispatch('/markdown', {});
-} elsif str.starts_with(ppath, '/docs') {
-  web.send_file(ppath);
+} elsif str.starts_with(web_path, '/docs') {
+  web.send_file(web_path);
 } else {
   web.set_status(404);
 }
 ```
 
-- line 14 - 15: when the `ppath` variable value starts with the `/public`, it downloads the specified resources. such as `/public/images/entry_point.png`
+- line 14 - 15: when the `web_path` variable value starts with the `/public`, it downloads the specified resources. such as `/public/images/entry_point.png`

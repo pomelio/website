@@ -16,12 +16,12 @@ import ext.web as web;
 import std.string as str;
 
 
-let ppath = web.path();
+let web_path = web.path();
 
-if ppath == '/' || str.ends_with(ppath, '.md') {
+if web_path == '/' || str.ends_with(web_path, '.md') {
   dispatch('/markdown', {});
-} elsif str.starts_with(ppath, '/public') {
-  web.send_file(ppath);
+} elsif str.starts_with(web_path, '/public') {
+  web.send_file(web_path);
 } else {
   web.set_status(404);
 }

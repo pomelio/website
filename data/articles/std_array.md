@@ -350,7 +350,7 @@ let array1 = [1, 4, 9, 16];
 
 assert(arr.map(array1, |x| => x * 2) == [2, 8, 18, 32]);
 
-let ppath = '/bb.md';
+let web_path = '/bb.md';
 
 let topics = [
     {
@@ -365,7 +365,7 @@ let topics = [
     }
 ];
 topics = arr.map(topics, |t|=>{
-    return {...t, active: t['md'] == ppath};
+    return {...t, active: t['md'] == web_path};
 });
 
 assert(topics[0]['active'] == false);
