@@ -5,7 +5,7 @@ import std.array as array;
 import ext.mustache as mch;
 import ext.MarkDownIt as md;
 
-
+let PAGE_COUNT = 20;
 
 let project = {};
 let project_json = github.get_global_content('/project.json');
@@ -28,7 +28,7 @@ if followers_json_data {
 
 
 let followers_count = len(followers);
-let followers_slice_len = followers_count > 20 ? 20 : followers_count;
+let followers_slice_len = followers_count > PAGE_COUNT ? PAGE_COUNT : followers_count;
 followers = array.slice(followers, 0,  followers_slice_len);
 
 let user_info_json = github.get_global_content('/user_info.json');
@@ -44,11 +44,41 @@ array.for_each(followers, |id| => {
 
 let followers_html = mch.render_template('/template/blogs_followers.mustache');
 
+
+
+let comments = [];
+
+let comments_json = github.get_global_content('/comment.json');
+if comments_json {
+  comments = parse_json(comments_json);
+}
+
+comments = arr.filter(comments, |c| => c['clazz'] == 'blog' && c['doc'] == DOC_NAME);
+
+let comments_count = len(comments);
+let comments_slice_len = comments_count > PAGE_COUNT ? PAGE_COUNT : comments_count;
+comments = array.slice(comments, 0,  comments_slice_len);
+
+let comments_html = [];
+
+let tmpl_comment = mch.init('/template/comment.mustache');
+
+for (let i = 0; i < len(comments); i++) {
+  let comment = comments[i];
+  comment['value'] = md.render_source(comment['value']);
+  let comment_time = dt.from_now(dt.from_number(comment['create_time']));
+  let user = arr.find(user_info_docs, |u| => u['id'] == comment['user_id']);
+  let comment_html = mch.render(tmpl_comment);
+  arr.push(comments_html, comment_html);
+}
+
+comments_html = arr.join(comments_html, '');
+
+
+
 let blogs = blog['blogs'];
 
 let {page} = web.query();
-
-let PAGE_COUNT = 20;
 
 if !page {
     page = 0;
