@@ -53,7 +53,7 @@ if comments_json {
   comments = parse_json(comments_json);
 }
 
-comments = array.filter(comments, |c| => c['clazz'] == 'blog' && c['doc'] == DOC_NAME);
+comments = array.filter(comments, |c| => c['clazz'] == 'blog');
 
 let comments_count = len(comments);
 let comments_slice_len = comments_count > PAGE_COUNT ? PAGE_COUNT : comments_count;
