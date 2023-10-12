@@ -9,7 +9,7 @@ let apppath = str.substring(ppath, appLen);
 if apppath == '/' || apppath == '' {
   dispatch(__APP__, '/blogs', {});
 } elsif method == 'GET' &&  apppath == '/follower/toggle' {
-  dispatch('/follower_toggle', {});
+  dispatch(__APP__, '/follower_toggle', {});
 } elsif str.ends_with(ppath, '.md') {
   dispatch(__APP__, '/blog', {});
 } elsif str.starts_with(apppath, '/public') {
