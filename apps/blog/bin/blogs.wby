@@ -35,7 +35,7 @@ let follower_list = [];
 array.for_each(followers, |id| => {
   let fuser = array.find(user_info_list, |u| => u['id'] == id);
   if fuser {
-    array.push(fuser);
+    array.push(follower_list, fuser);
   }
 });
 
