@@ -11,9 +11,9 @@ let user_id = token['id'];
 
 let followers_json_path = '/followers.json';
 let followers_json_data = github.get_global_content(followers_json_path);
-let followers = parse_json(followers_json_data);
-if !followers {
-  followers = [];
+let followers = [];
+if followers_json_data {
+  followers = parse_json(followers_json_data);
 }
 
 let fidx = arr.find_index(followers, |u| => u == user_id);
