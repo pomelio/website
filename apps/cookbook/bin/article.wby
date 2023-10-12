@@ -64,7 +64,7 @@ if comments_json {
   comments = parse_json(comments_json);
 }
 
-comments = arr.filter(comments, |c| => c['doc'] == DOC_PATH);
+comments = arr.filter(comments, |c| => c['doc'] == DOC_NAME);
 
 let user_info_docs_path = '/user_info.json';
 let user_info_docs = [];
