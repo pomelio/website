@@ -10,9 +10,11 @@ import ext.MarkDownIt as md;
 let project_json = github.get_global_content('/project.json');
 let project = parse_json(project_json);
 
-let followers = project['followers'];
-if !followers {
-  followers = [];
+let followers_json_path = '/followers.json';
+let followers_json_data = github.get_global_content(followers_json_path);
+let followers = [];
+if followers_json_data {
+  followers = parse_json(followers_json_data);
 }
 
 let blog = {};
