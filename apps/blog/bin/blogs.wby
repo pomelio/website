@@ -53,7 +53,7 @@ if comments_json {
   comments = parse_json(comments_json);
 }
 
-comments = arr.filter(comments, |c| => c['clazz'] == 'blog' && c['doc'] == DOC_NAME);
+comments = array.filter(comments, |c| => c['clazz'] == 'blog' && c['doc'] == DOC_NAME);
 
 let comments_count = len(comments);
 let comments_slice_len = comments_count > PAGE_COUNT ? PAGE_COUNT : comments_count;
@@ -67,12 +67,12 @@ for (let i = 0; i < len(comments); i++) {
   let comment = comments[i];
   comment['value'] = md.render_source(comment['value']);
   let comment_time = dt.from_now(dt.from_number(comment['create_time']));
-  let user = arr.find(user_info_docs, |u| => u['id'] == comment['user_id']);
+  let user = array.find(user_info_docs, |u| => u['id'] == comment['user_id']);
   let comment_html = mch.render(tmpl_comment);
-  arr.push(comments_html, comment_html);
+  array.push(comments_html, comment_html);
 }
 
-comments_html = arr.join(comments_html, '');
+comments_html = array.join(comments_html, '');
 
 
 
