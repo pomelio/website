@@ -32,7 +32,7 @@ if project['blog'] {
 
 let PAGE_IDENTIFIER = web_path;
 
-let DOC_PATH = web_path;
+let DOC_NAME = doc_name;
 let HOST_NAME = web.hostname();
 
 let comments = [];

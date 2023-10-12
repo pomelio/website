@@ -43,7 +43,7 @@ $(document).on('my-account', (event, account) => {
        
         if (comment) {
             let data = {
-                doc: _DOC_PATH,
+                doc: _DOC_NAME_,
                 value: comment,
             };
 
@@ -65,12 +65,14 @@ $(document).on('my-account', (event, account) => {
                 headers,
             }).then(result => {
                 //addNewComment(creq);
+                $("#comment-message").removeData('commentId');
                 setTimeout(function(){
                     loading(false);
                     window.location.reload(true);
                 }, 2000);
                 
             }).catch(err => {
+                $("#comment-message").removeData('commentId');
                 loading(false);
             });
         }
