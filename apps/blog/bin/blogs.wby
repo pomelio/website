@@ -7,8 +7,17 @@ import ext.MarkDownIt as md;
 
 
 
+let project = {};
 let project_json = github.get_global_content('/project.json');
-let project = parse_json(project_json);
+if project_json {
+    project = parse_json(project_json);
+}
+
+let blog = {};
+if project['blog'] {
+  blog = project['blog'];
+}
+
 
 let followers_json_path = '/followers.json';
 let followers_json_data = github.get_global_content(followers_json_path);
@@ -17,10 +26,6 @@ if followers_json_data {
   followers = parse_json(followers_json_data);
 }
 
-let blog = {};
-if project['blog'] {
-  blog = project['blog'];
-}
 
 let followers_count = len(followers);
 let followers_slice_len = followers_count > 20 ? 20 : followers_count;

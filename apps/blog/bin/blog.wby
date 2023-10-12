@@ -17,8 +17,16 @@ if fidx == -1 {
 let doc_name = str.substring(web_path, fidx + 1);
 
 
+let project = {};
 let project_json = github.get_global_content('/project.json');
-let project = parse_json(project_json);
+if project_json {
+    project = parse_json(project_json);
+}
+
+let blog = {};
+if project['blog'] {
+  blog = project['blog'];
+}
 
 let header = mch.render_template('/template/header.mustache');
 let footer = mch.render_template('/template/footer.mustache');
