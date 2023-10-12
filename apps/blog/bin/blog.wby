@@ -48,14 +48,14 @@ if user_info_docs_json {
 
 let comments_html = [];
 
-let tmplComment = mch.init('/template/comment.mustache');
+let tmpl_comment = mch.init('/template/comment.mustache');
 
 for (let i = 0; i < len(comments); i++) {
   let comment = comments[i];
   comment['value'] = md.render_source(comment['value']);
   let comment_time = dt.from_now(dt.from_number(comment['create_time']));
   let user = arr.find(user_info_docs, |u| => u['id'] == comment['user_id']);
-  let comment_html = mch.render(tmplComment);
+  let comment_html = mch.render(tmpl_comment);
   arr.push(comments_html, comment_html);
 }
 
