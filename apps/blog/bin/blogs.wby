@@ -31,9 +31,15 @@ followers = array.slice(followers, 0,  followers_slice_len);
 let user_info_json = github.get_global_content('/user_info.json');
 let user_info_list = parse_json(user_info_json);
 
-let follower_list = array.filter(user_info_list, |u| => array.includes(followers, u['id']));
-let followers_html = mch.render_template('/template/blogs_followers.mustache');
+let follower_list = [];
+array.for_each(followers, |id| => {
+  let fuser = array.find(user_info_list, |u| => u['id'] == id);
+  if fuser {
+    array.push(fuser);
+  }
+});
 
+let followers_html = mch.render_template('/template/blogs_followers.mustache');
 
 let blogs = blog['blogs'];
 
