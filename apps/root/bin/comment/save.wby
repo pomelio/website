@@ -9,7 +9,7 @@ let token = jwt.verify();
 
 let user_id = token['id'];
 
-let {doc, id, value} = web.request_body();
+let {doc, id, clazz, value} = web.request_body();
 if !id {
   id = uuid();
 }
@@ -19,6 +19,7 @@ let create_time = date.value_of(dt);
 
 let comment = {
     id,
+    clazz,
     user_id,
     doc,
     value,

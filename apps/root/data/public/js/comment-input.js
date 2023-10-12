@@ -44,6 +44,7 @@ $(document).on('my-account', (event, account) => {
         if (comment) {
             let data = {
                 doc: _DOC_NAME_,
+                clazz, _DOC_CLAZZ_,
                 value: comment,
             };
 
