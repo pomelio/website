@@ -35,7 +35,7 @@ if comment_docs_json {
   comment_docs = parse_json(comment_docs_json);
 }
 
-let fcomment = arr.find(comment_docs, |u| => u['id'] != comment['id']);
+let fcomment = arr.find(comment_docs, |u| => u['id'] == comment['id']);
 if fcomment {
   fcomment['value'] = value;
 } else {
