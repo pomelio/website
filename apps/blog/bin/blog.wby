@@ -28,8 +28,6 @@ if project['blog'] {
   blog = project['blog'];
 }
 
-let header = mch.render_template('/template/header.mustache');
-let footer = mch.render_template('/template/footer.mustache');
 
 
 let PAGE_IDENTIFIER = web_path;
@@ -74,5 +72,8 @@ let content = md.get_html(md_result);
 let metas = md.get_metas(md_result);
 
 let html = mch.render_template('/template/blog.mustache');
+
+let header_html = mch.render_template('/template/header.mustache');
+let footer_html = mch.render_template('/template/footer.mustache');
 
 web.body(html);
