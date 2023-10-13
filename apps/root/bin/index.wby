@@ -19,10 +19,10 @@ if app {
   dispatch(app, '/index', {});
 } elsif web_path == '/login' {
   dispatch(__APP__, '/auth/login', {});
-} elsif web.match('/user/:user_id') {
-  dispatch(__APP__, '/user/profile', {});
 } elsif web_path == '/user/like' {
   dispatch(__APP__, '/user/like', {});
+} elsif web.match('/user/:user_id') {
+  dispatch(__APP__, '/user/profile', {});
 } elsif str.starts_with(web_path, '/public') {
   web.send_file(__APP__, web_path);
 } elsif web_path == '/auth/github' {
