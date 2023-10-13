@@ -27,7 +27,7 @@ if fidx != -1 {
     clazz,
     doc
   };
-  arr.unshift(likes, user_id);
+  arr.unshift(likes, like);
 }
 
 github.save_global_text(likes_json_path, stringify_json(likes));
