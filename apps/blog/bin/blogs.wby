@@ -29,22 +29,6 @@ if followers_json_data {
 
 
 let followers_count = len(followers);
-let followers_slice_len = followers_count > PAGE_COUNT ? PAGE_COUNT : followers_count;
-followers = array.slice(followers, 0,  followers_slice_len);
-
-let user_info_json = github.get_global_content('/user_info.json');
-let user_info_list = parse_json(user_info_json);
-
-let follower_list = [];
-array.for_each(followers, |id| => {
-  let fuser = array.find(user_info_list, |u| => u['id'] == id);
-  if fuser {
-    array.push(follower_list, fuser);
-  }
-});
-
-let followers_html = mch.render_template('/template/blogs_followers.mustache');
-
 
 
 let comments = [];
@@ -54,26 +38,7 @@ if comments_json {
   comments = parse_json(comments_json);
 }
 
-comments = array.filter(comments, |c| => c['clazz'] == 'blog');
-
 let comments_count = len(comments);
-let comments_slice_len = comments_count > PAGE_COUNT ? PAGE_COUNT : comments_count;
-comments = array.slice(comments, 0,  comments_slice_len);
-
-let comments_html = [];
-
-let tmpl_comment = mch.init('/template/comment.mustache');
-
-for (let i = 0; i < len(comments); i++) {
-  let comment = comments[i];
-  comment['value'] = md.render_source(comment['value']);
-  let comment_time = dt.from_now(dt.from_number(comment['create_time']));
-  let user = array.find(user_info_list, |u| => u['id'] == comment['user_id']);
-  let comment_html = mch.render(tmpl_comment);
-  array.push(comments_html, comment_html);
-}
-
-comments_html = array.join(comments_html, '');
 
 
 
