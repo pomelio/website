@@ -22,6 +22,11 @@ let fidx = arr.find_index(likes, |u| => u['clazz'] == clazz && u['doc'] == doc &
 if fidx != -1 {
   arr.splice(likes, fidx, 1);
 } else {
+  let like = {
+    user_id,
+    clazz,
+    doc
+  };
   arr.unshift(likes, user_id);
 }
 
