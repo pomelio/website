@@ -15,7 +15,7 @@
     </div>
 </aside>
 
-<div class="side-bar-group fixed inset-0 z-10 hidden bg-gray-900/50 dark:bg-gray-900/90"></div>
+<div id="side-bar-group-bg" class="side-bar-group fixed inset-0 z-10 hidden bg-gray-900/50 dark:bg-gray-900/90"></div>
 
 
 
@@ -24,5 +24,10 @@
     $("#toggle-side-bar-mobile").click(e => {
         $(".side-bar-group").toggleClass('hidden');
     });
+
+    $("#side-bar-group-bg").click(e => {
+        $(".side-bar-group").toggleClass('hidden');
+    });
+
 
 </script>
