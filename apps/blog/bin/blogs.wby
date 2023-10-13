@@ -13,6 +13,24 @@ if project_json {
     project = parse_json(project_json);
 }
 
+let links = [];
+
+if project['navi'] {
+  navi = project['navi'];
+  let keys = keys(navi);
+  array.for_each(keys, k => {
+    let title = k;
+    let url = navi[k];
+    let active = false;
+
+    array.push(links, {
+      title, url, active
+    });
+  })
+}
+
+let side_bar_html = mch.render_template('/template/sidebar.mustache');
+
 let blog = {};
 if project['blog'] {
   blog = project['blog'];
@@ -108,8 +126,7 @@ for (let i = 0; i < len(blogs); i++) {
   array.push(cards, card_html);
 }
 
-let blogs_html = array.join(cards, '');
-
+let content = array.join(cards, '');
 
 let header_html = mch.render_template('/template/header.mustache');
 let footer_html = mch.render_template('/template/footer.mustache');

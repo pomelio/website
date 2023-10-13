@@ -41,15 +41,15 @@ for (let i = 0; i < len(sections); i++) {
 }
 
 let title = side_bar_json['title'];
-let sections_html = arr.join(section_html_list, '');
+let side_bar_content_html = arr.join(section_html_list, '');
 
 let side_bar_html = mch.render_template('/template/sidebar.mustache');
 
 let project_json = github.get_global_content('/project.json');
 let project = parse_json(project_json);
 
-let header = mch.render_template('/template/header.mustache');
-let footer = mch.render_template('/template/footer.mustache');
+let header_html = mch.render_template('/template/header.mustache');
+let footer_html = mch.render_template('/template/footer.mustache');
 
 
 let PAGE_IDENTIFIER = web_path;

@@ -3,6 +3,10 @@
     "website": "www.pagwe.net",
     "image": "/public/images/pagwe-logo.png",
     "login":["github", "google"],
+    "navi": {
+        "Docs": "/cookbook/what_platform_is.md",
+        "Blog": "/blog/"
+    },
     "blog": {
         "name": "Pagwe",
         "description": "News",
