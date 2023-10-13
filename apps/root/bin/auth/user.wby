@@ -3,6 +3,7 @@ import std.array as array;
 import std.array as array;
 import ext.mustache as mch;
 import ext.MarkDownIt as md;
+import ext.web as web;
 
 let users = [];
 let users_path = '/users.json';
