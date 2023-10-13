@@ -7,10 +7,12 @@
       <img class="h-32 sm:h-48 w-full object-cover" src="{{{image_url}}}" alt="{{title}}">
     {{/is_summary_image_card}}
     <div class="m-4">
-      <span class="font-bold dark:text-white">{{title}}</span>
-      {{#pub_date}}
-      <span class="text-sm font-light dark:text-white">{{pub_date}}</span>
-      {{/pub_date}}
+      <div class="flex justify-between">
+        <span class="font-bold dark:text-white">{{title}}</span>
+        {{#pub_date}}
+        <span class="text-sm font-light dark:text-white">{{pub_date}}</span>
+        {{/pub_date}}
+      </div>
       <span class="block text-gray-500 text-sm">{{description}}</span>
     </div>
 </a>
