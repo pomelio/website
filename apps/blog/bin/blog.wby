@@ -53,6 +53,8 @@ if likes_json {
 
 likes = arr.filter(likes, |c| => c['clazz'] == 'blog' && c['doc'] == DOC_NAME);
 
+let likes_count = len(likes);
+
 let likes_html = [];
 
 let tmpl_like = mch.init('/template/like.mustache');
@@ -76,11 +78,13 @@ if comments_json {
 
 comments = arr.filter(comments, |c| => c['clazz'] == 'blog' && c['doc'] == DOC_NAME);
 
+let comments_count = len(comments);
+
 let comments_html = [];
 
 let tmpl_comment = mch.init('/template/comment.mustache');
 
-for (let i = 0; i < len(comments); i++) {
+for (let i = 0; i < comments_count; i++) {
   let comment = comments[i];
   let md_comment_result = md.render_source(comment['value']);
   let content = md.get_html(md_comment_result);
