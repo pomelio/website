@@ -16,7 +16,7 @@ if project_json {
 let links = [];
 
 if project['navi'] {
-  navi = project['navi'];
+  let navi = project['navi'];
   let keys = keys(navi);
   array.for_each(keys, |k| => {
     let title = k;
