@@ -15,5 +15,7 @@ if app_web_path == '/' || app_web_path == '' {
 } elsif str.starts_with(app_web_path, '/public') {
   web.send_file(__APP__, app_web_path);
 } else {
-  web.set_status(404);
+  throw({
+      message: 'request is not matched.'
+  });
 }

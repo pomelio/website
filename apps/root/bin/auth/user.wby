@@ -1,0 +1,52 @@
+import ext.github as github;
+import std.array as array;
+import std.array as array;
+import ext.mustache as mch;
+import ext.MarkDownIt as md;
+
+let users = [];
+let users_path = '/users.json';
+
+let users_json = github.get_global_content(users_path);
+if users_json {
+  users = parse_json(users_json);
+}
+
+let user_id = __PARAMS__['user_id'];
+
+if !user_id {
+  throw({
+    message: 'user_id is not found.'
+  });
+}
+
+let user = array.find(users, |u| => u['id'] == user_id);
+
+if !user {
+  throw({
+    message: 'user is not found.'
+  });
+}
+
+let profiles = [];
+let profiles_path = '/profiles.json';
+
+let profiles_json = github.get_global_content(profiles_path);
+if profiles_json {
+  profiles = parse_json(profiles_json);
+}
+
+let profile = array.find(profiles, |u| => u['id'] == user_id);
+
+
+let md_result = md.render_source(profile['md']);
+let content = md.get_html(md_result);
+let metas = md.get_metas(md_result);
+
+let header_html = mch.render_template('/template/header.mustache');
+let footer_html = mch.render_template('/template/footer.mustache');
+
+let html = mch.render_template('/template/auth/user.mustache');
+
+web.body(html);
+

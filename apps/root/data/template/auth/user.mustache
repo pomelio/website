@@ -57,7 +57,7 @@
 	  <meta name="og:type" content="article" />
 	{{/og_type}}
 
-	<meta name="og:url" content="https://{{{HOST_NAME}}}/cookbook/{{{DOC_NAME}}}">
+	<meta name="og:url" content="https://{{{HOST_NAME}}}/blog/user/{{{DOC_PATH}}}">
 	
 	{{#image}}
 	  <meta name="og:image" content="https://{{{HOST_NAME}}}{{{image.src}}}">
@@ -98,6 +98,7 @@
 	<script src="/public/js/user-panel.js"></script>
 	<script src="/public/js/comment-input.js"></script>
 	<script src="/public/js/comments.js"></script>
+    <script src="/blog/public/js/profile.js"></script>
 
 
 	<link rel="stylesheet" href="/public/css/github-markdown.css">
@@ -137,7 +138,7 @@
 {{/meta_list}}
 
 	var _DOC_NAME_ = "{{{DOC_NAME}}}";
-	var _DOC_CLAZZ_ = 'cookbook';
+    var _DOC_CLAZZ_ = 'blog';
 
 </script>
 
@@ -169,34 +170,32 @@
 </head>
 
 <body class="bg-gray-50 dark:bg-gray-800">
-	{{{header}}}
+	{{{header_html}}}
 
-    <div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
-        {{{side_bar_html}}}
+    <div class="pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
+        
+        <div class="grid md:grid-cols-3">
+            
+            <div class="md:col-span-1 ">
+                <div class="pt-8 flex flex-col items-center pb-10">
+                    <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="{{{user.picture}}}" alt="Bonnie image"/>
+                    <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{{user.name}}</h5>
+                </div>
+                
+            </div>
 
-        <div id="main-content" class="relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-64 dark:bg-gray-900">
-
-
-			<main>
-
+            <div class="md:col-span-2">
                 <div class="px-4 pt-6 markdown-body">
                     {{{content}}}
                 </div>
-				<div id="comment-input"></div>
-				<div id="comments">
-				{{#comments_html}}
-					{{{comments_html}}}
-				{{/comments_html}}
-				</div>
-            </main>
-
-
-			{{{footer}}}
-			
+                <div id="profile-input" />
+            
+            </div>
         </div>
-		
-
     </div>
+
+    {{{footer_html}}}
+    
 </body>
 
 </html>

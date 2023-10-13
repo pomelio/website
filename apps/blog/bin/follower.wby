@@ -1,4 +1,0 @@
-import ext.github github;
-
-let project = {};
-let project_json = github.get_global_content('/profile.json');
