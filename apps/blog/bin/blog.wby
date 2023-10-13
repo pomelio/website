@@ -59,7 +59,8 @@ let tmpl_comment = mch.init('/template/comment.mustache');
 for (let i = 0; i < len(comments); i++) {
   let comment = comments[i];
   let md_comment_result = md.render_source(comment['value']);
-  let comment_value = md.get_html(md_comment_result);
+  let content = md.get_html(md_comment_result);
+  let metas = md.get_metas(md_comment_result);
   let comment_time = dt.from_now(dt.from_number(comment['create_time']));
   let user = arr.find(users, |u| => u['id'] == comment['user_id']);
   let comment_html = mch.render(tmpl_comment);
