@@ -62,7 +62,7 @@ $(document).on('my-account', (event, account) => {
         loading(true);
         axios({
             method: 'post',
-            url: '/like/toggle',
+            url: '/user/like',
             data,
             headers,
         }).then(result => {
