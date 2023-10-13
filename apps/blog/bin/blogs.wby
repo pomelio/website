@@ -18,7 +18,7 @@ let links = [];
 if project['navi'] {
   navi = project['navi'];
   let keys = keys(navi);
-  array.for_each(keys, k => {
+  array.for_each(keys, |k| => {
     let title = k;
     let url = navi[k];
     let active = false;
