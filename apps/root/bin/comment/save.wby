@@ -28,7 +28,7 @@ let comment = {
 
 let comment_txt = stringify_json(comment);
 
-let comment_docs_path = '/comment.json';
+let comment_docs_path = '/comments.json';
 let comment_docs = [];
 
 let comment_docs_json = github.get_global_content(comment_docs_path);

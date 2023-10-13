@@ -59,19 +59,19 @@ let HOST_NAME = web.hostname();
 
 let comments = [];
 
-let comments_json = github.get_global_content('/comment.json');
+let comments_json = github.get_global_content('/comments.json');
 if comments_json {
   comments = parse_json(comments_json);
 }
 
 comments = arr.filter(comments, |c| => c['clazz'] == 'cookbook' && c['doc'] == DOC_NAME);
 
-let user_info_docs_path = '/user_info.json';
-let user_info_docs = [];
+let users_path = '/users.json';
+let users = [];
 
-let user_info_docs_json = github.get_global_content(user_info_docs_path);
-if user_info_docs_json {
-  user_info_docs = parse_json(user_info_docs_json);
+let users_json = github.get_global_content(users_path);
+if users_json {
+  users = parse_json(users_json);
 }
 
 let comments_html = [];
@@ -82,7 +82,7 @@ for (let i = 0; i < len(comments); i++) {
   let comment = comments[i];
   comment['value'] = md.render_source(comment['value']);
   let comment_time = dt.from_now(dt.from_number(comment['create_time']));
-  let user = arr.find(user_info_docs, |u| => u['id'] == comment['user_id']);
+  let user = arr.find(users, |u| => u['id'] == comment['user_id']);
   let comment_html = mch.render(tmpl_comment);
   arr.push(comments_html, comment_html);
 }

@@ -32,7 +32,7 @@ let followers_count = len(followers);
 
 let comments = [];
 
-let comments_json = github.get_global_content('/comment.json');
+let comments_json = github.get_global_content('/comments.json');
 if comments_json {
   comments = parse_json(comments_json);
 }

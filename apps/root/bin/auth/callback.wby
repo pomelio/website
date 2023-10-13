@@ -53,19 +53,19 @@ let header = mch.render_template('/template/header.mustache');
 let footer = mch.render_template('/template/footer.mustache');
 
 
-let user_info_docs_path = '/user_info.json';
-let user_info_docs = [];
+let users_path = '/users.json';
+let users = [];
 
-let user_info_docs_json = github.get_global_content(user_info_docs_path);
-if user_info_docs_json {
-      user_info_docs = parse_json(user_info_docs_json);
+let users_json = github.get_global_content(users_path);
+if users_json {
+      users = parse_json(users_json);
 }
 
-let user_info_doc = arr.find(user_info_docs, |u| => u['id'] == user_info['id']);
-if !user_info_doc || user_info_doc != user_info {
-      user_info_docs = arr.filter(user_info_docs, |u| => u['id'] != user_info['id']);
-      arr.push(user_info_docs, user_info);
-      github.save_global_text(user_info_docs_path, stringify_json(user_info_docs));
+let fuser_info = arr.find(users, |u| => u['id'] == user_info['id']);
+if !fuser_info || fuser_info != user_info {
+      users = arr.filter(users, |u| => u['id'] != user_info['id']);
+      arr.push(users, user_info);
+      github.save_global_text(users_path, stringify_json(users));
 }
 
 let user_id = user_info['id'];
