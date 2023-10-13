@@ -1,5 +1,5 @@
 ---
-id: statments
+pub_date: 2023-10-01
 ---
 # statement
 

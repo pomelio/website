@@ -8,6 +8,9 @@
     {{/is_summary_image_card}}
     <div class="m-4">
       <span class="font-bold dark:text-white">{{title}}</span>
+      {{#pub_date}}
+      <span class="text-sm font-light dark:text-white">{{pub_date}}</span>
+      {{/pub_date}}
       <span class="block text-gray-500 text-sm">{{description}}</span>
     </div>
 </a>

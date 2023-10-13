@@ -1,5 +1,5 @@
 ---
-id: project_debug
+pub_date: 2023-10-01
 ---
 # Project debugging
 > Once the github repository is imported into the developing server. The project can be started to debug.

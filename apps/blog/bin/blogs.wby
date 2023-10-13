@@ -82,6 +82,7 @@ for (let i = 0; i < len(blogs); i++) {
   let image = metas['image'];
   let title = metas['title'];
   let description = metas['description'];
+  let pub_date = metas['pub_date'];
 
   if video {
     is_player_card = true;
