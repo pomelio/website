@@ -64,7 +64,7 @@ $(document).ready(
                 </button>
             </div>
             <div class="relative">
-            <div id="user-panel-menu" class="w-60 absolute z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600">
+            <div id="user-panel-menu" class="w-40 right-0 absolute z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600">
                 <div class="px-1 py-3" role="none">
                     <p class="text-sm text-gray-900 dark:text-white" role="none">
                         <svg class="w-3 h-3 mr-2 inline-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
