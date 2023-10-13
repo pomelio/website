@@ -2,7 +2,6 @@ import ext.github as github;
 import std.string as string;
 import ext.web as web;
 import std.array as array;
-import std.date as dt;
 import ext.mustache as mch;
 import ext.MarkDownIt as md;
 
