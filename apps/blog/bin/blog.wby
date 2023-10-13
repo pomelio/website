@@ -35,14 +35,6 @@ let PAGE_IDENTIFIER = web_path;
 let DOC_NAME = doc_name;
 let HOST_NAME = web.hostname();
 
-let comments = [];
-
-let comments_json = github.get_global_content('/comments.json');
-if comments_json {
-  comments = parse_json(comments_json);
-}
-
-comments = arr.filter(comments, |c| => c['clazz'] == 'blog' && c['doc'] == DOC_NAME);
 
 let users_path = '/users.json';
 let users = [];
@@ -51,6 +43,38 @@ let users_json = github.get_global_content(users_path);
 if users_json {
   users = parse_json(users_json);
 }
+
+let likes = [];
+
+let likes_json = github.get_global_content('/likes.json');
+if likes_json {
+  likes = parse_json(likes_json);
+}
+
+likes = arr.filter(likes, |c| => c['clazz'] == 'blog' && c['doc'] == DOC_NAME);
+
+let likes_html = [];
+
+let tmpl_like = mch.init('/template/like.mustache');
+
+for (let i = 0; i < len(likes); i++) {
+  let like = likes[i];
+  let user = arr.find(users, |u| => u['id'] == like['user_id']);
+  let like_html = mch.render(tmpl_like);
+  arr.push(likes_html, like_html);
+}
+
+likes_html = arr.join(likes_html, '');
+
+
+let comments = [];
+
+let comments_json = github.get_global_content('/comments.json');
+if comments_json {
+  comments = parse_json(comments_json);
+}
+
+comments = arr.filter(comments, |c| => c['clazz'] == 'blog' && c['doc'] == DOC_NAME);
 
 let comments_html = [];
 

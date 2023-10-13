@@ -1,0 +1,30 @@
+import ext.web as web;
+import ext.github as github;
+import std.array as arr;
+import ext.jwt as jwt;
+
+
+let token = jwt.verify();
+
+let user_id = token['id'];
+
+let {clazz, doc} = web.request_body();
+
+let likes_json_path = '/likes.json';
+let likes_json_data = github.get_global_content(likes_json_path);
+let likes = [];
+if likes_json_data {
+  likes = parse_json(likes_json_data);
+}
+
+let fidx = arr.find_index(likes, |u| => u['clazz'] == clazz && u['doc'] == doc && u['user_id'] == user_id);
+
+if fidx != -1 {
+  arr.splice(likes, fidx, 1);
+} else {
+  arr.unshift(likes, user_id);
+}
+
+github.save_global_text(likes_json_path, stringify_json(likes));
+
+web.body('OK');
