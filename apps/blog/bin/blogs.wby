@@ -20,9 +20,12 @@ if likes_json {
   likes = parse_json(likes_json);
 }
 
-likes = array.filter(likes, |c| => c['clazz'] == 'blog' && c['doc'] == 'follower');
-
-let likes_count = len(likes);
+let likes_count = array.reduce(likes, |a, c| => {
+  if c['clazz'] == 'blog' && c['doc'] == 'follower' {
+    return a + 1;
+  }
+  return a;
+}, 0);
 
 
 let comments = [];
