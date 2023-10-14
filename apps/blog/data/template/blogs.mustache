@@ -66,16 +66,22 @@
 	}
 </style>
 
+<script type="text/javascript">
+//for global variables
+
+	var _DOC_NAME_ = "follower";
+    var _DOC_CLAZZ_ = 'blog';
+    var _LIKE_BTN_ = 'follower';
+    var likes_count = {{likes_count}};
+
+</script>
 
 <script type="text/javascript">
 
 	var project_json = `{{{project_json}}}`;
 	var project = JSON.parse(project_json);
 	
-	var _DOC_NAME_ = "follower";
-    var _DOC_CLAZZ_ = 'blog';
-    var _LIKE_BTN_ = 'follower';
-    var likes_count = {{likes_count}};
+	
 
 
 	function addLineClass (pre) {
