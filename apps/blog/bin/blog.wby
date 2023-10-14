@@ -29,6 +29,24 @@ if project['blog'] {
 }
 
 
+let links = [];
+
+if project['navi'] {
+  let navi = project['navi'];
+  let keys = keys(navi);
+  array.for_each(keys, |k| => {
+    let title = k;
+    let url = navi[k];
+    let active = false;
+
+    array.push(links, {
+      title, url, active
+    });
+  });
+}
+
+let side_bar_html = mch.render_template('/template/sidebar.mustache');
+
 
 let PAGE_IDENTIFIER = web_path;
 
