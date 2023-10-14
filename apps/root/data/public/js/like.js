@@ -1,5 +1,8 @@
 $(document).on('my-account', (event, account) => {
-    
+    let likes_count = $('#like-toggle').data("count");
+    let like_doc = $('#like-toggle').data("doc");
+    let like_clazz = $('#like-toggle').data("clazz");
+    let like_btn = $('#like-toggle').data("btn");
 
     let follower_svg = `
 <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
@@ -13,11 +16,12 @@ $(document).on('my-account', (event, account) => {
 </svg>   
     `;
 
-    if (_LIKE_BTN_ === 'follower') {
+    if (like_btn === 'follower') {
         like_svg = follower_svg;
     }
 
     function renderHTML() {
+       
         let html = `
     <button id="like-toggle" type="button" class="relative px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
         ${like_svg}
@@ -50,8 +54,8 @@ $(document).on('my-account', (event, account) => {
         event.preventDefault();
         
         let data = {
-            clazz: _DOC_CLAZZ_,
-            doc: _DOC_NAME_
+            clazz: like_clazz,
+            doc: like_doc,
         };
 
         let headers = {

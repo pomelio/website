@@ -132,12 +132,6 @@
 	var _meta_{{name}} = "{{value}}";
 {{/meta_list}}
 
-	var _DOC_NAME_ = "{{DOC_NAME}}";
-    var _DOC_CLAZZ_ = 'blog';
-    var _LIKE_BTN_ = 'like';
-    var likes_count = {{likes_count}};
-    var comments_count = {{comments_count}};
-
 </script>
 
 <script type="text/javascript">
@@ -180,7 +174,9 @@
                 <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{{blog.name}}</h5>
                 <span class="text-sm text-gray-500 dark:text-gray-400">{{blog.description}}</span>
                 <div class="flex items-center space-x-9">
-                    <div id="like-toggle" ></div>
+                    
+                    <div id="like-toggle" data-doc="{{DOC_NAME}}" data-clazz="blog" data-count="{{likes_count}}" data-btn="like"></div>
+                    
                     <span class="relative bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">
                         messages
                         <span class="sr-only">comments</span>
