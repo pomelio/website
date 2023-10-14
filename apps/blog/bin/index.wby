@@ -8,7 +8,7 @@ let app_web_path = str.substring(web_path, app_len);
 
 if app_web_path == '/' || app_web_path == '' {
   dispatch(__APP__, '/blogs', {});
-} elsif method == 'GET' &&  app_web_path. == '/blogs' {
+} elsif method == 'GET' &&  app_web_path == '/blogs' {
   dispatch(__APP__, '/blogs', {});
 } elsif str.ends_with(app_web_path, '.md') {
   dispatch(__APP__, '/blog', {});
