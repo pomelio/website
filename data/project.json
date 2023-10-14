@@ -5,7 +5,9 @@
     "login":["github", "google"],
     "navi": {
         "Docs": "/cookbook/what_platform_is.md",
-        "Blog": "/blog/"
+        "Blog": "/blog/",
+        "Friends": "/users",
+        "Messages": "/messages"
     },
     "blog": {
         "name": "Pagwe",
