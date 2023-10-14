@@ -5,7 +5,13 @@ import std.array as array;
 import ext.mustache as mch;
 import ext.MarkDownIt as md;
 
-let PAGE_COUNT = 20;
+let PAGE_SIZE = 20;
+
+let query = web.query();
+let page = 0;
+if query['page'] {
+  page = query['page'];
+}
 
 let project = {};
 let project_json = github.get_global_content('/project.json');
@@ -114,7 +120,9 @@ let tmp_card = mch.init('/template/blog_card.mustache');
 
 let cards = [];
 
-for (let i = 0; i < len(blogs); i++) {
+let page_count = blogs_count / PAGE_SIZE + 1;
+
+for (let i = 0; i < blogs_count; i++) {
   let markdown_file = blogs[i];
 
   let md_result = md.render('/blogs/' + markdown_file);
