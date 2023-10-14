@@ -3,7 +3,7 @@ import ext.MarkDownIt as md;
 import std.string as str;
 import ext.mustache as mch;
 import ext.github as github;
-import std.array as arr;
+import std.array as array;
 import std.date as dt;
 
 let web_path = web.path();
@@ -69,7 +69,7 @@ if likes_json {
   likes = parse_json(likes_json);
 }
 
-likes = arr.filter(likes, |c| => c['clazz'] == 'blog' && c['doc'] == DOC_NAME);
+likes = array.filter(likes, |c| => c['clazz'] == 'blog' && c['doc'] == DOC_NAME);
 
 let likes_count = len(likes);
 
@@ -79,12 +79,12 @@ let tmpl_like = mch.init('/template/like.mustache');
 
 for (let i = 0; i < len(likes); i++) {
   let like = likes[i];
-  let user = arr.find(users, |u| => u['id'] == like['user_id']);
+  let user = array.find(users, |u| => u['id'] == like['user_id']);
   let like_html = mch.render(tmpl_like);
-  arr.push(likes_html, like_html);
+  array.push(likes_html, like_html);
 }
 
-likes_html = arr.join(likes_html, '');
+likes_html = array.join(likes_html, '');
 
 
 let comments = [];
@@ -94,7 +94,7 @@ if comments_json {
   comments = parse_json(comments_json);
 }
 
-comments = arr.filter(comments, |c| => c['clazz'] == 'blog' && c['doc'] == DOC_NAME);
+comments = array.filter(comments, |c| => c['clazz'] == 'blog' && c['doc'] == DOC_NAME);
 
 let comments_count = len(comments);
 
@@ -108,12 +108,12 @@ for (let i = 0; i < comments_count; i++) {
   let content = md.get_html(md_comment_result);
   let metas = md.get_metas(md_comment_result);
   let comment_time = dt.from_now(dt.from_number(comment['create_time']));
-  let user = arr.find(users, |u| => u['id'] == comment['user_id']);
+  let user = array.find(users, |u| => u['id'] == comment['user_id']);
   let comment_html = mch.render(tmpl_comment);
-  arr.push(comments_html, comment_html);
+  array.push(comments_html, comment_html);
 }
 
-comments_html = arr.join(comments_html, '');
+comments_html = array.join(comments_html, '');
 
 let md_result = md.render('/blogs/' + doc_name);
 let content = md.get_html(md_result);
