@@ -106,9 +106,9 @@ if !page {
 let HOST_NAME = web.hostname();
 
 let blogs_count = len(blogs);
-let offset = page * PAGE_COUNT;
+let offset = page * PAGE_SIZE;
 
-let end = offset + PAGE_COUNT;
+let end = offset + PAGE_SIZE;
 
 if end > blogs_count {
     end = blogs_count;
