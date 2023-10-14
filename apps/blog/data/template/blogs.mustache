@@ -104,46 +104,37 @@
     <div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
         {{{side_bar_html}}}
         <div id="main-content" class="relative lg:px-20 w-full h-full overflow-y-auto bg-gray-50 lg:ml-80 dark:bg-gray-900">
-			<main>
-				<div class="pt-8 flex flex-col items-center pb-10">
-					<img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="{{{blog.image}}}" alt="Bonnie image"/>
-					<h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{{blog.name}}</h5>
-					<span class="text-sm text-gray-500 dark:text-gray-400">{{blog.description}}</span>
+			
+			<div class="pt-8 flex flex-col items-center pb-10">
+				<img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="{{{blog.image}}}" alt="Bonnie image"/>
+				<h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{{blog.name}}</h5>
+				<span class="text-sm text-gray-500 dark:text-gray-400">{{blog.description}}</span>
+			
+
+				<div class="flex mt-4 space-x-3 md:mt-6">
+					<!-- follower toogle button placeholder -->
+					
+					
+					<div id="like-toggle" data-doc="follower" data-clazz="blog" data-count="{{likes_count}}" data-btn="follower"></div>
 				
 
-					<div class="flex mt-4 space-x-3 md:mt-6">
-						<!-- follower toogle button placeholder -->
-						
-						
-						<a href="/blog/likes" type="button" class="relative px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-							<svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
-								<path d="M3 7H1a1 1 0 0 0-1 1v8a2 2 0 0 0 4 0V8a1 1 0 0 0-1-1Zm12.954 0H12l1.558-4.5a1.778 1.778 0 0 0-3.331-1.06A24.859 24.859 0 0 1 6 6.8v9.586h.114C8.223 16.969 11.015 18 13.6 18c1.4 0 1.592-.526 1.88-1.317l2.354-7A2 2 0 0 0 15.954 7Z"/>
-							</svg> 
-
-							<span class="sr-only">Likes</span>
-							<div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -right-2 dark:border-gray-900">{{likes_count}}</div>
-						</a>
-
-						<a href="/blog/comments" type="button" class="relative px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-							<svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-								<path d="M4.913 2.658c2.075-.27 4.19-.408 6.337-.408 2.147 0 4.262.139 6.337.408 1.922.25 3.291 1.861 3.405 3.727a4.403 4.403 0 00-1.032-.211 50.89 50.89 0 00-8.42 0c-2.358.196-4.04 2.19-4.04 4.434v4.286a4.47 4.47 0 002.433 3.984L7.28 21.53A.75.75 0 016 21v-4.03a48.527 48.527 0 01-1.087-.128C2.905 16.58 1.5 14.833 1.5 12.862V6.638c0-1.97 1.405-3.718 3.413-3.979z" />
-								<path d="M15.75 7.5c-1.376 0-2.739.057-4.086.169C10.124 7.797 9 9.103 9 10.609v4.285c0 1.507 1.128 2.814 2.67 2.94 1.243.102 2.5.157 3.768.165l2.782 2.781a.75.75 0 001.28-.53v-2.39l.33-.026c1.542-.125 2.67-1.433 2.67-2.94v-4.286c0-1.505-1.125-2.811-2.664-2.94A49.392 49.392 0 0015.75 7.5z" />
-							</svg>
-
-							<span class="sr-only">comments</span>
-							<div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -right-2 dark:border-gray-900">{{comments_count}}</div>
-						</a>
-					</div>
+					
 				</div>
-
-                <div class="px-4 pt-6 space-y-8 grid lg:grid-cols-2 lg:gap-4">
-                    {{{content}}}
-                </div>
-				<div class="mt-12 flex justify-center">
-					<div id="pagination" data-page="{{page}}" data-count="{{page_count}}" data-url="/blog/blogs"></div>
+				<div class="flex items-center">
+					{{#likes_html}}
+						{{{likes_html}}}
+					{{/likes_html}}
 				</div>
+			</div>
+
+			<div class="px-4 pt-6 space-y-8 grid lg:grid-cols-2 lg:gap-4">
+				{{{content}}}
+			</div>
+			<div class="mt-12 flex justify-center">
+				<div id="pagination" data-page="{{page}}" data-count="{{page_count}}" data-url="/blog/blogs"></div>
+			</div>
 				
-            </main>
+           
 			{{{footer_html}}}	
         </div>
     </div>

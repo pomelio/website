@@ -20,6 +20,15 @@ if project_json {
     project = parse_json(project_json);
 }
 
+
+let users_path = '/users.json';
+let users = [];
+
+let users_json = github.get_global_content(users_path);
+if users_json {
+  users = parse_json(users_json);
+}
+
 let likes = [];
 
 let likes_json = github.get_global_content('/likes.json');
@@ -27,27 +36,23 @@ if likes_json {
   likes = parse_json(likes_json);
 }
 
-let likes_count = array.reduce(likes, |a, c| => {
-  if c['clazz'] == 'blog' && c['doc'] == 'follower' {
-    return a + 1;
-  }
-  return a;
-}, 0);
+likes = array.filter(likes, |c| => c['clazz'] == 'blog' && c['doc'] == 'follower');
 
+let likes_count = len(likes);
 
-let comments = [];
+let likes_html = [];
 
-let comments_json = github.get_global_content('/comments.json');
-if comments_json {
-  comments = parse_json(comments_json);
+let tmpl_like = mch.init('/template/like.mustache');
+
+for (let i = 0; i < len(likes); i++) {
+  let like = likes[i];
+  let user = array.find(users, |u| => u['id'] == like['user_id']);
+  let like_html = mch.render(tmpl_like);
+  array.push(likes_html, like_html);
 }
 
-let comments_count = array.reduce(comments, |a, c| => {
-  if c['clazz'] == 'blog' && c['doc'] == 'follower' {
-    return a + 1;
-  }
-  return a;
-}, 0);
+likes_html = array.join(likes_html, '');
+
 
 
 let links = [];
@@ -72,27 +77,6 @@ let blog = {};
 if project['blog'] {
   blog = project['blog'];
 }
-
-
-let followers_json_path = '/followers.json';
-let followers_json_data = github.get_global_content(followers_json_path);
-let followers = [];
-if followers_json_data {
-  followers = parse_json(followers_json_data);
-}
-
-
-let followers_count = len(followers);
-
-
-let comments = [];
-
-let comments_json = github.get_global_content('/comments.json');
-if comments_json {
-  comments = parse_json(comments_json);
-}
-
-let comments_count = len(comments);
 
 
 
