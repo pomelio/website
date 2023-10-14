@@ -6,7 +6,7 @@
     "navi": {
         "Docs": "/cookbook/what_platform_is.md",
         "Blog": "/blog/",
-        "Friends": "/users",
+        "Users": "/users",
         "Messages": "/messages"
     },
     "blog": {
