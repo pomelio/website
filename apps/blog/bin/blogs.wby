@@ -4,6 +4,7 @@ import ext.web as web;
 import std.array as array;
 import ext.mustache as mch;
 import ext.MarkDownIt as md;
+import std.math as math;
 
 let PAGE_SIZE = 20;
 
@@ -120,7 +121,7 @@ let tmp_card = mch.init('/template/blog_card.mustache');
 
 let cards = [];
 
-let page_count = blogs_count / PAGE_SIZE + 1;
+let page_count = math.floor(blogs_count / PAGE_SIZE) + 1;
 
 for (let i = 0; i < blogs_count; i++) {
   let markdown_file = blogs[i];
