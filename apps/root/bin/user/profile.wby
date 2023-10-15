@@ -69,7 +69,7 @@ let content = '';
 let metas = {};
 
 if profile {
-  let md_result = md.render_source(profile['md']);
+  let md_result = md.render_source(profile['value']);
   content = md.get_html(md_result);
   metas = md.get_metas(md_result);
 }
