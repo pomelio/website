@@ -20,7 +20,7 @@ if profiles_json_data {
 let fprofile = arr.find(profiles, |u| => u['user_id'] == user_id);
 
 if fprofile {
-  fprofile.value = value;
+  fprofile['value'] = value;
 } else {
   let profile = {
     user_id,
