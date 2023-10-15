@@ -23,6 +23,11 @@ $(document).on('my-account', (event, account) => {
         return html;
     }
 
+    let user_id = $("#profile-input").data("user");
+    if (user_id !== account.id) {
+        return;
+    }
+
 
     let html = renderInput();
     $('#profile-input').replaceWith(html);

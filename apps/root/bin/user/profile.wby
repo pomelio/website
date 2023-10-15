@@ -4,6 +4,8 @@ import std.array as array;
 import ext.mustache as mch;
 import ext.MarkDownIt as md;
 import ext.web as web;
+import ext.jwt as jwt;
+
 
 
 let project = {};
