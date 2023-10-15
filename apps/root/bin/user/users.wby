@@ -1,0 +1,79 @@
+import ext.github as github;
+import ext.web as web;
+
+let PAGE_SIZE = 20;
+
+let query = web.query();
+let page = 0;
+if query['page'] {
+  page = query['page'];
+}
+
+let project = {};
+let project_json = github.get_global_content('/project.json');
+if project_json {
+    project = parse_json(project_json);
+}
+
+let users_path = '/users.json';
+let users = [];
+
+let users_json = github.get_global_content(users_path);
+if users_json {
+  users = parse_json(users_json);
+}
+
+
+let links = [];
+
+if project['navi'] {
+  let navi = project['navi'];
+  let keys = keys(navi);
+  array.for_each(keys, |k| => {
+    let title = k;
+    let url = navi[k];
+    let active = false;
+
+    array.push(links, {
+      title, url, active
+    });
+  });
+}
+
+let side_bar_html = mch.render_template('/template/sidebar.mustache');
+
+
+let users_count = len(users);
+let offset = page * PAGE_SIZE;
+
+let end = offset + PAGE_SIZE;
+
+if end > users_count {
+    end = users_count;
+}
+
+let users_count = len(users);
+users = array.slice(users, offset, end);
+
+let tmp_user_card = mch.init('/template/user/user_card.mustache');
+
+let users_html = [];
+
+for (let i = 0; i < users_count; i++) {
+  let user = users[i];
+  
+  let user_html = mch.render(tmp_user_card);
+  array.push(users_html, user_html);
+}
+
+users_html = array.join(users_html, '');
+
+let page_count = math.floor(users_count / PAGE_SIZE) + 1;
+
+
+let header_html = mch.render_template('/template/header.mustache');
+let footer_html = mch.render_template('/template/footer.mustache');
+
+let html = mch.render_template('/template/user/users.mustache');
+
+web.body(html);
