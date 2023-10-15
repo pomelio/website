@@ -21,11 +21,13 @@ if app {
   dispatch(__APP__, '/auth/login', {});
 } elsif web_path == '/user/like' {
   dispatch(__APP__, '/user/like', {});
-} elsif web.match('/profile/:user_id') {
+} elsif method == 'GET' && web.match('/profile/:user_id') {
   dispatch(__APP__, '/user/profile', {});
-} elsif web_path == '/users' {
+} elsif method == 'POST' && web_match == '/profile/save' {
+  dispatch(__APP__, '/user/profile_save', {});
+} elsif method == 'GET' && web_path == '/users' {
   dispatch(__APP__, '/user/users', {});
-} elsif str.starts_with(web_path, '/public') {
+} elsif method == 'GET' && str.starts_with(web_path, '/public') {
   web.send_file(__APP__, web_path);
 } elsif web_path == '/auth/github' {
   dispatch(__APP__, '/auth/github', {});

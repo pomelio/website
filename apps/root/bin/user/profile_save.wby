@@ -1,0 +1,34 @@
+import ext.web as web;
+import ext.github as github;
+import std.array as arr;
+import ext.jwt as jwt;
+
+
+let token = jwt.verify();
+
+let user_id = token['id'];
+
+let {value} = web.request_body();
+
+let profiles_json_path = '/profiles.json';
+let profiles_json_data = github.get_global_content(profiles_json_path);
+let profiles = [];
+if profiles_json_data {
+  profiles = parse_json(profiles_json_data);
+}
+
+let fprofile = arr.find(profiles, |u| => u['user_id'] == user_id);
+
+if fprofile {
+  fprofile.value = value;
+} else {
+  let profile = {
+    user_id,
+    value
+  };
+  arr.unshift(profiles, profile);
+}
+
+github.save_global_text(profiles_json_path, stringify_json(profiles));
+
+web.body('OK');
