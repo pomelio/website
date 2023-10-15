@@ -52,7 +52,7 @@ if profile {
 let header_html = mch.render_template('/template/header.mustache');
 let footer_html = mch.render_template('/template/footer.mustache');
 
-let html = mch.render_template('/template/auth/user.mustache');
+let html = mch.render_template('/template/user/profile.mustache');
 
 web.body(html);
 
