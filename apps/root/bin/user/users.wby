@@ -1,5 +1,7 @@
 import ext.github as github;
 import ext.web as web;
+import std.array as array;
+import ext.mustache as mch;
 
 let PAGE_SIZE = 20;
 
