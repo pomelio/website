@@ -63,7 +63,7 @@ if profiles_json {
   profiles = parse_json(profiles_json);
 }
 
-let profile = array.find(profiles, |u| => u['id'] == user_id);
+let profile = array.find(profiles, |u| => u['user_id'] == user_id);
 
 let content = '';
 let metas = {};
