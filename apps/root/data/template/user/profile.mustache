@@ -169,33 +169,35 @@
 
 </head>
 
+
 <body class="bg-gray-50 dark:bg-gray-800">
 	{{{header_html}}}
 
-    <div class="pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
-        
-        <div class="grid md:grid-cols-3">
-            
-            
-                <div class="pt-8 flex flex-col items-center pb-10">
-                    <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="{{{user.picture}}}" alt="Bonnie image"/>
-                    <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{{user.name}}</h5>
-                </div>
-                
-            </div>
-
-            <div class="md:col-span-2">
+    <div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
+        {{{side_bar_html}}}
+        <div id="main-content" class="relative lg:px-20 w-full h-full overflow-y-auto bg-gray-50 lg:ml-80 dark:bg-gray-900">
+			
+			
+            <div class="pt-8 flex flex-col items-center pb-10">
+				<img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="{{{user.picture}}}" alt="{{user.name}}"/>
+				<h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{{user.name}}</h5>
+			</div>
+			
+			<div class="md:col-span-2">
                 <div class="px-4 pt-6 markdown-body">
                     {{{content}}}
                 </div>
                 <div id="profile-input" />
             
             </div>
+				
+           
+			{{{footer_html}}}	
         </div>
     </div>
-
-    {{{footer_html}}}
-    
+	<script src="/public/js/dark-theme.js"></script>
+	<script src="/public/js/user-panel.js"></script>
+	<script src="/public/js/pagination.js"></script>
 </body>
 
 </html>
