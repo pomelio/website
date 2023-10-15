@@ -32,7 +32,7 @@ if from == 'google' {
             provider: 'github',
             name: uinfo['login'],
             picture: uinfo['avatar_url'],
-            id: uinfo['id']
+            id: uinfo['id'] + ''
       };
 } else {
       throw({
