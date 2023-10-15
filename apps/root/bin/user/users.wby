@@ -19,14 +19,6 @@ if project_json {
     project = parse_json(project_json);
 }
 
-let users_path = '/users.json';
-let users = [];
-
-let users_json = github.get_global_content(users_path);
-if users_json {
-  users = parse_json(users_json);
-}
-
 
 let links = [];
 
@@ -45,6 +37,16 @@ if project['navi'] {
 }
 
 let side_bar_html = mch.render_template('/template/sidebar.mustache');
+
+let users_path = '/users.json';
+let users = [];
+
+let users_json = github.get_global_content(users_path);
+if users_json {
+  users = parse_json(users_json);
+}
+
+
 
 
 let users_count = len(users);

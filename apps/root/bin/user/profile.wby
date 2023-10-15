@@ -5,6 +5,32 @@ import ext.mustache as mch;
 import ext.MarkDownIt as md;
 import ext.web as web;
 
+
+let project = {};
+let project_json = github.get_global_content('/project.json');
+if project_json {
+    project = parse_json(project_json);
+}
+
+
+let links = [];
+
+if project['navi'] {
+  let navi = project['navi'];
+  let keys = keys(navi);
+  array.for_each(keys, |k| => {
+    let title = k;
+    let url = navi[k];
+    let active = false;
+
+    array.push(links, {
+      title, url, active
+    });
+  });
+}
+
+let side_bar_html = mch.render_template('/template/sidebar.mustache');
+
 let users = [];
 let users_path = '/users.json';
 
