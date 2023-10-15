@@ -23,7 +23,7 @@ if app {
   dispatch(__APP__, '/user/like', {});
 } elsif method == 'GET' && web.match('/profile/:user_id') {
   dispatch(__APP__, '/user/profile', {});
-} elsif method == 'POST' && web_match == '/profile/save' {
+} elsif method == 'POST' && web_path== '/profile/save' {
   dispatch(__APP__, '/user/profile_save', {});
 } elsif method == 'GET' && web_path == '/users' {
   dispatch(__APP__, '/user/users', {});
