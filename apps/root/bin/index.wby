@@ -23,7 +23,7 @@ if app {
   dispatch(__APP__, '/user/like', {});
 } elsif web.match('/user/:user_id') {
   dispatch(__APP__, '/user/profile', {});
-} elsif web.match('/users') {
+} elsif web_path == '/users' {
   dispatch(__APP__, '/user/users', {});
 } elsif str.starts_with(web_path, '/public') {
   web.send_file(__APP__, web_path);
