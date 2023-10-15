@@ -1,5 +1,10 @@
 $(document).on('my-account', (event, account) => {
     
+    let user_id = $("#profile-input").data("user");
+    if (user_id !== account.id) {
+        return;
+    }
+    
     function renderInput() {
         let html = `
     <div id="profile-input" class="flex flex-col items-end p-4 my-6 mx-4 bg-white rounded-lg shadow md:justify-between md:p-6 xl:p-8 dark:bg-gray-800">
@@ -23,10 +28,7 @@ $(document).on('my-account', (event, account) => {
         return html;
     }
 
-    let user_id = $("#profile-input").data("user");
-    if (user_id !== account.id) {
-        return;
-    }
+    
 
 
     let html = renderInput();
