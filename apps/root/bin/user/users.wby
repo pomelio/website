@@ -2,6 +2,7 @@ import ext.github as github;
 import ext.web as web;
 import std.array as array;
 import ext.mustache as mch;
+import std.math as math;
 
 let PAGE_SIZE = 20;
 
