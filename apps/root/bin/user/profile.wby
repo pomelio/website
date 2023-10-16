@@ -77,6 +77,34 @@ if profile {
 }
 
 
+let comments = [];
+
+let comments_json = github.get_global_content('/comments.json');
+if comments_json {
+  comments = parse_json(comments_json);
+}
+
+comments = array.filter(comments, |c| =>   c['user_id'] == user_id);
+
+let comments_count = len(comments);
+
+let comments_html = [];
+
+let tmpl_comment = mch.init('/template/user/comment.mustache');
+
+for (let i = 0; i < comments_count; i++) {
+  let comment = comments[i];
+  let md_comment_result = md.render_source(comment['value']);
+  let content = md.get_html(md_comment_result);
+  let metas = md.get_metas(md_comment_result);
+  let comment_time = dt.from_now(dt.from_number(comment['create_time']));
+  let comment_link = "/" + comment['clazz'] + "/" + comment.doc;
+  let comment_html = mch.render(tmpl_comment);
+  array.push(comments_html, comment_html);
+}
+
+comments_html = array.join(comments_html, '');
+
 let header_html = mch.render_template('/template/header.mustache');
 let footer_html = mch.render_template('/template/footer.mustache');
 

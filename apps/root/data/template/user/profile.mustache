@@ -190,7 +190,11 @@
 
 			<div id="profile-input" data-user="{{user.id}}"/>
             
-            
+            <div id="comments">
+                {{#comments_html}}
+                    {{{comments_html}}}
+                {{/comments_html}}
+            </div>
 				
            
 			{{{footer_html}}}	
