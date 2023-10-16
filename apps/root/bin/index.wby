@@ -27,6 +27,8 @@ if app {
   dispatch(__APP__, '/user/profile_save', {});
 } elsif method == 'GET' && web_path == '/users' {
   dispatch(__APP__, '/user/users', {});
+} elsif method == 'GET' && web_path == '/messages' {
+  dispatch(__APP__, '/user/comments', {});
 } elsif method == 'GET' && str.starts_with(web_path, '/public') {
   web.send_file(__APP__, web_path);
 } elsif web_path == '/auth/github' {
