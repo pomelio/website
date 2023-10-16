@@ -1,0 +1,52 @@
+import ext.github as github;
+import ext.web as web;
+import std.array as array;
+import ext.mustache as mch;
+import std.string as string;
+
+let web_path = web.path();
+
+if len(web_path) == 0 {
+    web_path = "/home";
+}
+
+let page_name = string.substring(1);
+
+if (page_name == "") {
+    page_name = "home";
+}
+
+
+
+let project = {};
+let project_json = github.get_global_content('/project.json');
+if project_json {
+    project = parse_json(project_json);
+}
+
+
+let links = [];
+
+if project['navi'] {
+  let navi = project['navi'];
+  let keys = keys(navi);
+  array.for_each(keys, |k| => {
+    let title = k;
+    let url = navi[k];
+    let active = false;
+
+    array.push(links, {
+      title, url, active
+    });
+  });
+}
+
+let side_bar_html = mch.render_template('/template/sidebar.mustache');
+
+
+let header_html = mch.render_template('/template/header.mustache');
+let footer_html = mch.render_template('/template/footer.mustache');
+
+let html = mch.render_template('/template/page/' + page_name  + '.mustache');
+
+web.body(html);

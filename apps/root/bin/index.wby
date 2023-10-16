@@ -28,7 +28,7 @@ if app {
 } elsif method == 'GET' && web_path == '/users' {
   dispatch(__APP__, '/user/users', {});
 } elsif method == 'GET' && web_path == '/messages' {
-  dispatch(__APP__, '/user/comments', {});
+  dispatch(__APP__, '/comment/comments', {});
 } elsif method == 'GET' && str.starts_with(web_path, '/public') {
   web.send_file(__APP__, web_path);
 } elsif web_path == '/auth/github' {
@@ -46,5 +46,5 @@ if app {
 } elsif method == 'GET' &&  web.match('/comment/:id') {
   dispatch(__APP__, '/comment/get', {});
 } else {
-  web.set_status(404);
+  dispatch(__APP__, '/page', {});
 }

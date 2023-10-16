@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="utf-8">
+	<title>users</title>
+	 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" integrity="sha512-wnea99uKIC3TJF7v4eKk4Y+lMz2Mklv18+r4na2Gn1abDRPPOeef95xTzdwGD9e6zXJBteMIhZ1+68QC5byJZw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind-dark.min.css" integrity="sha512-5qCImO4bnvlpsqNsYuZEHlzJhEN3MBqd3GZp0QCJS0gVNq3Q+MT9Msw8c4UT2j5Cuq/29kz3jCmgYJpekNqSMQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="apple-touch-icon" sizes="180x180"
+        href="/public/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="/public/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="h/public/images/favicon-16x16.png">
+    <link rel="icon" type="image/png" href="/public/images/favicon.ico">
+    <link rel="manifest" href="/public/images/site.webmanifest">
+    
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<style>
+	
+	pre {
+		tab-size: 4;
+		counter-reset: linecounter;
+		padding: 0;
+		font-size: 16px;
+		line-height: 16px;
+	}
+	pre span.line {
+		counter-increment: linecounter;
+		line-height: 16px;
+	}
+	pre span.line::before {
+		content: counter(linecounter);
+		width: 30px;
+		display: inline-block;
+		border-right: 1px dotted #ccc;
+		padding-right: 3px;
+		margin-right: 5px;
+		text-align: left;
+		font-size: 11px;
+		line-height: 16px;
+	}
+</style>
+
+
+<script type="text/javascript">
+
+	var project_json = `{{{project_json}}}`;
+	var project = JSON.parse(project_json);
+	
+	
+
+
+	function addLineClass (pre) {
+		var lines = pre.innerText.trim().split("\n"); // can use innerHTML also
+		while(pre.childNodes.length > 0) {
+			pre.removeChild(pre.childNodes[0]);
+		}
+		for(var i = 0; i < lines.length; i++) {
+			var span = document.createElement("span");
+			span.className = "line";
+			span.innerText = lines[i]; // can use innerHTML also
+			pre.appendChild(span);
+			pre.appendChild(document.createTextNode("\n"));
+			
+			
+		}
+	}
+	window.addEventListener("load", function () {
+		var pres = document.querySelectorAll("pre > code ");
+		for (var i = 0; i < pres.length; i++) {
+			addLineClass(pres[i]);
+		}
+	}, false);
+
+	
+
+</script>
+
+
+</head>
+
+
+<body class="bg-gray-50 dark:bg-gray-800">
+	{{{header_html}}}
+
+    <div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
+        {{{side_bar_html}}}
+        <div id="main-content" class="relative lg:px-20 w-full h-full overflow-y-auto bg-gray-50 lg:ml-80 dark:bg-gray-900">
+            <div>
+               This is home page.
+            </div>
+			
+			{{{footer_html}}}	
+        </div>
+    </div>
+	<script src="/public/js/dark-theme.js"></script>
+	<script src="/public/js/user-panel.js"></script>
+</body>
+
+</html>
