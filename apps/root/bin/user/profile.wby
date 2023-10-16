@@ -98,7 +98,7 @@ for (let i = 0; i < comments_count; i++) {
   let content = md.get_html(md_comment_result);
   let metas = md.get_metas(md_comment_result);
   let comment_time = dt.from_now(dt.from_number(comment['create_time']));
-  let comment_link = "/" + comment['clazz'] + "/" + comment.doc;
+  let comment_link = "/" + comment['clazz'] + "/" + comment['doc'];
   let comment_html = mch.render(tmpl_comment);
   array.push(comments_html, comment_html);
 }
