@@ -10,7 +10,7 @@ if len(web_path) == 0 {
     web_path = "/home";
 }
 
-let page_name = string.substring(1);
+let page_name = string.substring(web_path, 1);
 
 if (page_name == "") {
     page_name = "home";
