@@ -51,7 +51,7 @@ if project['footer']['links'] {
     let keys = keys(f_links);
     array.for_each(keys, |k| => {
         let title = k;
-        let url = navi[k];
+        let url = f_links[k];
        
 
         array.push(footer_links, {
