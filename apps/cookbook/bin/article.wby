@@ -48,6 +48,21 @@ let side_bar_html = mch.render_template('/template/sidebar.mustache');
 let project_json = github.get_global_content('/project.json');
 let project = parse_json(project_json);
 
+let footer_links = [];
+
+if project['footer']['links'] {
+    let f_links = project['footer']['links'];
+    let keys = keys(f_links);
+    array.for_each(keys, |k| => {
+        let title = k;
+        let url = f_links[k];
+       
+        array.push(footer_links, {
+            title, url
+        });
+  });
+}
+
 let header_html = mch.render_template('/template/header.mustache');
 let footer_html = mch.render_template('/template/footer.mustache');
 
