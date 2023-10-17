@@ -53,7 +53,6 @@ if project['footer']['links'] {
         let title = k;
         let url = f_links[k];
        
-
         array.push(footer_links, {
             title, url
         });
