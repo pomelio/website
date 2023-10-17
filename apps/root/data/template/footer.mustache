@@ -4,6 +4,7 @@
             <li><a href="{{{url}}}" class="mr-4 text-sm font-normal text-gray-500 hover:underline md:mr-6 dark:text-gray-400">{{title}}</a></li>
         {{/footer_links}}
     </ul>
+    {{#social_links}}
     <div class="flex space-x-6 sm:justify-center">
         {{#facebook}}
         <a href="{{{facebook}}}" class="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
@@ -35,6 +36,7 @@
          {{/github}}
         
     </div>
+    {{/social_links}}
 </footer>
 
 <p class="my-10 text-sm text-center text-gray-500">

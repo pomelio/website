@@ -61,11 +61,6 @@ if project['footer']['links'] {
 
 let social_links = project['footer']['socials'];
 
-let facebook = social_links['facebook'];
-let instagram = social_links['instagram'];
-let twitter = social_links['twitter'];
-let github = social_links['github'];
-
 let header_html = mch.render_template('/template/header.mustache');
 let footer_html = mch.render_template('/template/footer.mustache');
 
