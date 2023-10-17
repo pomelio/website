@@ -46,5 +46,5 @@ if app {
 } elsif method == 'GET' &&  web.match('/comment/:id') {
   dispatch(__APP__, '/comment/get', {});
 } else {
-  dispatch(__APP__, '/page', {});
+  dispatch(__APP__, '/template', {});
 }
