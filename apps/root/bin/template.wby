@@ -59,6 +59,8 @@ if project['footer']['links'] {
   });
 }
 
+let footer = project['footer'];
+
 let header_html = mch.render_template('/template/header.mustache');
 let footer_html = mch.render_template('/template/footer.mustache');
 
