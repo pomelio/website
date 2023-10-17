@@ -3,7 +3,7 @@ import ext.MarkDownIt as md;
 import std.string as str;
 import ext.mustache as mch;
 import ext.github as github;
-import std.array as arr;
+import std.array as array;
 import std.date as dt;
 
 let web_path = web.path();
@@ -30,18 +30,18 @@ for (let i = 0; i < len(sections); i++) {
   let section = sections[i];
   
   let topics = section['topics'];
-  topics = arr.map(topics, |t|=>{
+  topics = array.map(topics, |t|=>{
     
     return {...t, md: '/' + __APP__ + '/' + t['md'], active: t['md'] == doc_name};
   });
   
   let title = section['title'];
   let section_html = mch.render(tmplSection);
-  arr.push(section_html_list, section_html);
+  array.push(section_html_list, section_html);
 }
 
 let title = side_bar_json['title'];
-let side_bar_content_html = arr.join(section_html_list, '');
+let side_bar_content_html = array.join(section_html_list, '');
 
 let side_bar_html = mch.render_template('/template/sidebar.mustache');
 
@@ -79,7 +79,7 @@ if comments_json {
   comments = parse_json(comments_json);
 }
 
-comments = arr.filter(comments, |c| => c['clazz'] == 'cookbook' && c['doc'] == DOC_NAME);
+comments = array.filter(comments, |c| => c['clazz'] == 'cookbook' && c['doc'] == DOC_NAME);
 
 let users_path = '/users.json';
 let users = [];
@@ -97,12 +97,12 @@ for (let i = 0; i < len(comments); i++) {
   let comment = comments[i];
   comment['value'] = md.render_source(comment['value']);
   let comment_time = dt.from_now(dt.from_number(comment['create_time']));
-  let user = arr.find(users, |u| => u['id'] == comment['user_id']);
+  let user = array.find(users, |u| => u['id'] == comment['user_id']);
   let comment_html = mch.render(tmpl_comment);
-  arr.push(comments_html, comment_html);
+  array.push(comments_html, comment_html);
 }
 
-comments_html = arr.join(comments_html, '');
+comments_html = array.join(comments_html, '');
 
 let md_result = md.render('/articles/' + doc_name);
 let content = md.get_html(md_result);

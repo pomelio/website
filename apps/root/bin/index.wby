@@ -1,6 +1,6 @@
 import ext.web as web;
 import std.string as str;
-import std.array as arr;
+import std.array as array;
 
 
 let apps = [
@@ -11,7 +11,7 @@ let apps = [
 let web_path = web.path();
 let method = web.method();
 
-let app = arr.find(apps, |a| => str.starts_with(web_path, '/' + a));
+let app = array.find(apps, |a| => str.starts_with(web_path, '/' + a));
 
 let match_result = web.match('/comment/:id');
 

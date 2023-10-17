@@ -280,11 +280,11 @@ fn binary_plus(...values) {
 > calling a function by name and argument values.
 
 ``` wby
-import std.array as arr;
+import std.array as array;
 
 let i = [1, 2, 3, 4];
 
-let b = arr.filter(i, |a| => {
+let b = array.filter(i, |a| => {
    return a < 3;
 });
 
@@ -305,34 +305,34 @@ assert(b == [1, 2]);
 ```
 
 ```
-import std.array as arr;
+import std.array as array;
 
 let max_price = 100;
-let matched_orders = arr.filter(orders, |a| => {
+let matched_orders = array.filter(orders, |a| => {
    return a.amount < max_prie;
 });
 ```
 
 
 ```
-import std.array as arr;
+import std.array as array;
 
 
 let words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
 
-let result = arr. filter(words, |word| => len(word) > 6);
+let result = array. filter(words, |word| => len(word) > 6);
 
 assert(result == ["exuberant", "destruction", "present"]);
 
 ```
 
 ```
-import std.array as arr;
+import std.array as array;
 
 
 let a = [{title: 'a', md:'1'}, {title:'b', md:'2'}];
 for (let i = 0; i < len(a); i++) {
-    let aaa =  arr.map(a, |ii| => {
+    let aaa =  array.map(a, |ii| => {
         return {
             ...ii,
             index: i

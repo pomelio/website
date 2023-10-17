@@ -80,10 +80,10 @@ params:
 - return value: 
 > A new string containing the combined text of the strings provided.
 ```
-import std.array as arr;
+import std.array as array;
 
 let a = [1, 2];
-let e = arr.concat(a, [3, '444'], [5]);
+let e = array.concat(a, [3, '444'], [5]);
 
 assert(e == [1, 2, 3, '444', 5]);
 ```

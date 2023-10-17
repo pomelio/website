@@ -1,7 +1,7 @@
 import ext.web as web;
 import ext.github as github;
 import ext.google as google;
-import std.array as arr;
+import std.array as array;
 import ext.jwt as jwt;
 import ext.mustache as mch;
 import std.date as date;
@@ -61,10 +61,10 @@ if users_json {
       users = parse_json(users_json);
 }
 
-let fuser_info = arr.find(users, |u| => u['id'] == user_info['id']);
+let fuser_info = array.find(users, |u| => u['id'] == user_info['id']);
 if !fuser_info || fuser_info != user_info {
-      users = arr.filter(users, |u| => u['id'] != user_info['id']);
-      arr.unshift(users, user_info);
+      users = array.filter(users, |u| => u['id'] != user_info['id']);
+      array.unshift(users, user_info);
       github.save_global_text(users_path, stringify_json(users));
 }
 

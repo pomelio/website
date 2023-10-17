@@ -33,7 +33,7 @@ import ext.MarkDownIt as md;
 import std.string as str;
 import ext.mustache as mch;
 import ext.Docs as docs;
-import std.array as arr;
+import std.array as array;
 
 let web_path = web.path();
 if web_path == '/' {
@@ -51,17 +51,17 @@ let section_html_list = [];
 for (let i = 0; i < len(sections); i++) {
   let section = sections[i];
   let topics = section['topics'];
-  topics = arr.map(topics, |t|=>{
+  topics = array.map(topics, |t|=>{
     return {...t, active: t['md'] == web_path};
   });
   
   let title = section['title'];
   let section_html = mch.render('/docs/sidebar_section.mustache');
-  arr.push(section_html_list, section_html);
+  array.push(section_html_list, section_html);
 }
 
 let title = side_bar_json['title'];
-let sections_html = arr.join(section_html_list, '');
+let sections_html = array.join(section_html_list, '');
 
 let side_bar_html = mch.render('/docs/sidebar.mustache');
 

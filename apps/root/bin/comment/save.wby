@@ -1,6 +1,6 @@
 import ext.web as web;
 import ext.github as github;
-import std.array as arr;
+import std.array as array;
 import ext.jwt as jwt;
 import std.date as date;
 
@@ -36,11 +36,11 @@ if comment_docs_json {
   comment_docs = parse_json(comment_docs_json);
 }
 
-let fcomment = arr.find(comment_docs, |u| => u['id'] == comment['id']);
+let fcomment = array.find(comment_docs, |u| => u['id'] == comment['id']);
 if fcomment {
   fcomment['value'] = value;
 } else {
-  arr.unshift(comment_docs, comment);
+  array.unshift(comment_docs, comment);
 }
 
 github.save_global_text(comment_docs_path, stringify_json(comment_docs));

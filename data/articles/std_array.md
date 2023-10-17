@@ -15,10 +15,10 @@ id: std_array
 
 examples:
 ```
-import std.array as arr;
+import std.array as array;
 
 let a = [1, 2];
-assert(arr.at(a, 1) == 2);
+assert(array.at(a, 1) == 2);
 ```
 
 ## concat(values, ...elements)
@@ -29,11 +29,11 @@ assert(arr.at(a, 1) == 2);
 
 examples:
 ```
-import std.array as arr;
+import std.array as array;
 
 
 let a = [1, 2];
-let e = arr.concat(a, [3, '444'], [5]);
+let e = array.concat(a, [3, '444'], [5]);
 
 assert(e == [1, 2, 3, '444', 5]);
 ```
@@ -47,17 +47,17 @@ assert(e == [1, 2, 3, '444', 5]);
 - return value: The modified array.
 
 ```
-import std.array as arr;
+import std.array as array;
 
 let array1 = ['a', 'b', 'c', 'd', 'e'];
 
 // Copy to index 0 the element at index 3
-arr.copy_within(array1, 0, 3, 4);
+array.copy_within(array1, 0, 3, 4);
 // Expected output: Array ["d", "b", "c", "d", "e"]
 assert(array1 == ["d", "b", "c", "d", "e"]);
 
 // Copy to index 1 all elements from index 3 to the end
-arr.copy_within(array1, 1, 3);
+array.copy_within(array1, 1, 3);
 assert(array1 == ["d",  "d", "e", "d", "e"]);
 ```
 
@@ -70,10 +70,10 @@ assert(array1 == ["d",  "d", "e", "d", "e"]);
   - array: The array every() was called upon.
 
 ```
-import std.array as arr;
+import std.array as array;
 
 let a = [1, 2];
-let b = arr.every(a, |a| => {
+let b = array.every(a, |a| => {
     return a > 0;
 });
 assert(b);
@@ -90,17 +90,17 @@ assert(b);
 - return value: The modified array, filled with value.
 
 ```
-import std.array as arr;
+import std.array as array;
 
 let array1 = [1, 2, 3, 4];
 
 // Fill with 0 from position 2 until position 4
-arr.fill(array1, 0, 2, 4);
+array.fill(array1, 0, 2, 4);
 // Expected output: Array [1, 2, 0, 0]
 assert(array1 == [1, 2, 0, 0]);
 
 // Fill with 5 from position 1
-arr.fill(array1, 5, 1);
+array.fill(array1, 5, 1);
 // Expected output: Array [1, 5, 5, 5]
 assert(array1 == [1, 5, 5, 5]);
 ```
@@ -116,11 +116,11 @@ assert(array1 == [1, 5, 5, 5]);
 - return value: A shallow copy of a portion of the given array, filtered down to just the elements from the given array that pass the test implemented by the provided function. If no elements pass the test, an empty array will be returned.
 
 ```
-import std.array as arr;
+import std.array as array;
 
 let words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
 
-let result = arr.filter(words, |word| => len(word) > 6);
+let result = array.filter(words, |word| => len(word) > 6);
 
 assert(result == ["exuberant", "destruction", "present"]);
 ```
@@ -137,11 +137,11 @@ assert(result == ["exuberant", "destruction", "present"]);
 - return value: The first element in the array that satisfies the provided testing function. Otherwise, undefined is returned.
 
 ```
-import std.array as arr;
+import std.array as array;
 
 let array1 = [5, 12, 8, 130, 44];
 
-let found = arr.find(array1, |element| => element > 10);
+let found = array.find(array1, |element| => element > 10);
 assert(found == 12);
 ```
 
@@ -156,11 +156,11 @@ assert(found == 12);
 - return value: The index of the first element in the array that passes the test. Otherwise, -1.
 
 ```
-import std.array as arr;
+import std.array as array;
 
 let array1 = [5, 12, 8, 130, 44];
 
-let found = arr.find_index(array1, |element| => element > 13);
+let found = array.find_index(array1, |element| => element > 13);
 assert(found == 3);
 ```
 ## find_last(values, callback)
@@ -173,11 +173,11 @@ assert(found == 3);
 
 - return value: The value of the element in the array with the highest index value that satisfies the provided testing function; undefined if no matching element is found.
 ```
-import std.array as arr;
+import std.array as array;
 
 let array1 = [5, 12, 8, 130, 46, 44];
 
-let found = arr.find_last(array1, |element| => element > 45);
+let found = array.find_last(array1, |element| => element > 45);
 assert(found == 46);
 
 ```
@@ -191,11 +191,11 @@ assert(found == 46);
 
 - return value: The index of the last (highest-index) element in the array that passes the test. Otherwise -1 if no matching element is found.
 ```
-import std.array as arr;
+import std.array as array;
 
 let array1 = [5, 12, 50, 130, 44];
 
-let found = arr.find_last_index(array1, |element| => element > 45);
+let found = array.find_last_index(array1, |element| => element > 45);
 assert(found == 3);
 ```
 ## flat(values, depth)
@@ -204,22 +204,22 @@ assert(found == 3);
 - depth: The depth level specifying how deep a nested array structure should be flattened. Defaults to 1.
 - return value: A new array with the sub-array elements concatenated into it.
 ```
-import std.array as arr;
+import std.array as array;
 
 let arra1 = [0, 1, 2, [3, 4]];
 
 
-assert(arr.flat(arra1) == [0, 1, 2, 3, 4]);
+assert(array.flat(arra1) == [0, 1, 2, 3, 4]);
 
 let arra2 = [0, 1, 2, [[[3, 4]]]];
 
-assert(arr.flat(arra2, 3) == [0, 1, 2, 3, 4]);
+assert(array.flat(arra2, 3) == [0, 1, 2, 3, 4]);
 
 ```
 
 
 ## flat_map(values, callback)
-> The `flat_map` method returns a new array formed by applying a given callback function to each element of the array, and then flattening the result by one level. It is identical to a map() followed by a flat() of depth 1 (arr.map(...args).flat()), but slightly more efficient than calling those two methods separately.
+> The `flat_map` method returns a new array formed by applying a given callback function to each element of the array, and then flattening the result by one level. It is identical to a map() followed by a flat() of depth 1 (array.map(...args).flat()), but slightly more efficient than calling those two methods separately.
 - values: the array values
 - callback: A function to execute for each element in the array. It should return an array containing new elements of the new array, or a single non-array value to be added to the new array. The function is called with the following arguments:
   - element: The current element being processed in the array.
@@ -229,11 +229,11 @@ assert(arr.flat(arra2, 3) == [0, 1, 2, 3, 4]);
 - return value: A new array with each element being the result of the callback function and flattened by a depth of 1.
 
 ```
-import std.array as arr;
+import std.array as array;
 
 let  arr1 = [1, 2, 1];
 
-assert(arr.flat_map(arr1, |num| => num == 2 ? [2, 2] : 1) == [1, 2, 2, 1]);
+assert(array.flat_map(arr1, |num| => num == 2 ? [2, 2] : 1) == [1, 2, 2, 1]);
 
 ```
 
@@ -248,13 +248,13 @@ assert(arr.flat_map(arr1, |num| => num == 2 ? [2, 2] : 1) == [1, 2, 2, 1]);
 - return value: undefined
 
 ```
-import std.array as arr;
+import std.array as array;
 
 let a = [1, 2];
 let c = [];
 
-arr.for_each(a, |a| => {    
-    arr.push(c, a);
+array.for_each(a, |a| => {    
+    array.push(c, a);
 });
 
 assert(c == a);
@@ -268,15 +268,15 @@ assert(c == a);
 - return value: A boolean value which is true if the value searchElement is found within the array (or the part of the array indicated by the index fromIndex, if specified).
 
 ```
-import std.array as arr;
+import std.array as array;
 
 let array1 = [1, 2, 3];
 
-assert(arr.includes(array1, 2));
+assert(array.includes(array1, 2));
 
 let pets = ['cat', 'dog', 'bat'];
 
-assert(arr.includes(pets, 'cat'));
+assert(array.includes(pets, 'cat'));
 ```
 ## index_of(values, search, from)
 > The `index_of` method returns the first index at which a given element can be found in the array, or -1 if it is not present.
@@ -285,11 +285,11 @@ assert(arr.includes(pets, 'cat'));
 - from: optional. Zero-based index at which to start searching, converted to an integer.
 - return value: The first index of the element in the array; -1 if not found.
 ```
-import std.array as arr;
+import std.array as array;
 
 let beasts = ['ant', 'bison', 'camel', 'duck', 'bison'];
 
-assert(arr.index_of(beasts, 'bison') == 1);
+assert(array.index_of(beasts, 'bison') == 1);
 ```
 ## is_array(values)
 > The `is_array` static method determines whether the passed value is an Array.
@@ -300,18 +300,18 @@ assert(arr.index_of(beasts, 'bison') == 1);
 > The `join` method creates and returns a new string by concatenating all of the elements in an array (or an array-like object), separated by commas or a specified separator string. If the array has only one item, then that item will be returned without using the separator.
 - values: the array values
 - separator: optional. Specifies a string to separate each pair of adjacent elements of the array. The separator is converted to a string if necessary. If omitted, the array elements are separated with a comma (","). If separator is an empty string, all elements are joined without any characters in between them.
-- return value: A string with all array elements joined. If arr.length is 0, the empty string is returned.
+- return value: A string with all array elements joined. If array.length is 0, the empty string is returned.
 ```
-import std.array as arr;
+import std.array as array;
 
 
 let elements = ['Fire', 'Air', 'Water'];
 
-assert(arr.join(elements) == 'Fire,Air,Water');
+assert(array.join(elements) == 'Fire,Air,Water');
 
-assert(arr.join(elements,'') == 'FireAirWater');
+assert(array.join(elements,'') == 'FireAirWater');
 
-assert(arr.join(elements,'-') == 'Fire-Air-Water');
+assert(array.join(elements,'-') == 'Fire-Air-Water');
 ```
 
 ## last_index_of(values, search, from)
@@ -321,13 +321,13 @@ assert(arr.join(elements,'-') == 'Fire-Air-Water');
 - from: optional. Zero-based index at which to start searching backwards, converted to an integer.
 - return value: The last index of the element in the array; -1 if not found.
 ```
-import std.array as arr;
+import std.array as array;
 
 let animals = ['Dodo', 'Tiger', 'Penguin', 'Dodo'];
 
-assert(arr.last_index_of(animals, 'Dodo') == 3);
+assert(array.last_index_of(animals, 'Dodo') == 3);
 
-assert(arr.last_index_of(animals, 'Tiger') == 1);
+assert(array.last_index_of(animals, 'Tiger') == 1);
 ```
 
 
@@ -344,11 +344,11 @@ assert(arr.last_index_of(animals, 'Tiger') == 1);
 
 ```
 
-import std.array as arr;
+import std.array as array;
 
 let array1 = [1, 4, 9, 16];
 
-assert(arr.map(array1, |x| => x * 2) == [2, 8, 18, 32]);
+assert(array.map(array1, |x| => x * 2) == [2, 8, 18, 32]);
 
 let web_path = '/bb.md';
 
@@ -364,7 +364,7 @@ let topics = [
         md: '/cc.md'
     }
 ];
-topics = arr.map(topics, |t|=>{
+topics = array.map(topics, |t|=>{
     return {...t, active: t['md'] == web_path};
 });
 
@@ -379,13 +379,13 @@ assert(topics[2]['active'] == false);
 - return value: The removed element from the array; undefined if the array is empty.
 
 ```
-import std.array as arr;
+import std.array as array;
 
 info('array.pop -> start');
 
 let plants = ['broccoli', 'cauliflower', 'cabbage', 'kale', 'tomato'];
 
-assert(arr.pop(plants) == "tomato");
+assert(array.pop(plants) == "tomato");
 ```
 
 ## push(values, elements)
@@ -394,16 +394,16 @@ assert(arr.pop(plants) == "tomato");
 - elements: The element(s) to add to the end of the array.
 - return value: The new length property of the object upon which the method was called.
 ```
-import std.array as arr;
+import std.array as array;
 
 let animals = ['pigs', 'goats', 'sheep'];
 
-let count = arr.push(animals, 'cows');
+let count = array.push(animals, 'cows');
 
 assert(count == 4);
 assert(animals == ["pigs", "goats", "sheep", "cows"]);
 
-arr.push(animals, 'chickens', 'cats', 'dogs');
+array.push(animals, 'chickens', 'cats', 'dogs');
 assert(animals == ["pigs", "goats", "sheep", "cows", "chickens", "cats", "dogs"]);
 ```
 
@@ -425,14 +425,14 @@ assert(animals == ["pigs", "goats", "sheep", "cows", "chickens", "cats", "dogs"]
 - return value: The value that results from running the "reducer" callback function to completion over the entire array.
 
 ```
-import std.array as arr;
+import std.array as array;
 
 let array1 = [1, 2, 3, 4];
 
 // 0 + 1 + 2 + 3 + 4
 let initialValue = 0;
 
-let sumWithInitial = arr.reduce(array1, 
+let sumWithInitial = array.reduce(array1, 
     |accumulator, currentValue| => accumulator + currentValue,
     initialValue
 );
@@ -449,11 +449,11 @@ assert(sumWithInitial == 10);
 - return value: The reference to the original array, now reversed. Note that the array is reversed in place, and no copy is made.
 
 ```
-import std.array as arr;
+import std.array as array;
 
 let array1 = ['one', 'two', 'three'];
 
-let reversed = arr.reverse(array1);
+let reversed = array.reverse(array1);
 
 assert(reversed == ["three", "two", "one"]);
 assert(array1 == ["three", "two", "one"]);
@@ -463,11 +463,11 @@ assert(array1 == ["three", "two", "one"]);
 - values: the array values
 - return value: The removed element from the array; undefined if the array is empty.
 ```
-import std.array as arr;
+import std.array as array;
 
 let array1 = [1, 2, 3];
 
-let firstElement = arr.shift(array1);
+let firstElement = array.shift(array1);
 
 assert(array1 == [2, 3]);
 assert(firstElement == 1);
@@ -480,17 +480,17 @@ assert(firstElement == 1);
 
 - return value: A new array containing the extracted elements.
 ```
-import std.array as arr;
+import std.array as array;
 
 let animals = ['ant', 'bison', 'camel', 'duck', 'elephant'];
 
 
-assert(arr.slice(animals, 2) == ["camel", "duck", "elephant"]);
-assert(arr.slice(animals, 2, 4) == ["camel", "duck"]);
-assert(arr.slice(animals, 1, 5) == ["bison", "camel", "duck", "elephant"]);
-assert(arr.slice(animals, -2) == ["duck", "elephant"]);
-assert(arr.slice(animals, 2, -1) == ["camel", "duck"]);
-assert(arr.slice(animals) == ["ant", "bison", "camel", "duck", "elephant"]);
+assert(array.slice(animals, 2) == ["camel", "duck", "elephant"]);
+assert(array.slice(animals, 2, 4) == ["camel", "duck"]);
+assert(array.slice(animals, 1, 5) == ["bison", "camel", "duck", "elephant"]);
+assert(array.slice(animals, -2) == ["duck", "elephant"]);
+assert(array.slice(animals, 2, -1) == ["camel", "duck"]);
+assert(array.slice(animals) == ["ant", "bison", "camel", "duck", "elephant"]);
 ```
 ## some(values, callback)
 > The `some` method tests whether at least one element in the array passes the test implemented by the provided function. It returns true if, in the array, it finds an element for which the provided function returns true; otherwise it returns false. It doesn't modify the array.
@@ -503,11 +503,11 @@ assert(arr.slice(animals) == ["ant", "bison", "camel", "duck", "elephant"]);
 
 - return value: true if the callback function returns a truthy value for at least one element in the array. Otherwise, false.
 ```
-import std.array as arr;
+import std.array as array;
 
 let array = [1, 2, 3, 4, 5];
 
-assert(arr.some(array, |element| => element % 2 == 0));
+assert(array.some(array, |element| => element % 2 == 0));
 ```
 ## sort(values, comparator)
 > The `sort` method sorts the elements of an array in place and returns the reference to the same array, now sorted. The default sort order is ascending, built upon converting the elements into strings, then comparing their sequences of UTF-16 code units values.
@@ -524,15 +524,15 @@ assert(arr.some(array, |element| => element % 2 == 0));
 > The reference to the original array, now sorted. Note that the array is sorted in place, and no copy is made.
 
 ```
-import std.array as arr;
+import std.array as array;
 
 let months = ['March', 'Jan', 'Feb', 'Dec'];
 
-assert(arr.sort(months) == ["Dec", "Feb", "Jan", "March"]);
+assert(array.sort(months) == ["Dec", "Feb", "Jan", "March"]);
 
 let array1 = [1, 30, 4, 21, 100000];
 
-assert(arr.sort(array1) == [1, 100000, 21, 30, 4]);
+assert(array.sort(array1) == [1, 100000, 21, 30, 4]);
 ```
 
 ## splice(values, start, deleteCount, ...items)
@@ -557,12 +557,12 @@ assert(arr.sort(array1) == [1, 100000, 21, 30, 4]);
     - If no elements are removed, an empty array is returned.
 
 ```
-import std.array as arr;
+import std.array as array;
 
 let months = ['Jan', 'March', 'April', 'June'];
-arr.splice(months, 1, 0, 'Feb');
+array.splice(months, 1, 0, 'Feb');
 assert(months == ["Jan", "Feb", "March", "April", "June"]);
-arr.splice(months, 4, 1, 'May');
+array.splice(months, 4, 1, 'May');
 assert(months == ["Jan", "Feb", "March", "April", "May"]);
 ```
 ## to_string(values)
@@ -573,26 +573,26 @@ assert(months == ["Jan", "Feb", "March", "April", "May"]);
 > A string representing the elements of the array.
 
 ```
-import std.array as arr;
+import std.array as array;
 
 let array1 = [1, 2, 'a', '1a'];
 
-assert(arr.to_string(array1) == "1,2,a,1a");
+assert(array.to_string(array1) == "1,2,a,1a");
 ```
 ## unshift(values, ...elements)
 > The `unshift` method adds the specified elements to the beginning of an array and returns the new length of the array.
 
 params:
 - values: the array values 
-- elements: The elements to add to the front of the arr.
+- elements: The elements to add to the front of the array.
 
 - return value: 
 > The new length property of the object upon which the method was called.
 
 ```
-import std.array as arr;
+import std.array as array;
 
 let array1 = [1, 2, 3];
-assert(arr.unshift(array1, 4, 5) == 5);
+assert(array.unshift(array1, 4, 5) == 5);
 assert(array1 == [4, 5, 1, 2, 3]);
 ```

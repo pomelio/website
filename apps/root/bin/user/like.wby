@@ -1,6 +1,6 @@
 import ext.web as web;
 import ext.github as github;
-import std.array as arr;
+import std.array as array;
 import ext.jwt as jwt;
 
 
@@ -17,17 +17,17 @@ if likes_json_data {
   likes = parse_json(likes_json_data);
 }
 
-let fidx = arr.find_index(likes, |u| => u['clazz'] == clazz && u['doc'] == doc && u['user_id'] == user_id);
+let fidx = array.find_index(likes, |u| => u['clazz'] == clazz && u['doc'] == doc && u['user_id'] == user_id);
 
 if fidx != -1 {
-  arr.splice(likes, fidx, 1);
+  array.splice(likes, fidx, 1);
 } else {
   let like = {
     user_id,
     clazz,
     doc
   };
-  arr.unshift(likes, like);
+  array.unshift(likes, like);
 }
 
 github.save_global_text(likes_json_path, stringify_json(likes));

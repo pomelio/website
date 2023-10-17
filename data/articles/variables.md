@@ -58,7 +58,7 @@ assert(bc == [1, 2, 3, 4, 5]);
 
 
 
-let arr = [
+let array = [
     1,
     2,
     [1,
@@ -71,12 +71,12 @@ let arr = [
     ]
 ];
 
-let i = arr[2][2]['c'][1];
+let i = array[2][2]['c'][1];
 console('i:' + i);
 
-arr[2][2]['a'] = 3;
+array[2][2]['a'] = 3;
 let dds = 2;
-let ii = arr[2][dds]['a'];
+let ii = array[2][dds]['a'];
 assert(ii == 3);
 ```
 

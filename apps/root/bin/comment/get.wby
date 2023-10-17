@@ -1,4 +1,4 @@
-import std.array as arr;
+import std.array as array;
 import ext.web as web;
 import ext.github as github;
 import ext.jwt as jwt;
@@ -15,7 +15,7 @@ if comment_docs_json {
   comment_docs = parse_json(comment_docs_json);
 }
 
-let comment = arr.find(comment_docs, |c| => c['id'] == comment_id);
+let comment = array.find(comment_docs, |c| => c['id'] == comment_id);
 if (!comment) {
     web.set_status(404);
     web.body('comment is not found.');

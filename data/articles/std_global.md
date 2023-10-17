@@ -96,7 +96,7 @@ let words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
 
 assert(len(words) == 6);
 
-let result = arr.filter(words, |word| => len(word) > 6);
+let result = array.filter(words, |word| => len(word) > 6);
 
 assert(result == ["exuberant", "destruction", "present"]);
 ```
@@ -121,10 +121,10 @@ examples:
 ```
 
 import std.string as str;
-import std.array as arr;
+import std.array as array;
 
 let fcon = is_equal(['a','b'], ['A','b'], |a, b| => {
-    let ret = arr.every(a, |ele, idx| => {
+    let ret = array.every(a, |ele, idx| => {
         let ar = str.to_lower_case(a[idx]);
         let br = str.to_lower_case(b[idx]);
         return ar == br;

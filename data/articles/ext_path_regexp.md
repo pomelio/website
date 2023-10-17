@@ -46,12 +46,12 @@ if match_result {
 
 ```
 import ext.PathRegexp as pathRegexp;
-import std.array as arr;
+import std.array as array;
 
 let result = pathRegexp.match('/abc(.)*', '/abc/1/a/b/c.wby?a=b');
 if result {
   let ii = pathRegexp.get_param(result, 0);
-  let pp = arr.join(ii, '');
+  let pp = array.join(ii, '');
   assert(pp == '/1/a/b/c.wby?a=b');
 }
 ```

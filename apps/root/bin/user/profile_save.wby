@@ -1,6 +1,6 @@
 import ext.web as web;
 import ext.github as github;
-import std.array as arr;
+import std.array as array;
 import ext.jwt as jwt;
 
 
@@ -17,7 +17,7 @@ if profiles_json_data {
   profiles = parse_json(profiles_json_data);
 }
 
-let fprofile = arr.find(profiles, |u| => u['user_id'] == user_id);
+let fprofile = array.find(profiles, |u| => u['user_id'] == user_id);
 
 if fprofile {
   fprofile['value'] = value;
@@ -26,7 +26,7 @@ if fprofile {
     user_id,
     value
   };
-  arr.unshift(profiles, profile);
+  array.unshift(profiles, profile);
 }
 
 github.save_global_text(profiles_json_path, stringify_json(profiles));
