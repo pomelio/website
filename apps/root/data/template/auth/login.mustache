@@ -88,7 +88,7 @@
                     let url = await axios({
                         method: 'get',
                         url: '/auth/google'
-                    });
+                    }).data.url;
 
                     window.location.href = url;
                 },
@@ -100,7 +100,7 @@
                     let url = await axios({
                         method: 'get',
                         url: '/auth/github'
-                    });
+                    }).data.url;
 
                     window.location.href = url;
                 }
