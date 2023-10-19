@@ -53,14 +53,14 @@
             }, {});
         }
 
-        var redirect = window.location.protocol + "//" + window.location.hostname;
+        var credirect = window.location.protocol + "//" + window.location.hostname;
            
 
         const params = toParams(window.location.search.replace(/^\?/, ''));
 
         let nredirect = params['redirect'];
         if (nredirect) {
-            redirect = nredirect;
+            credirect = nredirect;
         }
     </script>
 
@@ -72,9 +72,9 @@
     <div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
         
         <div id="main-content" class="relative w-full h-full overflow-y-auto bg-gray-50 dark:bg-gray-900">
-            <main x-data="{
+            <main x-init="redirect=credirect" x-data="{
                 
-                redirect: $persist(redirect).as('redirect'),
+                redirect: $persist(null).as('redirect'),
        
                 auth_google() {
                     axios({
