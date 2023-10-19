@@ -40,29 +40,7 @@
     <!-- Alpine Core -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-    <script>
-        function toParams(query) {
-            const q = query.replace(/^\??\//, '');
-        
-            return q.split('&').reduce((values, param) => {
-            const [key, value] = param.split('=');
-        
-            values[key] = decodeURIComponent(value);
-        
-            return values;
-            }, {});
-        }
-
-        var credirect = window.location.protocol + "//" + window.location.hostname;
-           
-
-        const params = toParams(window.location.search.replace(/^\?/, ''));
-
-        let nredirect = params['redirect'];
-        if (nredirect) {
-            credirect = nredirect;
-        }
-    </script>
+    
 
 </head>
 
