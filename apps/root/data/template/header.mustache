@@ -1,4 +1,4 @@
-<div class="min-h-screen" x-data="{ 
+<div class="min-h-screen" x-init="console.log(my_account)" x-data="{ 
         dark_mode: $persist(true).as('dark_mode'),
         my_account: $persist(null).as('my_ccount')
     }" :class="dark_mode ? 'dark' : 'light' ">
