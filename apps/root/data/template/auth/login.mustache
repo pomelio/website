@@ -59,6 +59,15 @@
                     });
 
                     window.location.href = url;
+                },
+
+                async auth_github() {
+                    let url = await axios({
+                         method: 'get',
+                        url: '/auth/github'
+                    });
+
+                    window.location.href = url;
                 }
             }">
 
