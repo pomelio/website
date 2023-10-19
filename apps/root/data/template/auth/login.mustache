@@ -85,24 +85,24 @@
                     let nredirect = get_redirect();
                     this.redirect = nredirect;
 
-                    let url = await axios({
+                    let resp = await axios({
                         method: 'get',
                         url: '/auth/google'
                     }).data.url;
 
-                    window.location.href = url;
+                    window.location.href = resp.data.url;
                 },
 
                 async auth_github() {
                     let nredirect = get_redirect();
                     this.redirect = nredirect;
                     
-                    let url = await axios({
+                    let resp = await axios({
                         method: 'get',
                         url: '/auth/github'
-                    }).data.url;
+                    });
 
-                    window.location.href = url;
+                    window.location.href = resp.data.url;
                 }
             }">
 
