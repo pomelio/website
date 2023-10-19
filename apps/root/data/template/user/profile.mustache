@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -67,9 +67,7 @@
 	
 {{/metas}}
 
-   
-   
-
+	 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -92,18 +90,11 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
 
-	<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-	<script src="/public/js/dark-theme.js"></script>
-	<script src="/public/js/user-panel.js"></script>
-	<script src="/public/js/comment-input.js"></script>
-	<script src="/public/js/comments.js"></script>
-    <script src="/blog/public/js/profile.js"></script>
-
-
-	<link rel="stylesheet" href="/public/css/github-markdown.css">
-
-
+	 <!-- Alpine Plugins -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
+ 
+    <!-- Alpine Core -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 <style>
 	
@@ -170,13 +161,14 @@
 </head>
 
 
-<body class="bg-gray-50 dark:bg-gray-800">
+<body>
+
 	{{{header_html}}}
 
     <div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
         {{{side_bar_html}}}
         <div id="main-content" class="relative lg:px-20 w-full h-full overflow-y-auto bg-gray-50 lg:ml-80 dark:bg-gray-900">
-			
+            
 			
             <div class="pt-8 flex flex-col items-center pb-10">
 				<img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="{{{user.picture}}}" alt="{{user.name}}"/>
@@ -200,9 +192,10 @@
 			{{{footer_html}}}	
         </div>
     </div>
-	<script src="/public/js/dark-theme.js"></script>
-	<script src="/public/js/user-panel.js"></script>
-	<script src="/public/js/profile.js"></script>
+
+</div>
+</div>
+	
 </body>
 
 </html>
