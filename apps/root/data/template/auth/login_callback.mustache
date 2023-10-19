@@ -41,10 +41,8 @@
 <body>
     
     {{{header}}}
-    <div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
-        
-        <div id="main-content" class="relative w-full h-full overflow-y-auto bg-gray-50 dark:bg-gray-900">
-            <main x-init="set_account()" x-data="{
+    <div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900" 
+        x-init="set_account()" x-data="{
                 redirect: $persist(null).as('redirectd'),
                 my_account:  $persist(null).as('my_account'),
 
@@ -58,27 +56,22 @@
 
             }">
 
-                <div class="flex justify-center content-center px-4 pt-6">
-                    <div  class="flex items-center ml-3">
-                        <button @click="red" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            rediecting...
-                        </button>
-               
-                    </div>
-                </div>
-                    
-            </main>
+        <div  class="flex justify-center ml-3">
+            <button @click="red" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                rediecting...
+            </button>
+        
         </div>
 
-    </div>
-    {{{footer}}}
-     <p class="my-10 text-sm text-center text-gray-500">
-            Powered by <a href="https://www.pagwe.net" class="hover:underline"
-                target="_blank">www.pagwe.net</a>. All rights reserved.
-    </p>
-
+        {{{footer}}}
+        <p class="my-10 text-sm text-center text-gray-500">
+                Powered by <a href="https://www.pagwe.net" class="hover:underline"
+                    target="_blank">www.pagwe.net</a>. All rights reserved.
+        </p>
+        
     </div>
     
+</div>    
 </div>
 </body>
 
