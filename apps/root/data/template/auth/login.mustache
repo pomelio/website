@@ -50,26 +50,24 @@
     <div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
         
         <div id="main-content" class="relative w-full h-full overflow-y-auto bg-gray-50 dark:bg-gray-900">
-            <main x-init="redirect=credirect" x-data="{
-                
-                redirect: $persist(null).as('redirect'),
+            <main  x-data="{
+            
        
                 auth_google() {
-                    axios({
+                    let url = await axios({
                         method: 'get',
                         url: '/auth/google'
-                    }).then(result => {
-                        window.location.href = result.data.url;
                     });
+
+                    window.location.href = url;
                 },
 
                 auth_github() {
-                    axios({
+                    let url = await axios({
                         method: 'get',
                         url: '/auth/github'
-                    }).then(result => {
-                        window.location.href = result.data.url;
                     });
+                    window.location.href = url;
                 }
             }">
 
