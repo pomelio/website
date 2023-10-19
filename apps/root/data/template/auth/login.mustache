@@ -40,7 +40,33 @@
     <!-- Alpine Core -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-    
+    <script>
+
+        function toParams(query) {
+            const q = query.replace(/^\??\//, '');
+        
+            return q.split('&').reduce((values, param) => {
+            const [key, value] = param.split('=');
+        
+            values[key] = decodeURIComponent(value);
+        
+            return values;
+            }, {});
+        }
+
+        function get_redirect() {
+            let redirect = window.location.protocol + "//" + window.location.hostname;
+           
+
+            const params = toParams(window.location.search.replace(/^\?/, ''));
+
+            let nredirect = params['redirect'];
+            if (nredirect) {
+                redirect = nredirect;
+            }
+        }
+
+    </script>
 
 </head>
 
@@ -51,8 +77,12 @@
         
         <div id="main-content" class="relative w-full h-full overflow-y-auto bg-gray-50 dark:bg-gray-900">
             <main  x-data="{
-            
+                redirect: $persist(null).as('redirect'),
                 async auth_google() {
+
+                    let nredirect = get_redirect();
+                    this.redirect = nredirect;
+
                     let url = await axios({
                         method: 'get',
                         url: '/auth/google'
@@ -62,8 +92,11 @@
                 },
 
                 async auth_github() {
+                    let nredirect = get_redirect();
+                    this.redirect = nredirect;
+                    
                     let url = await axios({
-                         method: 'get',
+                        method: 'get',
                         url: '/auth/github'
                     });
 
