@@ -52,7 +52,7 @@
         <div id="main-content" class="relative w-full h-full overflow-y-auto bg-gray-50 dark:bg-gray-900">
             <main  x-data="{
             
-                auth_google() {
+                async auth_google() {
                     let url = await axios({
                         method: 'get',
                         url: '/auth/google'
