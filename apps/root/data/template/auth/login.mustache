@@ -77,7 +77,7 @@
         
         <div id="main-content" class="relative w-full h-full overflow-y-auto bg-gray-50 dark:bg-gray-900">
             <main  x-data="{
-                redirect: $persist(null),
+                redirect: $persist(null).as('redirect'),
               
                 async auth_google() {
 
