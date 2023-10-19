@@ -40,7 +40,7 @@
     </script>
 <body>
     
-    {{{header}}}
+    {{header_html}}
     <div class="pt-16 bg-gray-50 dark:bg-gray-900" 
         x-init="set_account()" x-data="{
                 redirect: $persist(null).as('redirectd'),
@@ -63,7 +63,7 @@
         
         </div>
 
-        {{{footer}}}
+        {{footer_html}}
         <p class="my-10 text-sm text-center text-gray-500">
                 Powered by <a href="https://www.pagwe.net" class="hover:underline"
                     target="_blank">www.pagwe.net</a>. All rights reserved.
