@@ -92,8 +92,11 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
 
-	<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	 <!-- Alpine Plugins -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
+ 
+    <!-- Alpine Core -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 	
 
 	<link rel="stylesheet" href="/public/css/github-markdown.css">
@@ -164,7 +167,7 @@
 
 </head>
 
-<body class="bg-gray-50 dark:bg-gray-800">
+<body>
 	{{{header_html}}}
 
     <div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
@@ -187,10 +190,9 @@
         </div>
     </div>
 
-	<script src="/public/js/dark-theme.js"></script>
-	<script src="/public/js/user-panel.js"></script>
-	<script src="/public/js/comment-input.js"></script>
-	<script src="/public/js/comments.js"></script>
+</div>
+</div>
+	
 </body>
 
 </html>
