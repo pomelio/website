@@ -1,6 +1,7 @@
 import ext.web as web;
 import ext.mustache as mch;
 import ext.github as github;
+import std.array as array;
 
 let project_json = github.get_global_content('/project.json');
 let project = parse_json(project_json);
