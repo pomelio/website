@@ -1,10 +1,6 @@
 <div class="bg-gray-50 dark:bg-gray-800 min-h-screen" x-data={
         darkMode: $persist(true).as('darkMode'),
-        myAccount: $persist(null).as('myAccount'),
-
-        logout() {
-            this.myAccount = null;
-        }
+       
     
     } :class={darkMode ? 'dark' : 'light'}>
     
