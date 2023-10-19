@@ -2,6 +2,12 @@
         dark_mode: $persist(true).as('dark_mode'),
         my_account_json: $persist(null).as('my_account'),
         
+        get my_account() {
+            if (this.my_account_json) {
+                return JSON.parse(this.my_account_json));
+            }
+            return null;
+        },
 
         init() {
             console.log('--header my_account--' + this.my_account);
