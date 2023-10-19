@@ -35,14 +35,22 @@
     <!-- Alpine Core -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
+    <script>
+        function get_my_account() {
+            return '{{{user_info_json}}}';
+        }
+
+    </script>
+
 <body>
     
     {{{header}}}
     <div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
         
         <div id="main-content" class="relative w-full h-full overflow-y-auto bg-gray-50 dark:bg-gray-900">
-            <main x-init=" redirect = '{{{user_info_json}}}'" x-data="{
+            <main x-init="my_account = get_my_account(); red();" x-data="{
                 redirect: $persist(null).as('redirectd'),
+                my_account:  $persist(null).as('my_account'),
 
                 red() {
                      window.location.href = this.redirect;
