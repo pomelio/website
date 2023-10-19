@@ -2,6 +2,8 @@
         dark_mode: $persist(true).as('dark_mode'),
         my_account_json: $persist(null).as('my_account'),
 
+        show_account_menu: false,
+
         get my_account() {
             if (this.my_account_json) {
                 return JSON.parse(this.my_account_json);
@@ -72,15 +74,15 @@
                         <template x-if="my_account">
                             <div class="ml-3 w-20">
                                 <div class="text-right">
-                                    <button type="button"
+                                    <button @click="show_account_menu = true" type="button"
                                         class="text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-                                        id="user-menu-button" aria-expanded="false">
+                                        aria-expanded="false">
                                         <img class="w-8 h-8 rounded-full"
                                             :src="my_account.picture" :alt="my_account.name">
                                     </button>
                                 </div>
                                 <div class="relative">
-                                    <div class="w-40 right-0 absolute z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600">
+                                    <div :class="!show_account_menu && 'hidden'" class="w-40 right-0 absolute z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600">
                                         <div class="px-1 py-3" role="none">
                                             <a :href="'/profile/' + my_account.id"><p class="text-sm text-gray-900 dark:text-white" role="none">
                                                 <svg class="w-3 h-3 mr-2 inline-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
@@ -117,10 +119,7 @@
                                 </div>
                             </div>
                         </template>
-                        
-
-                        
-                        
+                    
 
                     </div>
                 </div>
