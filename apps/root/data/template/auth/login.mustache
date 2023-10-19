@@ -73,8 +73,9 @@
 <body>
     
     {{{header}}}
-      
-        <div class="relative pt-16 w-full h-full overflow-y-auto bg-gray-50 dark:bg-gray-900">
+    <div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
+        
+        <div class="relative w-full h-full overflow-y-auto bg-gray-50 dark:bg-gray-900">
             <main  x-data="{
                 redirect: $persist(null).as('redirectd'),
               
@@ -127,7 +128,7 @@
             </main>
         </div>
 
-    
+    </div>
     {{{footer}}}
 
     <p class="my-10 text-sm text-center text-gray-500">
