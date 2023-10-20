@@ -92,6 +92,7 @@ if users_json {
 let comments_html = [];
 
 let tmpl_comment = mch.init('/template/comment.mustache');
+let comments_count = len(comments);
 
 for (let i = 0; i < comments_count; i++) {
   let comment = comments[i];
