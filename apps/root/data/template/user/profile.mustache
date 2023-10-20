@@ -204,7 +204,11 @@
 							await axios(config);
 
 						} finally {
-							this.loading = false;
+							let self = this;
+							setTimeout(function(){
+								self.loading = true;
+								window.location.reload(true);
+							}, 2000);
 						}
 						
 						
