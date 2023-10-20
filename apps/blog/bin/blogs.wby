@@ -150,7 +150,7 @@ for (let i = 0; i < blogs_count; i++) {
   array.push(cards, card_html);
 }
 
-let content = array.join(cards, '');
+let blogs_content = array.join(cards, '');
 
 let footer_links = [];
 
