@@ -65,14 +65,14 @@ if profiles_json {
   profiles = parse_json(profiles_json);
 }
 
-let profile = array.find(profiles, |u| => u['user_id'] == user_id);
+let fprofile = array.find(profiles, |u| => u['user_id'] == user_id);
 
-let content = '';
+let profile = '';
 let metas = {};
 
-if profile {
-  let md_result = md.render_source(profile['value']);
-  content = md.get_html(md_result);
+if fprofile {
+  let md_result = md.render_source(fprofile['value']);
+  profile = md.get_html(md_result);
   metas = md.get_metas(md_result);
 }
 
