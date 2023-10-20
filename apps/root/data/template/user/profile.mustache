@@ -175,14 +175,14 @@
 					async save_profile() {
 
 						let data = {
-							user_id: my_account.id,
+							user_id: this.my_account.id,
 							value: this.profile,
 						};
 
 
 						let headers = {
 							'Content-Type': 'application/json;charset=UTF-8',
-							'Authorization': 'Bearer ' + account.token,
+							'Authorization': 'Bearer ' + this.my_account.token,
 						};
 						
 						
