@@ -10,8 +10,41 @@
         },
 
         async remove_comment() {
+            let data = {
+                id: this.comment_id,
+            };
+            
+            if (this.current_comment_id) {
+                data.id = this.current_comment_id;
+            }
 
-        },
+
+            let headers = {
+                'Content-Type': 'application/json;charset=UTF-8',
+                'Authorization': 'Bearer ' + this.my_account.token,
+            };
+
+            let config = {
+                method: 'post',
+                url: '/comment/remove',
+                data,
+                headers,
+            }
+
+            this.loading = true;
+            try {	
+                await axios(config);
+
+            } finally {
+                let self = this;
+                
+                setTimeout(function(){
+                    self.loading = false;
+                    window.location.reload(true);
+                }, 2000);
+                
+            }
+        }
 
     }" class="p-6 text-base bg-white rounded-lg dark:bg-gray-900">
         <footer class="flex justify-between items-center mb-2">
