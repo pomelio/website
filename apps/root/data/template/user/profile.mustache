@@ -199,10 +199,12 @@
 							headers,
 						};
 
-						try {
+						this.loading = true;
+						try {	
 							await axios(config);
-						} catch() {
 
+						} finally {
+							this.loading = false;
 						}
 						
 						
