@@ -1,11 +1,10 @@
     <article x-data="{
         comment_id: '{{comment.id}}',
-        value: '{{{comment.value}}}',
         comment_user_id: '{{comment.user_id}}',
         show_menu: false,
 
         edit_comment() {
-            this.current_comment_value = this.value;
+            this.current_comment_value = `{{{comment.value}}}`;
             this.current_comment_id = this.comment_id;
         },
 
