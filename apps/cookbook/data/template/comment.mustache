@@ -22,18 +22,20 @@
                         alt="Michael Gough">{{user.name}}</p>
                 <p class="text-sm text-gray-600 dark:text-gray-400">{{comment_time}}</p>
             </div>
-            <div class="w-40">
-                <div class="text-right">
-                    <button @click.stop="show_menu = true"
-                        class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 dark:text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-900 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                        type="button">
-                        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
-                            <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>
-                        </svg>
-                        <span class="sr-only">Comment settings</span>
-                    </button>
-                </div>
-                <template x-if="my_account.id == comment_user_id">
+
+            <template x-if="my_account.id == comment_user_id">
+                <div class="w-40">
+                    <div class="text-right">
+                        <button @click.stop="show_menu = true"
+                            class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 dark:text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-900 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                            type="button">
+                            <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
+                                <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>
+                            </svg>
+                            <span class="sr-only">Comment settings</span>
+                        </button>
+                    </div>
+                    
                     <!-- Dropdown menu -->
                     <div @click.outside="show_menu = false" :class="show_menu || 'hidden' " class="relative">
                         <div
@@ -52,8 +54,9 @@
                             </ul>
                         </div>
                     </div>
-                </template>
-            </div>
+                    
+                </div>
+            </template>
         </footer>
         <div class="p-4 my-6 mx-4 bg-white rounded-lg shadow md:justify-between md:p-6 xl:p-8 dark:bg-gray-800 text-gray-700 dark:text-gray-200 markdown-body" >{{{comment_content}}}</div>
     </article>
