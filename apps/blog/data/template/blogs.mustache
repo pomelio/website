@@ -105,7 +105,42 @@
         {{{side_bar_html}}}
         <div id="main-content" class="relative lg:px-20 w-full h-full overflow-y-auto bg-gray-50 lg:ml-80 dark:bg-gray-900">
 			
-			<div class="pt-8 flex flex-col items-center pb-10">
+			<div x-data="{
+
+                async toggle_like() {
+
+                    let data = {
+                        clazz: 'follower',
+                        doc: 'blog',
+                    };
+
+                    let headers = {
+						'Content-Type': 'application/json;charset=UTF-8',
+						'Authorization': 'Bearer ' + this.my_account.token,
+					};
+
+					let config = {
+                        method: 'post',
+                        url: '/user/like',
+                        data,
+                        headers,
+                    };
+
+					this.loading = true;
+					try {	
+						await axios(config);
+
+					} finally {
+						let self = this;
+						
+						setTimeout(function(){
+							self.loading = false;
+							window.location.reload(true);
+						}, 2000);
+						
+					}
+                }
+            }"  class="pt-8 flex flex-col items-center pb-10">
 				<img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="{{{blog.image}}}" alt="Bonnie image"/>
 				<h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{{blog.name}}</h5>
 				<span class="text-sm text-gray-500 dark:text-gray-400">{{blog.description}}</span>
@@ -115,8 +150,13 @@
 					<!-- follower toogle button placeholder -->
 					
 					
-					<div id="like-toggle" data-doc="follower" data-clazz="blog" data-count="{{likes_count}}" data-btn="follower"></div>
-				
+					<button :class="loading && 'hidden' " @click="toggle_like" type="button" class="relative px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+							<path d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z" />
+						</svg>
+                        <span class="sr-only">Likes</span>
+                        <div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -right-2 dark:border-gray-900">{{likes_count}}</div>
+                    </button>
 
 					
 				</div>
