@@ -25,120 +25,118 @@
     }" :class="dark_mode ? 'dark' : 'light' ">
 
     <div  class="min-h-screen bg-gray-50 dark:bg-gray-700">
+        <nav class="fixed z-30 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+            <div class="px-3 py-3 lg:px-5 lg:pl-3">
+                <div class="flex items-center justify-between">
 
-        
-    <nav class="fixed z-30 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-        <div class="px-3 py-3 lg:px-5 lg:pl-3">
-            <div class="flex items-center justify-between">
+                    <!-- website basic -->
+                    <div class="flex items-center justify-start">
 
-                <!-- website basic -->
-                <div class="flex items-center justify-start">
+                        <!-- toggle side bar in mobile -->
+                        <button @click.stop="show_side_bar = ! show_side_bar" aria-expanded="true" aria-controls="sidebar"
+                            class="p-2 text-gray-600 rounded cursor-pointer lg:hidden hover:text-gray-900 hover:bg-gray-100 focus:bg-gray-100 dark:focus:bg-gray-700 focus:ring-2 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                            <svg :class="!show_side_bar ? '' : 'hidden' " class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <svg :class="show_side_bar ? '' : 'hidden' " class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
 
-                    <!-- toggle side bar in mobile -->
-                    <button @click.stop="show_side_bar = ! show_side_bar" aria-expanded="true" aria-controls="sidebar"
-                        class="p-2 text-gray-600 rounded cursor-pointer lg:hidden hover:text-gray-900 hover:bg-gray-100 focus:bg-gray-100 dark:focus:bg-gray-700 focus:ring-2 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                        <svg :class="!show_side_bar ? '' : 'hidden' " class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                        <svg :class="show_side_bar ? '' : 'hidden' " class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </button>
+                        <!-- website logo and title -->
+                        <a href="{{project.website}}" class="flex ml-2 md:mr-24">
+                            <img src="{{project.image}}" class="h-8 mr-3"
+                                alt="{{project.title}} Logo" />
+                            <span
+                                class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">{{project.title}}</span>
+                        </a>
 
-                    <!-- website logo and title -->
-                    <a href="{{project.website}}" class="flex ml-2 md:mr-24">
-                        <img src="{{project.image}}" class="h-8 mr-3"
-                            alt="{{project.title}} Logo" />
-                        <span
-                            class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">{{project.title}}</span>
-                    </a>
+                    </div>
 
-                </div>
-
-                <!-- website navi links -->
-                <div class="flex items-center">
+                    <!-- website navi links -->
+                    <div class="flex items-center">
+                        
                     
-                
-                    <!-- theme selection placeholder -->
-                    <button @click="dark_mode = ! dark_mode" data-tooltip-target="tooltip-toggle" type="button"
-                        class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
-                        <svg :class="dark_mode ? 'hidden' : ''" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-                        </svg>
-                        <svg :class="!dark_mode ? 'hidden' : ''" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                                fill-rule="evenodd" clip-rule="evenodd"></path>
-                        </svg>
-                    </button>
+                        <!-- theme selection placeholder -->
+                        <button @click="dark_mode = ! dark_mode" data-tooltip-target="tooltip-toggle" type="button"
+                            class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+                            <svg :class="dark_mode ? 'hidden' : ''" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                            </svg>
+                            <svg :class="!dark_mode ? 'hidden' : ''" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                                    fill-rule="evenodd" clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
 
 
-                    <!-- user-panel placeholder -->
-                    <template x-if="my_account">
-                        <div class="ml-3 w-20">
-                            <div class="text-right">
-                                <button @click.stop="show_account_menu = true" type="button"
-                                    class="text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-                                    aria-expanded="false">
-                                    <img class="w-8 h-8 rounded-full"
-                                        :src="my_account.picture" :alt="my_account.name">
-                                </button>
-                            </div>
-                            <div class="relative">
-                                <div @click.outside="show_account_menu = false"  :class="show_account_menu || 'hidden'" class="w-40 right-0 absolute z-50 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600">
-                                    <div class="px-1 py-3" role="none">
-                                        <a :href="'/profile/' + my_account.id"><p class="text-sm text-gray-900 dark:text-white" role="none">
-                                            <svg class="w-3 h-3 mr-2 inline-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
-                                                <path d="M5.433 13.917l1.262-3.155A4 4 0 017.58 9.42l6.92-6.918a2.121 2.121 0 013 3l-6.92 6.918c-.383.383-.84.685-1.343.886l-3.154 1.262a.5.5 0 01-.65-.65z" />
-                                                <path d="M3.5 5.75c0-.69.56-1.25 1.25-1.25H10A.75.75 0 0010 3H4.75A2.75 2.75 0 002 5.75v9.5A2.75 2.75 0 004.75 18h9.5A2.75 2.75 0 0017 15.25V10a.75.75 0 00-1.5 0v5.25c0 .69-.56 1.25-1.25 1.25h-9.5c-.69 0-1.25-.56-1.25-1.25v-9.5z" />
-                                            </svg>
-                                            <span x-text="my_account.name"></span>
-                                        </p></a>
-                                        
+                        <!-- user-panel placeholder -->
+                        <template x-if="my_account">
+                            <div class="ml-3 w-20">
+                                <div class="text-right">
+                                    <button @click.stop="show_account_menu = true" type="button"
+                                        class="text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                                        aria-expanded="false">
+                                        <img class="w-8 h-8 rounded-full"
+                                            :src="my_account.picture" :alt="my_account.name">
+                                    </button>
+                                </div>
+                                <div class="relative">
+                                    <div @click.outside="show_account_menu = false"  :class="show_account_menu || 'hidden'" class="w-40 right-0 absolute z-50 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600">
+                                        <div class="px-1 py-3" role="none">
+                                            <a :href="'/profile/' + my_account.id"><p class="text-sm text-gray-900 dark:text-white" role="none">
+                                                <svg class="w-3 h-3 mr-2 inline-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
+                                                    <path d="M5.433 13.917l1.262-3.155A4 4 0 017.58 9.42l6.92-6.918a2.121 2.121 0 013 3l-6.92 6.918c-.383.383-.84.685-1.343.886l-3.154 1.262a.5.5 0 01-.65-.65z" />
+                                                    <path d="M3.5 5.75c0-.69.56-1.25 1.25-1.25H10A.75.75 0 0010 3H4.75A2.75 2.75 0 002 5.75v9.5A2.75 2.75 0 004.75 18h9.5A2.75 2.75 0 0017 15.25V10a.75.75 0 00-1.5 0v5.25c0 .69-.56 1.25-1.25 1.25h-9.5c-.69 0-1.25-.56-1.25-1.25v-9.5z" />
+                                                </svg>
+                                                <span x-text="my_account.name"></span>
+                                            </p></a>
+                                            
+                                        </div>
+                                        <ul class="py-1" role="none">
+                                            <li>
+                                                <button @click="logout"
+                                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                                                    role="menuitem">Sign out</button>
+                                            </li>
+                                        </ul>
                                     </div>
-                                    <ul class="py-1" role="none">
-                                        <li>
-                                            <button @click="logout"
-                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                                                role="menuitem">Sign out</button>
-                                        </li>
-                                    </ul>
                                 </div>
                             </div>
-                        </div>
-                    </template>
+                        </template>
 
-                    <template x-if="!my_account">
-                        <div class="flex items-center ml-3">
-                            <div>
-                                <button onclick='window.location.replace("/login?redirect=" + encodeURIComponent(window.location.href))' type="button"
-                                    class="flex text-sm rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-                                    aria-expanded="false">
-                                    <span class="sr-only">Open user menu</span>
-                                    <svg class="w-6 h-6 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z"/>
-                                    </svg>
-                                </button>
+                        <template x-if="!my_account">
+                            <div class="flex items-center ml-3">
+                                <div>
+                                    <button onclick='window.location.replace("/login?redirect=" + encodeURIComponent(window.location.href))' type="button"
+                                        class="flex text-sm rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                                        aria-expanded="false">
+                                        <span class="sr-only">Open user menu</span>
+                                        <svg class="w-6 h-6 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z"/>
+                                        </svg>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                    </template>
-                
+                        </template>
+                    
 
+                    </div>
                 </div>
             </div>
-        </div>
-        
-    </nav>
+            
+        </nav>
 
-        
+            
         <!-- Place this tag in your head or just before your close body tag. -->
 
 
