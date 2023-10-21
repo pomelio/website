@@ -9,7 +9,7 @@
     "blog": {
         "name": "Pagwe",
         "description": "News",
-        "image": "/blog/public/img/avatar.png",
+        "image": "/blog/public/images/avatar.png",
         "blogs":[
             "debug.md",
             "entry_point.md",
