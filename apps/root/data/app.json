@@ -1,0 +1,10 @@
+{
+    
+    "navi": {
+        "Docs": "/cookbook/what_platform_is.md",
+        "Blog": "/blog/",
+        "Users": "/users",
+        "Messages": "/messages"
+    }
+
+}

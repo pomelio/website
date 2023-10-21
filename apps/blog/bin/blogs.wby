@@ -21,6 +21,11 @@ if project_json {
     project = parse_json(project_json);
 }
 
+let app = {};
+let app_json = github.get_app_content('/app.json');
+if app_json {
+  app= parse_json(app_json);
+}
 
 let users_path = '/users.json';
 let users = [];
@@ -58,8 +63,8 @@ likes_html = array.join(likes_html, '');
 
 let links = [];
 
-if project['navi'] {
-  let navi = project['navi'];
+if app['navi'] {
+  let navi = app['navi'];
   let keys = keys(navi);
   array.for_each(keys, |k| => {
     let title = k;
@@ -75,13 +80,16 @@ if project['navi'] {
 let side_bar_html = mch.render_template('/template/sidebar.mustache');
 
 let blog = {};
-if project['blog'] {
-  blog = project['blog'];
+if app['blog'] {
+  blog = app['blog'];
 }
 
 
 
-let blogs = blog['blogs'];
+let blogs = [];
+if blog['blogs'] {
+  blogs = blog['blogs'];
+}
 
 let {page} = web.query();
 

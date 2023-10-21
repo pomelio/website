@@ -22,11 +22,16 @@ if project_json {
     project = parse_json(project_json);
 }
 
+let app = {};
+let app_json = github.get_app_content('/app.json');
+if app_json {
+  app= parse_json(app_json);
+}
 
 let links = [];
 
-if project['navi'] {
-  let navi = project['navi'];
+if app['navi'] {
+  let navi = app['navi'];
   let keys = keys(navi);
   array.for_each(keys, |k| => {
     let title = k;

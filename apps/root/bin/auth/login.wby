@@ -6,6 +6,7 @@ import std.array as array;
 let project_json = github.get_global_content('/project.json');
 let project = parse_json(project_json);
 
+
 let footer_links = [];
 
 if project['footer']['links'] {

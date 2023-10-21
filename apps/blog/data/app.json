@@ -1,0 +1,21 @@
+{
+    
+    "navi": {
+        "Docs": "/cookbook/what_platform_is.md",
+        "Blog": "/blog/",
+        "Users": "/users",
+        "Messages": "/messages"
+    },
+    "blog": {
+        "name": "Pagwe",
+        "description": "News",
+        "image": "/blog/public/img/avatar.png",
+        "blogs":[
+            "debug.md",
+            "entry_point.md",
+            "modules.md",
+            "statements.md"
+        ]
+    }
+
+}

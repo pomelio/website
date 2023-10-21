@@ -16,12 +16,13 @@ if fidx == -1 {
 }
 let doc_name = str.substring(web_path, fidx + 1);
 
+let app = {};
+let app_json = github.get_app_content('/app.json');
+if app_json {
+  app= parse_json(app_json);
+}
 
-let side_bar_data = github.get_app_content('/side_bar.json');
-
-let side_bar_json = parse_json(side_bar_data);
-
-let sections = side_bar_json['sections'];
+let sections = app['navi'];
 
 let section_html_list = [];
 let tmplSection = mch.init('/template/sidebar_section.mustache');
