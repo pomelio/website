@@ -9,5 +9,7 @@ subject: What the platform is
 - The `Pagwe admin website` can create projects, import users' GitHub repositories, and run and debug projects.
 - `Pagwe projects` contain Wallaby executable code files, template files, and other files. Users can bind their `domain name` to handle all `HTTP requests` to this domain.
 - The `Wallaby debugger` can intercept `HTTP requests` to `Wallaby executable files`, set `breakpoints`, step through code, inspect current `variables value``, and more for debugging programs.
+- `Pagwe projects` handle HTTP requests by the `Pages`. 
+- A `Page`` is a program written in the `Wallaby programming language` within the context of a `Pagwe project`. These `Pages` are used to handle `HTTP requests` and perform various tasks within the `Pagwe OS` ecosystem.
 
 ![platform structure](/public/images/wby_platform.png)
