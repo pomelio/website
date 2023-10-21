@@ -196,4 +196,4 @@ if str.ends_with(web_path, '.md') {
 }
 ```
 
-- line 14 - 15: when the `web_path` variable value starts with the `/public`, it downloads the specified resources. such as `/public/images/entry_point.png`
+- line 14 - 15: when the `web_path` variable value starts with the `/public`, it downloads the specified resources. such as `/cookbook/public/images/entry_point.png`

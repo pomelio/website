@@ -4,7 +4,7 @@ id: router_page
 # router page
 > Every http `request` will be sent to the `router Page`, and then `dispatch` to other `Pages` by the `router page`.
 
-![platform structure](/public/images/wby_platform.png)
+![platform structure](/cookbook/public/images/wby_platform.png)
 
 
 > the path of router page is `/bin/index.wby`

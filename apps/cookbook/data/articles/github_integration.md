@@ -15,9 +15,9 @@ id: github_integration
 - Grant Permissions, Contents read-only permission
 - Generate `acess token` and save it
 
-![webhook](/public/images/access_token_repository.png)
+![webhook](/cookbook/public/images/access_token_repository.png)
 
-![webhook](/public/images/access_token_content_readonly.png)
+![webhook](/cookbook/public/images/access_token_content_readonly.png)
 
 ## Webhook notifications
 
@@ -27,4 +27,4 @@ id: github_integration
 - Set the `content Type` of the webhook to `application/json`
 - Save the `Secret`. This secret is used for webhook signature verification
 
-![webhook](/public/images/webhook.png)
+![webhook](/cookbook/public/images/webhook.png)

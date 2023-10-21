@@ -12,4 +12,4 @@ subject: What the platform is
 - `Pagwe projects` handle HTTP requests by the `Pages`. 
 - A `Page` is a program written in the `Wallaby programming language` within the context of a `Pagwe project`. These `Pages` are used to handle `HTTP requests` and perform various tasks within the `Pagwe OS` ecosystem.
 
-![platform structure](/public/images/wby_platform.png)
+![platform structure](/cookbook/public/images/wby_platform.png)
