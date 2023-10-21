@@ -10,10 +10,19 @@ id: project_sturcture
 ```
 
 ---/project root
-     ---/bin
-        ---/modules
-     ---/docs
-     ---/public
+    ---/data
+    ---/apps
+        ---/root
+            ---/bin
+                ---/modules
+            ---/data
+        ---/cookbook
+        --- blog
+
+
+
+     
+   
 ```
 
 
