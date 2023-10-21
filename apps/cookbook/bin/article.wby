@@ -41,7 +41,7 @@ for (let i = 0; i < len(sections); i++) {
   array.push(section_html_list, section_html);
 }
 
-let title = side_bar_json['title'];
+
 let side_bar_content_html = array.join(section_html_list, '');
 
 let side_bar_html = mch.render_template('/template/sidebar.mustache');
