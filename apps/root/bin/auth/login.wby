@@ -3,8 +3,17 @@ import ext.mustache as mch;
 import ext.github as github;
 import std.array as array;
 
+let project = {};
 let project_json = github.get_global_content('/project.json');
-let project = parse_json(project_json);
+if project_json {
+    project = parse_json(project_json);
+}
+
+let app = {};
+let app_json = github.get_app_content('/app.json');
+if app_json {
+  app = parse_json(app_json);
+}
 
 
 let footer_links = [];
