@@ -22,7 +22,7 @@ if project_json {
 let app = {};
 let app_json = github.get_app_content('/app.json');
 if app_json {
-  app= parse_json(app_json);
+  app = parse_json(app_json);
 }
 
 let links = [];
