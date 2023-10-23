@@ -3,6 +3,16 @@
     "navi":[
         {
             "title": "➤ Cook book",
+            "features": [
+                {
+                    "title": "Cloud OS",
+                    "md": "cloud_os.md"
+                },
+                {
+                    "title": "Wallby Programming language",
+                    "md": "wallaby_lang.md"
+                }
+            ],
             "topics":[
               {
                 "title": "What the platfrom is",
