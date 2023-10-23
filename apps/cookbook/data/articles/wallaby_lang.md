@@ -1,6 +1,6 @@
 ---
 subject: Wallaby programming language
-=--
+---
 
 # Wallaby programming language
 
