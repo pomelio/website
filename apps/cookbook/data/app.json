@@ -1,9 +1,12 @@
 {
-    
-    "navi":[
+    "navi": [
         {
-            "title": "➤ Features",
+            "title": "➤ Featuers",
             "topics": [
+                {
+                    "title": "What the platfrom is",
+                    "md": "what_platform_is.md"
+                },
                 {
                     "title": "Cloud OS",
                     "md": "cloud_os.md"
@@ -11,147 +14,136 @@
                 {
                     "title": "Wallby Programming language",
                     "md": "wallaby_lang.md"
+                },
+                {
+                    "title": "project files structure",
+                    "md": "project_structure.md"
+                },
+                {
+                    "title": "entry point",
+                    "md": "entry_point.md"
+                },
+                {
+                    "title": "github integration",
+                    "md": "github_integration.md"
+                },
+                {
+                    "title": "debug project",
+                    "md": "debug.md"
+                },
+                {
+                    "title": "hello world",
+                    "md": "hello_world.md"
                 }
             ]
         },
         {
-            "title": "➤ old featuers",
-            "topics":[
-              {
-                "title": "What the platfrom is",
-                "md": "what_platform_is.md"
-              },
-              {
-                "title": "project files structure",
-                "md": "project_structure.md"
-              },
-              {
-                "title": "entry point",
-                "md": "entry_point.md"
-              },
-              {
-                "title": "github integration",
-                "md": "github_integration.md"
-              },
-              {
-                "title": "debug project",
-                "md": "debug.md"
-              },
-              {
-                "title": "hello world",
-                "md": "hello_world.md"
-              }
-            ]
-        },
-        {
-            "title": "➤ open source Cookbook",
-            "topics":[
-              {
-                "title": "introduction",
-                "md": "cookbook.md"
-              },
-              {
-                "title": "project structure",
-                "md": "cookbook_structure.md"
-              },
-              {
-                "title": "page router",
-                "md": "cookbook_router.md"
-              },
-              {
-                "title": "markdown page",
-                "md": "cookbook_markdown.md"
-              },
-              {
-                "title": "response static files",
-                "md": "cookbook_static_file.md"
-              }
-            ]
-        },
-        {
             "title": "➤ language grammer",
-            "topics":[
-              {
-                "title": "variables",
-                "md": "variables.md"
-              },
-              {
-                "title": "expression",
-                "md": "expression.md"
-              },
-              {
-                "title": "statements",
-                "md": "statements.md"
-              },
-              {
-                "title": "modules",
-                "md": "modules.md"
-              }
+            "topics": [
+                {
+                    "title": "variables",
+                    "md": "variables.md"
+                },
+                {
+                    "title": "expression",
+                    "md": "expression.md"
+                },
+                {
+                    "title": "statements",
+                    "md": "statements.md"
+                },
+                {
+                    "title": "modules",
+                    "md": "modules.md"
+                }
             ]
         },
         {
             "title": "➤ std modules",
-            "topics":[
-              {
-                "title": "global",
-                "md": "std_global.md"
-              },
-              {
-                "title": "array",
-                "md": "std_array.md"
-              },
-              {
-                "title": "string",
-                "md": "std_string.md"
-              },
-              {
-                "title": "date",
-                "md": "std_date.md"
-              },
-              {
-                "title": "number",
-                "md": "std_number.md"
-              },
-              {
-                "title": "math",
-                "md": "std_math.md"
-              }
+            "topics": [
+                {
+                    "title": "global",
+                    "md": "std_global.md"
+                },
+                {
+                    "title": "array",
+                    "md": "std_array.md"
+                },
+                {
+                    "title": "string",
+                    "md": "std_string.md"
+                },
+                {
+                    "title": "date",
+                    "md": "std_date.md"
+                },
+                {
+                    "title": "number",
+                    "md": "std_number.md"
+                },
+                {
+                    "title": "math",
+                    "md": "std_math.md"
+                }
             ]
         },
         {
             "title": "➤ extensions",
-            "topics":[
-              {
-                "title": "PathRegexp",
-                "md": "ext_path_regexp.md"
-              },
-              {
-                "title": "mysql",
-                "md": "ext_mysql.md"
-              },
-              {
-                "title": "mustache",
-                "md": "ext_mustache.md"
-              },
-              {
-                "title": "MarkDownIt",
-                "md": "ext_mark_down_it.md"
-              },
-              {
-                "title": "Docs",
-                "md": "ext_docs.md"
-              },
-              {
-                "title": "squel",
-                "md": "ext_squel.md"
-              },
-              {
-                "title": "web",
-                "md": "ext_web.md"
-              }
+            "topics": [
+                {
+                    "title": "PathRegexp",
+                    "md": "ext_path_regexp.md"
+                },
+                {
+                    "title": "mysql",
+                    "md": "ext_mysql.md"
+                },
+                {
+                    "title": "mustache",
+                    "md": "ext_mustache.md"
+                },
+                {
+                    "title": "MarkDownIt",
+                    "md": "ext_mark_down_it.md"
+                },
+                {
+                    "title": "Docs",
+                    "md": "ext_docs.md"
+                },
+                {
+                    "title": "squel",
+                    "md": "ext_squel.md"
+                },
+                {
+                    "title": "web",
+                    "md": "ext_web.md"
+                }
+            ]
+        },
+        {
+            "title": "➤ open source Cookbook",
+            "topics": [
+                {
+                    "title": "introduction",
+                    "md": "cookbook.md"
+                },
+                {
+                    "title": "project structure",
+                    "md": "cookbook_structure.md"
+                },
+                {
+                    "title": "page router",
+                    "md": "cookbook_router.md"
+                },
+                {
+                    "title": "markdown page",
+                    "md": "cookbook_markdown.md"
+                },
+                {
+                    "title": "response static files",
+                    "md": "cookbook_static_file.md"
+                }
             ]
         }
-          
     ]
-      
 }
