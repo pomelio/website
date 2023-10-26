@@ -3,72 +3,70 @@ subject: Project structure
 ---
 # Project structure
 
-The project's source code is saved on the user's GitHub repository, and the project structure is as follows. (If you'd like a more detailed explanation of the structure, please provide it):
+The project's source code is saved under the user's GitHub repository, and the project structure is as bellows. 
 
 - apps
-  - 应用安装目录
-  - 所有 app 都应该安装在这个目录下. 用户可以开发或者从第三方获得不同的 app
+  - Application installation directory
+  - All apps should be installed in this directory. Users can develop or obtain different apps from third parties.
 - data
-  - 全局数据目录
-  - 所有 app 可以将共享的数据保存在这个目录下. 例如 项目信息, 用户信息, 评论信息, 粉丝信息, like 信息等. 所有 app 都可以访问这个目录下的这些信息.
+  - Global data directory
+  - All apps can store shared data in this directory, such as project information, user information, comments, fan information, like information, and other shared information. All apps can access this data directory.
 - data/project.json
-  - 这是整个项目的设置文件. 它设置了网站的名称, 地址, 支持的登录模块(google, github), logo文件url, 社交账号联系地址等全局信息.
+  - This is the project's configuration file. It sets global information like the website's name, address, supported login modules (Google, GitHub), logo file URL, social media contact information, and other global settings.
 - data/template
-  - 项目共享的模版文件根目录. 例如 header, foot, comment 整个网站统一的模版文件保存在这个目录下.
+  - Root directory for project-shared template files. For example, header, footer, and comment templates that are uniform across the entire website are stored in this directory.
 
 
 - apps/root
-  - root app 目录
-  - 所有 HTTP 请求都会发送到默认 app 来处理.
+  - `root` app directory. This is the default app of the website.
+  - All HTTP requests are sent to the default app for processing.
 - apps/root/bin
-  - root app 的可执行 pages 程序根目录.
-  - 这个目录下的所有wby 文件都被称作 page.
-  - 所有 HTTP 请求 都会发送到 index.wby 这个 page 程序. index.wby 被称作为 router page. 默认 app 的 router page还负责根据 url 的格式将不同的 HTTP 请求发送给其它的 apps 和 pages.
-  - root app 负责用户注册和登录, 用户 profile 编辑, 用户列表, 消息列表等features.
-
+  - `root` app's executable pages program directory.
+  - All files in this directory with the ".wby" extension are referred to as "pages." All HTTP requests are sent to the "index.wby" page program, known as the `router page`. The default app's router page is responsible for routing different HTTP requests to other apps and pages based on the URL format. The root app is responsible for features like user registration and login, user profile editing, user lists, message lists, etc.
+  
 - apps/root/bin/modules
-  - root app 的模块安装根目录
-  - page 程序可以通过 import 语句访问这些模块. 模块包含可复用的函数和变量. page 可以通过 import 语句来访问模块和模块的函数和变量.
+  - `root` app's module installation directory
+  - Page programs can access these modules via the import statement. Modules contain reusable functions and variables. Pages can access these modules and their functions and variables through the `import` statements.
 - apps/root/data
-  - root app 的私有数据文件根目录
-  - 可以把模版文件, json文件等数据文件保存在这个目录下.
+  - `root` app's private data file directory.
+  - Template files, JSON files, and other data files can be stored in this directory.
 - apps/root/data/public
-  - root app 的 http 可下载文件目录. 例如 css, images 文件.
+  - root app's HTTP-downloadable file directory, e.g., CSS and image files.
 - apps/root/data/template
-  - root app 的 mustache 模版文件目录.
+  - root app's Mustache template file directory.
 
 
+## Blog App
 
 - apps/blog
-  - blog 是一款杀手级自媒体应用.
+  - Blog is a powerful social media application.
 - apps/blog/bin
-  - blog 的 可执行 pages 根目录
-  - 所有 blog app 的 http 请求都会被转发到 index.wby router page. router page 再根据 url 转发到其它 pages.
+  - Blog's executable pages program directory.
+  - All HTTP requests for the blog app are forwarded to the "index.wby" router page, which further forwards requests to other pages based on the URL.
 - apps/blog/data
-  - blog 私有数据目录
+  - Blog's private data directory
 - apps/blog/data/public
-  - blog 的 http 可下载文件目录. 例如 css, images 文件.
+  - Blog's HTTP-downloadable file directory, e.g., CSS and image files.
 - apps/blog/data/template
-  - blog 的 mustache 模版文件目录.
+  - Blog's Mustache template file directory.
 - apps/blog/data/blogs
-  - blog 的 markdown 文件根目录
+  - Blog's Markdown file directory.
   
 
-  
+## Cookbook App
 
 - apps/cookbook
-  - cookbook 是一款杀手级文档应用.
+  - Cookbook is a powerful document application.
 - apps/cookbook/bin
-  - cookbook 的 可执行 pages 根目录
-  - 所有 cookbook app 的 http 请求都会被转发到 index.wby router page. router page 再根据 url 转发到其它 pages.
+  - Cookbook's executable pages program directory.
 - apps/cookbook/data
-  - cookbook 私有数据目录
+  - Cookbook's private data directory.
 - apps/blog/data/public
-  - cookbook 的 http 可下载文件目录. 例如 css, images 文件.
+  - Cookbook's HTTP-downloadable file directory, e.g., CSS and image files.
 - apps/blog/data/template
-  - cookbook 的 mustache 模版文件目录.
+  - Cookbook's Mustache template file directory.
 - apps/blog/data/articles
-  - cookbook 的 markdown 文件根目录
+  - Cookbook's Markdown file directory.
 
 
 @[youtube](https://www.youtube.com/watch?v=lKNB3ZeTYiI)
@@ -101,12 +99,3 @@ The project's source code is saved on the user's GitHub repository, and the proj
                 --- blogs
    
 ```
-
-
-- The `bin` directory is the root directory for all program source codes. The files saved under this folder are call `pages`. All http requests will be sent to the `bin/index.wby` page by default. Developer can create other `pages`.
-- The `docs` is the root directory of project private documents. The documents can be mustache template files, json files. These files can not be publicly accessed.
-- The `public` is the root folder of project public files. These files can be accessed publicly such as js, css and image files.
-- The `bin/modules` directory is for user defined modules. The `pages` can `import` these modules by the `import statement`.
-
-
-![project file system structure](/cookbook/public/images/project_file_structure.png)
