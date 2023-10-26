@@ -1,16 +1,11 @@
 ---
-id: project_debug
+subject: Project debugging
 ---
 # Project debugging
-> Once the github repository is imported into the developing server. The project can be started to debug.
 
-- The debugger is a web program
-- After the debugger is started, all subsequent http requests will be intercepted by the debugger. Therefore, after debugging, please close the debugger, otherwise subsequent http requests will always be intercepted by the debugger.
-- The debugger can set breakpoints, step through debugging, inspect variable values, etc.
+The Admin Web Portal includes a powerful debugger that helps you quickly identify bugs and accelerate your development process. You can set breakpoints, inspect variable values, step through code, or run to the next breakpoint. When an error occurs, the debugger provides detailed information to assist you in identifying the issue. During program execution, the debugger also prints useful information to help you understand the program's runtime behavior. This debugger is a valuable tool for troubleshooting and optimizing your code while developing on the platform.
 
   ![debug button](/cookbook/public/images/github_debug_button.png)
-
-  ![debug start](/cookbook/public/images/debug_start.png)
 
   ![debug details](/cookbook/public/images/debugger_details.png)
  
