@@ -1,8 +1,8 @@
 ---
-subject: Wallaby programming language
+subject: Wallaby Programming Language
 ---
 
-# Wallaby programming language
+# Wallaby Programming Language
 
 - The Wallaby programming language is a functional language. When designing Wallaby, the language aimed to achieve the following goals:
 

@@ -1,8 +1,8 @@
 ---
-subject: pagwe cloud OS
+subject: Pagwe Cloud OS
 ---
 
-# Pagwe cloud OS
+# Pagwe Cloud OS
 
 Pagwe was designed from the outset as a `Serverless` network operating system. This means that it decouples programs from their runtime environments. The runtime environment for a piece of code is dynamic, which means it might run on one server this time and on another server the next time.
 
