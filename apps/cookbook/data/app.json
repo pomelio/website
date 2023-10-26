@@ -30,10 +30,6 @@
                 {
                     "title": "debug project",
                     "md": "debug.md"
-                },
-                {
-                    "title": "hello world",
-                    "md": "hello_world.md"
                 }
             ]
         },
