@@ -12,7 +12,9 @@ subject: Wallaby Programming Language
 
 - Extensibility. The Wallaby runtime is easily extensible. Users are encouraged to suggest new features, and the development team will consider and add appropriate extensions to meet these requirements.
 
-For example, this is a page program to show the markdown document in a webpage.
+For example, this is a page program to render a markdown document into a webpage.
+
+📄 [https://github.com/pomelio/website/blob/main/apps/cookbook/bin/article.wby](https://github.com/pomelio/website/blob/main/apps/cookbook/bin/article.wby) 
 
 ```
 import ext.web as web;
