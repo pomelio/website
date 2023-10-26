@@ -3,6 +3,48 @@ subject: Project structure
 ---
 # Project structure
 
+The design goals for the project directory structure include:
+- Modularity: The structure is organized to allow for the modular development of different components and applications within the project. This modularity makes it easier to manage and scale the project.
+- Data Separation: The separation of data directories, such as the "data" directory, allows for the storage of shared project data and configuration settings in a centralized location. This promotes data sharing and consistency among different apps.
+- Global Settings: The "data/project.json" file centralizes global project settings, making it easy to configure and manage project-wide parameters like the website's name, supported login modules, and contact information.
+- Reusability: The "data/template" directory contains shared template files, promoting the reuse of common design elements and ensuring a consistent look and feel across the entire project.
+- App Isolation: Each app has its own directory structure, including executable pages, data, public files, and templates. This isolation helps manage and organize the code, data, and resources specific to each application.
+- Routing: The use of a "router page" ("index.wby") in the root app allows for the routing of HTTP requests to the appropriate pages within the app or to other apps. This promotes a clear and organized request handling mechanism.
+- Extensibility: The structure supports the easy addition of new apps and modules, making it extensible and adaptable to evolving project requirements.
+- Consistency: The use of consistent naming conventions and organization within each app directory ensures that developers can easily understand and work with different components.
+
+Overall, the project directory structure is designed to provide a well-organized, modular, and flexible framework for developing and maintaining a complex web project.
+
+
+## Project directory structure
+```
+
+---/project root
+    ---/data
+    ---/apps
+        ---/root
+            ---/bin
+                ---/modules
+            ---/data
+                --- template
+                --- public
+        ---/cookbook
+            ---/bin
+                ---/modules
+            ---/data
+                --- template
+                --- public
+                --- articles
+        --- blog
+            ---/bin
+                ---/modules
+            ---/data
+                --- template
+                --- public
+                --- blogs
+   
+```
+
 The project's source code is saved under the user's GitHub repository, and the project structure is as bellows. 
 
 - apps
@@ -71,31 +113,4 @@ The project's source code is saved under the user's GitHub repository, and the p
 
 @[youtube](https://www.youtube.com/watch?v=lKNB3ZeTYiI)
 
-## Project directory structure
-```
 
----/project root
-    ---/data
-    ---/apps
-        ---/root
-            ---/bin
-                ---/modules
-            ---/data
-                --- template
-                --- public
-        ---/cookbook
-            ---/bin
-                ---/modules
-            ---/data
-                --- template
-                --- public
-                --- articles
-        --- blog
-            ---/bin
-                ---/modules
-            ---/data
-                --- template
-                --- public
-                --- blogs
-   
-```
