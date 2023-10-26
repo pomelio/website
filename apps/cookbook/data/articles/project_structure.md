@@ -47,6 +47,8 @@ Overall, the project directory structure is designed to provide a well-organized
 
 The project's source code is saved under the user's GitHub repository, and the project structure is as bellows. 
 
+📄 [https://github.com/pomelio/website/blob/main](https://github.com/pomelio/website/blob/main) 
+
 - apps
   - Application installation directory
   - All apps should be installed in this directory. Users can develop or obtain different apps from third parties.
@@ -58,6 +60,7 @@ The project's source code is saved under the user's GitHub repository, and the p
 - data/template
   - Root directory for project-shared template files. For example, header, footer, and comment templates that are uniform across the entire website are stored in this directory.
 
+📄 [https://github.com/pomelio/website/blob/main/apps/root](https://github.com/pomelio/website/blob/main/apps/root) 
 
 - apps/root
   - `root` app directory. This is the default app of the website.
@@ -79,6 +82,7 @@ The project's source code is saved under the user's GitHub repository, and the p
 
 
 ## Blog App
+📄[https://github.com/pomelio/website/blob/main/apps/blog](https://github.com/pomelio/website/blob/main/apps/blog) 
 
 - apps/blog
   - Blog is a powerful social media application.
@@ -96,7 +100,7 @@ The project's source code is saved under the user's GitHub repository, and the p
   
 
 ## Cookbook App
-
+[https://github.com/pomelio/website/blob/main/apps/cookbook](https://github.com/pomelio/website/blob/main/apps/cookbook) 
 - apps/cookbook
   - Cookbook is a powerful document application.
 - apps/cookbook/bin
