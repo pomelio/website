@@ -6,7 +6,7 @@ id: github_integration
 
 To integrate with a GitHub repository and achieve the goals of accessing the repository's files and staying synchronized with changes, you need to follow these steps:
 
-1. Repository Access Permissions:
+## Repository Access Permissions:
 
 To access and modify the contents of a GitHub repository, your project will require the necessary access permissions. You typically need to create a Personal Access Token or use a GitHub App with the required permissions. Here are the steps:
 
@@ -21,11 +21,11 @@ To access and modify the contents of a GitHub repository, your project will requ
 
 ![webhook](/cookbook/public/images/access_token_content_readonly.png)
 
-2. Webhook Integration:
+## Webhook Integration:
 
 To stay synchronized with changes in your GitHub repository, you can set up a webhook. A webhook sends HTTP POST requests to your project's server whenever there are changes in the repository. Here's how to set up a webhook:
 
-a. Create a Webhook:
+### Create a Webhook:
 - In your GitHub repository, go to "Settings."
 - Select "Webhooks" or "Hooks" and click "Add webhook."
 - Set the payload URL to the endpoint in your project where you want to receive webhook notifications.
