@@ -1,13 +1,19 @@
 ---
-id: variables
+subject: variables and types
 ---
-# variables
-> `variables` must be declared firstly, then the variable can be referenced. 
+# variables and types
+
+## variable declaration
+
+ `variables` must be declared firstly, then the variable can be referenced. 
 
 - The variable can be declared by an `assignment` statement with the `let` keyword.
 - The variable with same name can be declared multi times, Later declarations override earlier declarations.
+- You can not reference a varaible which is not declared in advance.
 
-## string
+## variable types.
+
+### string
 ```
 let a = 'Australia';
 let b = "i love you!";

@@ -37,7 +37,7 @@
             "title": "➤ language grammer",
             "topics": [
                 {
-                    "title": "variables",
+                    "title": "variables and types",
                     "md": "variables.md"
                 },
                 {
