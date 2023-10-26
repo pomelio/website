@@ -8,7 +8,7 @@ The Wallaby language is a network-oriented language designed for Serverless comp
 
 By focusing on network resources and optimizing I/O, Wallaby aims to accelerate and simplify the developer's workload from both a performance and syntax perspective. This design choice helps developers work with Serverless architectures more efficiently and effectively.
 
-- The Wallaby programming language is a functional language. When designing Wallaby, the language aimed to achieve the following goals:
+The Wallaby programming language is a functional language. When designing Wallaby, the language aimed to achieve the following goals:
 
 - Concise syntax with strong expressive power. Wallaby strives to express clear, precise, and powerful purposes with minimal lines of code. For example, it incorporates features like object spread (similar to ES6's object spread), coroutines, block scope, defer statements, tuple objects, and destructuring assignment.
 
