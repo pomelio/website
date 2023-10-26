@@ -13,8 +13,6 @@ let method = web.method();
 
 let app = array.find(apps, |a| => str.starts_with(web_path, '/' + a));
 
-let match_result = web.match('/comment/:id');
-
 if app {
   dispatch(app, '/index', {});
 } elsif web_path == '/login' {
