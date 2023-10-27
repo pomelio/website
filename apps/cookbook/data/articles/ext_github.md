@@ -8,17 +8,37 @@ subject: ext github
 
 > import ext.github as github;
 
-## attachment(filename)
-> download response attachment
+## authorize_url(scopes, options)
+> generate a url which trigger the github authorization steps.
 
 - params:
-  - filename: the file name of the attachment
+  - scopes: the authorization scope names.
+  - options:
+
 
 - return value:
-  > no return value
+  > the url to trigger the steps.
+
+```
+import ext.github as github;
+import ext.web as web;
+
+let scope = 'read:user';
+
+let url = github.authorize_url(scope, {});
+
+web.body({url});
+```
 
 
-## redirect(url, alt)
+## get_auth_result(code, options)
+## get_access_token(result)
+## get_user_info(access_token)
+## get_app_content(path)
+## get_global_content(path)
+## save_app_text(path)
+## save_global_text(path)
+
 > redirect request to the specified url
 
 - params:
