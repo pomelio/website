@@ -127,3 +127,15 @@ let a = undefined;
 ## UserData
 
 > Can only be created by built-in functions
+
+## built-in variables
+
+`__APP__`
+  - type: string
+  - value: the string value to represent current app name.
+
+`__PROJECT_ID__` 
+  - type: string
+  - value: the string value of the current project id.
+
+

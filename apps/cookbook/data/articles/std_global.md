@@ -131,8 +131,9 @@ assert(fcon);
 
 
 
-## dispatch(path, variables)
+## dispatch(app, path, variables)
 > dispatch the http requests to the specified page.
+- app: the app name
 - path: the page path
 - variables: the variables to be injected into the new page.
 - return value:
@@ -148,7 +149,7 @@ import std.string as str;
 let web_path = web.path();
 
 if web_path == '/' || str.ends_with(web_path, '.md') {
-  dispatch('/markdown', {});
+  dispatch(__APP__, '/markdown', {});
 } elsif str.starts_with(web_path, '/public') {
   web.send_file(web_path);
 } else {
