@@ -161,7 +161,7 @@ assert(b == 9);
 > Assignment is for assign a value to a variable.
 
 The value can come from:
-- from a literal value such as `'abc'`, `123`, `tre`, `[1, 2, 3]`
+- from a literal value such as `'abc'`, `123`, `true`, `[1, 2, 3]`
 - from an existing variable
 - from an expression
 
