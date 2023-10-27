@@ -73,19 +73,6 @@ try {
 }
 ```
 
-## error(message)
-> log error messages
-- message: string
-
-## info(message)
-> log error messages
-- message: string
-
-## warn(message)
-> log error messages
-- message: string
-
-
 ## len(value)
 > return length of `string` or `array` value
 - value: string | Array
@@ -186,4 +173,12 @@ let method = 'get';
 let data = fetch(method, url, {}, {}, 'json');
 
 assert(data['title'] == '🦘chatsarah.com');
+```
+
+## uuid()
+> return a uuid string
+
+```
+let id = uuid();
+
 ```

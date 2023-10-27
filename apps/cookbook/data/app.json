@@ -87,8 +87,8 @@
             "title": "➤ extensions",
             "topics": [
                 {
-                    "title": "PathRegexp",
-                    "md": "ext_path_regexp.md"
+                    "title": "web",
+                    "md": "ext_web.md"
                 },
                 {
                     "title": "mysql",
@@ -103,17 +103,17 @@
                     "md": "ext_mark_down_it.md"
                 },
                 {
-                    "title": "Docs",
-                    "md": "ext_docs.md"
-                },
-                {
                     "title": "squel",
                     "md": "ext_squel.md"
                 },
                 {
-                    "title": "web",
-                    "md": "ext_web.md"
-                }
+                    "title": "Google",
+                    "md": "ext_google.md"
+                },{
+                    "title": "Github",
+                    "md": "ext_github.md"
+                },
+                
             ]
         },
         {
