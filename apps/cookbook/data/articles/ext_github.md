@@ -19,200 +19,173 @@ subject: ext github
 - return value:
   > the url to trigger the steps.
 
-```
-import ext.github as github;
-import ext.web as web;
-
-let scope = 'read:user';
-
-let url = github.authorize_url(scope, {});
-
-web.body({url});
-```
 
 
 ## get_auth_result(code, options)
+> The function get_auth_result is used to process authentication results, which primarily include obtaining the access_token. This is typically used to complete the user authentication process, such as obtaining an access token through OAuth 2.0 or other authentication mechanisms to access protected resources. The access_token is commonly used to authorize user access to specific APIs or services.
+
+- params:
+  - code: the code return from github.
+  - options: empty map object by default.
+
+- return value:
+  > user_data: the auth result user data which includes `access_token`.
+
+
 ## get_access_token(result)
+> Get the `accsss_token` from the auth result.
+
+- params:
+  - result: The user data of the auth result.
+
+- return value:
+  > string: the string value of the `access_token`.
+
 ## get_user_info(access_token)
+> get the github `user info`
+
+- params:
+  - access_token: string value of the `access_token`
+
+- return
+  - map : the map object of the github user info.
+
 ## get_app_content(path)
+> Get the string content of a app file which is specified from the `path` (which is under the `${app}/data` folder)
+
+- params:
+  - path: the file path
+
+- return
+  - string: the content of the app file.
+
 ## get_global_content(path)
-## save_app_text(path)
-## save_global_text(path)
-
-> redirect request to the specified url
+> Get the string content of a global file which is specified from the `path` (which is under the website  `/data` folder)
 
 - params:
-  - url: the new url/
-    > the value can be `back` which is from `Referrer`
+  - path: the file path
+
+- return
+  - string: the content of the app file.
 
 
-
-## has(field)
-> check response header existing.
-
-- params:
-  - field: the header name
-
-- return value:
-  > boolean: header existing or not
-
-
-
-## set(field, val)
-> set the response header value
+## save_app_text(path, text)
+> Save the string value into a app file which is under the app's data folder.
 
 - params:
-  - field: the header name
-  - value: the header value
+  - path: the string value of the app file path
+  - text: the string value you want to save into the app file.
 
+- return:
+  void
 
-## append(field, val)
-> append the response header value
-
-- params:
-  - field: the header name
-  - value: the header value
-
-## flush_headers()
-> Flush any set headers and begin the body
-
-
-
-## get_status()
-> return status code of http response
-
-- return value:
-  > return the response http status code.
-
-## has_header_sent()
-> heck if a header has been written to the socket.
-
-- return value:
-  > boolean value of whether the response headers sent
-
-
-## set_status(code)
-> set the response status code
+## save_global_text(path, text)
+> Save the string value into a global file which is under the website's data folder.
 
 - params:
-  - code: the status code
+  - path: the string value of the website file path
+  - text: the string value you want to save into the website file.
 
-## set_content_type(val)
-> set the response content type header
+- return:
+  void
 
-- params:
-  - value: the value of contentType
+📄 [https://github.com/pomelio/website/blob/main/apps/root/bin/auth/callback.wby](https://github.com/pomelio/website/blob/main/apps/root/bin/auth/callback.wby) 
 
-## set_last_modified(val)
-> set the response last modified header type
-
-- params:
-  - value: the value of last modified header.
-
-## set_etag(val)
-> set response etag
-
-- params:
-  - value: the etag value
-
-## get_status_message()
-> get response status message
-
-## body(val)
-> set the response body
-
-- params:
-  - value: string text, map value and stream
-
-## set_length(n)
-> set the response body length
-
-### get(field)
-> get the request header value
-
-- params:
-  - field: request header name
-
-
-## is(types...)
-> Check if the incoming request contains the "Content-Type"
-
-- params:
-  - types: the contentType to be checked
-
-- return value:
-  - If there is no request body, `null` is returned.
-  - If there is no content type, `false` is returned.
-  - Otherwise, it returns the first `type` that matches.
-
-## querystring()
-> get the request query string
-
-
-## search()
-> get the url search
-
-## method()
-> get the request method
-
-## path()
-> get the request url path
-
-## origin()
-> Get origin of URL.
-
-## href()
-> Get full request URL.
-
-## protocol()
-> get the request protocol
-
-## host()
-> get the request host
-
-## hostname()
-> get the request hostname
-
-## secure()
-> is the request https
-
-## stale()
-> Check if the request is stale,
-
-## fresh()
-> Check if the request is fresh,
-
-## ip()
-> get the request ip
-
-## files()
-> get the request uploaed files
-
-
-
-## send_file(path)
-> response with the static resources.
-
-- params:
-  - path: the document path.
 ```
 import ext.web as web;
-import std.string as str;
+import ext.github as github;
+import ext.google as google;
+import std.array as array;
+import ext.jwt as jwt;
+import ext.mustache as mch;
+import std.date as date;
 
 
-let web_path = web.path();
+let {code} = web.query();
 
-if web_path == '/' {
-  web_path = '/docs/start.md';
-}
+let user_info = undefined;
 
-if str.ends_with(web_path, '.md') {
-  dispatch('/markdown', {});
-} elsif str.starts_with(web_path, '/docs') {
-  web.send_file(web_path);
+if from == 'google' {
+      let auth_result = google.get_auth_result(code, {});
+      let token = google.get_access_token(auth_result);
+      let google_client = google.new_client(token, {});
+      let uinfo = google.get_user_info(google_client);
+      user_info = {
+            provider: 'google',
+            name: uinfo['name'],
+            picture: uinfo['picture'],
+            id: uinfo['id']
+      };
+
+} elsif from == 'github' {
+      let auth_result = github.get_auth_result(code, {});
+      let access_token = github.get_access_token(auth_result);
+      let uinfo = github.get_user_info(access_token);
+      
+      user_info = {
+            provider: 'github',
+            name: uinfo['login'],
+            picture: uinfo['avatar_url'],
+            id: uinfo['id'] + ''
+      };
 } else {
-  web.set_status(404);
+      throw({
+            name: 'LOGIN_FROM_NOT_FOUND',
+            message: 'login from is not found.'
+      });
 }
-```
 
-- line 14 - 15: when the `web_path` variable value starts with the `/public`, it downloads the specified resources. such as `/cookbook/public/images/entry_point.png`
+
+let project = {};
+let project_json = github.get_global_content('/project.json');
+if project_json {
+      project = parse_json(project_json);
+}
+
+
+let footer_links = [];
+
+if project['footer']['links'] {
+    let f_links = project['footer']['links'];
+    let keys = keys(f_links);
+    array.for_each(keys, |k| => {
+        let title = k;
+        let url = f_links[k];
+       
+        array.push(footer_links, {
+            title, url
+        });
+  });
+}
+
+let header_html = mch.render_global_template('/template/header.mustache');
+let footer_html = mch.render_global_template('/template/footer.mustache');
+
+
+let users_path = '/users.json';
+let users = [];
+
+let users_json = github.get_global_content(users_path);
+if users_json {
+      users = parse_json(users_json);
+}
+
+let fuser_info = array.find(users, |u| => u['id'] == user_info['id']);
+if !fuser_info || fuser_info != user_info {
+      users = array.filter(users, |u| => u['id'] != user_info['id']);
+      array.unshift(users, user_info);
+      github.save_global_text(users_path, stringify_json(users));
+}
+
+let user_id = user_info['id'];
+let provider = user_info['provider'];
+let timestamp = date.value_of(date.from_number());
+let user_token = jwt.sign({id: user_id, provider, timestamp});
+user_info['token'] = user_token;
+
+let user_info_json = stringify_json(user_info);
+
+let html = mch.render_template('/template/auth/login_callback.mustache');
+
+web.body(html);
+```
