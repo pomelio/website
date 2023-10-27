@@ -56,7 +56,7 @@
                 <p class="text-sm text-gray-600 dark:text-gray-400">{{comment_time}}</p>
             </div>
 
-            <template x-if="my_account.id == comment_user_id && !loading">
+            <template x-if="my_account && my_account.id == comment_user_id && !loading">
                 <div class="w-40">
                     <div class="text-right">
                         <button @click.stop="show_menu = true"
