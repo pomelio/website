@@ -5,7 +5,7 @@ id: statments
 
 ## import
 > import `module_path` as `alias`;
-- `module_path`: It is `identifiers` separated by `.`
+- `module_path`: It is `identifiers` separated by `.`. The module_path starts with `std` or `ext` are built-in modules.
 - `alias`: is an `identifiers`
 
 examples:
