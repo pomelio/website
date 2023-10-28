@@ -5,8 +5,6 @@ let scopes = [
       'https://www.googleapis.com/auth/userinfo.profile'
 ];
 
-let {redirect} = web.query();
-
-let url = google.authorize_url(scopes, {}, {redirect});
+let url = google.authorize_url(scopes, {});
 
 web.body({url});
