@@ -28,15 +28,12 @@ subject: ext github
   - code: the code return from github.
   - options: empty map object by default.
 
-- return value:
-  > user_data: the auth result user data which includes `access_token`.
 
 
 ## get_access_token()
-> Get the `accsss_token` from the auth result.
+> Get the `accsss_token`
 
-- params:
-  - result: The user data of the auth result.
+
 
 - return value:
   > string: the string value of the `access_token`.
@@ -44,8 +41,6 @@ subject: ext github
 ## get_user_info()
 > get the github `user info`
 
-- params:
-  - access_token: string value of the `access_token`
 
 - return
   - map : the map object of the github user info.

@@ -19,13 +19,16 @@ subject: ext google
 - return value:
   > the url to trigger the steps.
 
+## handle_auth_result(code, options)
+> The function get_auth_result is used to process authentication results, which primarily include obtaining the access_token. This is typically used to complete the user authentication process, such as obtaining an access token through OAuth 2.0 or other authentication mechanisms to access protected resources. The access_token is commonly used to authorize user access to specific APIs or services.
 
+- params:
+  - code: the code return from github.
+  - options: empty map object by default.
 
 ## get_access_token()
 > Get the `accsss_token` from the auth result.
 
-- params:
-  - result: The user data of the auth result.
 
 - return value:
   > string: the string value of the `access_token`.
@@ -33,7 +36,6 @@ subject: ext google
 ## get_user_info()
 > get the github `user info`
 
-- params:
 
 - return
   - map : the map object of the github user info.
