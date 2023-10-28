@@ -6,8 +6,8 @@ id: ext_mysql
 > import ext.mysql as mysql;
 
 
-## new_connection(config)
->  create a mysql `connection` userdata
+## connect(config)
+>  connect to the mysql server.
 
 -params:
   - config: the map value of mysql config options
@@ -35,11 +35,10 @@ id: ext_mysql
 - return value:
   > the mysql connection userdata
 
-## query(conn, sql, params)
+## query(sql, params)
   > execute query
 
   - params:
-    - conn: mysql connection userdata
     - sql: query statement
     - params: prepared statement param values
 
@@ -49,25 +48,25 @@ id: ext_mysql
 
 insert examples:
 ```
-import ext.mysql as mysql;
+mport ext.mysql as mysql;
 
 
-let conn = mysql.new_connection({
+mysql.connect({
     host: 'localhost',
     user: 'root',
-    password : 'sds12#22',
+    password : '1Qaz2Wsx',
     database : 'wby'
 });
 
-defer mysql.end(conn);
+defer mysql.end();
 
 let sql = "delete from project where id=?";
-let result = mysql.query(conn, sql, ['090bbe23e3cfa94876e2e0ea3ab8202f']);
-assert(1 == result['affectedRows']);
+let result = mysql.query(sql, ['090bbe23e3cfa94876e2e0ea3ab8202f']);
+
 
 sql = "insert into project (id, accountID, createTime, name) values ('090bbe23e3cfa94876e2e0ea3ab8202f', '090bbe23e3cfa94876e2e0ea3ab8202f', 1686303145750, 'test')";
 
-result = mysql.query(conn, sql);
+result = mysql.query(sql);
 assert(1 == result['affectedRows']);
 ```
 
@@ -75,77 +74,67 @@ select examples:
 ```
 import ext.mysql as mysql;
 
-info('mysql.select -> start');
 
-let conn = mysql.new_connection({
+let conn = mysql.connect({
     host: 'localhost',
     user: 'root',
-    password : 'sds12#22',
+    password : '1Qaz2Wsx',
     database : 'wby'
 });
 
-defer mysql.end(conn);
+defer mysql.end();
 
 let sql = "delete from project where id=?";
-let result = mysql.query(conn, sql, ['090bbe23e3cfa94876e2e0ea3ab8202f']);
+let result = mysql.query(sql, ['090bbe23e3cfa94876e2e0ea3ab8202f']);
 
 sql = "insert into project (id, accountID, createTime, name) values ('090bbe23e3cfa94876e2e0ea3ab8202f', '090bbe23e3cfa94876e2e0ea3ab8202f', 1686303145750, 'test')";
 
-result = mysql.query(conn, sql);
+result = mysql.query(sql);
 assert(1 == result['affectedRows']);
 
 sql = "select * from project where id=?";
 
-let rows = mysql.query(conn, sql, ['090bbe23e3cfa94876e2e0ea3ab8202f']);
+let rows = mysql.query(sql, ['090bbe23e3cfa94876e2e0ea3ab8202f']);
 
 let fid = rows[0];
 assert(fid['id'] == '090bbe23e3cfa94876e2e0ea3ab8202f');
 
 ```
 
-## begin_transaction(conn)
+## begin_transaction()
   > begin a transaction.
 
-  - params:
-    - conn: mysql connection userdata
 
-## commit(conn)
+## commit()
   > commit a transaction.
 
-  - params:
-    - conn: mysql connection userdata
 
-## rollback(conn)
+
+## rollback()
   > rollback a transaction.
 
-  - params:
-    - conn: mysql connection userdata
 
-## end(conn)
+
+## end()
   > There are two ways to end a connection. Terminating a connection gracefully is done by calling the `end` method:
   > This will make sure all previously enqueued queries are still before sending a COM_QUIT packet to the MySQL server. If a fatal error occurs before the COM_QUIT packet can be sent, an err argument will be provided to the callback, but the connection will be terminated regardless of that.
 
   
-  - params:
-    - conn: mysql connection userdata
 
-## destroy(conn)
+## destroy()
   > An alternative way to end the connection is to call the `destroy`` method. This will cause an immediate termination of the underlying socket. Additionally `destroy` guarantees that no more events or callbacks will be triggered for the connection
 
-  - params:
-    - conn: mysql connection userdata
 
-## escape(conn, value)
+
+## escape(value)
   > escape a value for a prepared statement
 
   - params:
-    - conn: mysql connection userdata
     - value: escaped value
 
-## format(conn, sql, values)
+## format(sql, values)
   > prepare a sql statement with values
 
   - params:
-    - conn: mysql connection userdata
     - sql: query
     - values: prepared values
