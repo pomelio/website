@@ -21,18 +21,7 @@ subject: ext google
 
 
 
-## new_client(tokens, options)
-> The function is used to process authentication results and create a auth client user object, which primarily include obtaining the access_token. This is typically used to complete the user authentication process, such as obtaining an access token through OAuth 2.0 or other authentication mechanisms to access protected resources. The access_token is commonly used to authorize user access to specific APIs or services.
-
-- params:
-  - code: the code return from github.
-  - options: empty map object by default.
-
-- return value:
-  > user_data: the auth result user data which includes `access_token`.
-
-
-## get_access_token(result)
+## get_access_token()
 > Get the `accsss_token` from the auth result.
 
 - params:
@@ -41,14 +30,13 @@ subject: ext google
 - return value:
   > string: the string value of the `access_token`.
 
-## get_user_info(client)
+## get_user_info()
 > get the github `user info`
 
 - params:
 
 - return
   - map : the map object of the github user info.
-
 
 📄 [https://github.com/pomelio/website/blob/main/apps/root/bin/auth/callback.wby](https://github.com/pomelio/website/blob/main/apps/root/bin/auth/callback.wby) 
 
@@ -67,10 +55,8 @@ let {code} = web.query();
 let user_info = undefined;
 
 if from == 'google' {
-      let auth_result = google.get_auth_result(code, {});
-      let token = google.get_access_token(auth_result);
-      let google_client = google.new_client(token, {});
-      let uinfo = google.get_user_info(google_client);
+      google.handle_auth_result(code, {});
+      let uinfo = google.get_user_info();
       user_info = {
             provider: 'google',
             name: uinfo['name'],
@@ -79,10 +65,8 @@ if from == 'google' {
       };
 
 } elsif from == 'github' {
-      let auth_result = github.get_auth_result(code, {});
-      let access_token = github.get_access_token(auth_result);
-      let uinfo = github.get_user_info(access_token);
-      
+      let auth_result = github.handle_auth_result(code, {});
+      let uinfo = github.get_user_info();
       user_info = {
             provider: 'github',
             name: uinfo['login'],

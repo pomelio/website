@@ -4,66 +4,38 @@ id: ext_mustache
 # mustache
 > import ext.mustache as m;
 
-## render(path)
-> render from a mustache template with all available variables. All variables defined before this statement and in the scope or parents scopes are available for the mustache template.
+## render_template(path)
+> render from an app mustache template with all available variables. All variables defined before this statement and in the scope or parents scopes are available for the mustache template.
 
 - params:
-  - path: the template path.
+  - path: the template path which is under `apps/${app}/data/template`
 
 - return value:
   > string value which is from the template and variables.
 
 
-```
-import ext.web as web;
-import ext.MarkDownIt as md;
-import std.string as str;
-import ext.mustache as mch;
-import ext.Docs as docs;
-import std.array as array;
+## render_global_template(path)
+> render from a global mustache templat with all available variables. All variables defined before this statement and in the scope or parents scopes are available for the mustache template.
 
-let web_path = web.path();
-if web_path == '/' {
-  web_path = '/docs/start.md';
-}
+- params:
+  - path: the template path which is under website's `data/template` folder.
 
-let side_bar_data = docs.get_data('/docs/side_bar.json');
+- return value:
+  > string value which is from the template and variables.
 
-let side_bar_json = parse_json(side_bar_data);
+## init(path)
+> init an app template for the future render.
 
-let sections = side_bar_json['sections'];
+- params:
+  - path: the template path which is under `apps/${app}/data/template`
 
-let section_html_list = [];
+## init_global(path)
+> init an global template for future render.
+- params:
+  - path: the template path which is under website's `data/template` folder.
 
-for (let i = 0; i < len(sections); i++) {
-  let section = sections[i];
-  let topics = section['topics'];
-  topics = array.map(topics, |t|=>{
-    return {...t, active: t['md'] == web_path};
-  });
-  
-  let title = section['title'];
-  let section_html = mch.render('/docs/sidebar_section.mustache');
-  array.push(section_html_list, section_html);
-}
+## render()
+> render a template with all available variables
 
-let title = side_bar_json['title'];
-let sections_html = array.join(section_html_list, '');
-
-let side_bar_html = mch.render('/docs/sidebar.mustache');
-
-let PAGE_URL = 'https://' + web.hostname() + web_path;
-let PAGE_IDENTIFIER = web_path;
-
-let md_result = md.render(web_path);
-let title = md.get_meta(md_result, 'title');
-let content = md.get_html(md_result);
-if title == undefined {
-  title = 'chatsarah.com';
-}
-let discription = md.get_meta(md_result, 'discription');
-let html = mch.render('/docs/layout.mustache');
-
-web.body(html);
-
-```
+- return value:
+  > string value of the template and variables.
