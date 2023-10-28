@@ -124,10 +124,6 @@ let a = null;
 let a = undefined;
 ```
 
-## UserData
-
-> Can only be created by built-in functions
-
 ## built-in variables
 
 `__APP__`
