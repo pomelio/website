@@ -108,9 +108,9 @@ for (let i = 0; i < comments_count; i++) {
 
 comments_html = array.join(comments_html, '');
 
-let md_result = md.render('/articles/' + doc_name);
-let article_content = md.get_html(md_result);
-let metas = md.get_metas(md_result);
+md.render('/articles/' + doc_name);
+let article_content = md.get_html();
+let metas = md.get_metas();
 
 let html = mch.render_template('/template/article.mustache');
 
