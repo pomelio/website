@@ -66,14 +66,14 @@ if end > users_count {
 let users_count = len(users);
 users = array.slice(users, offset, end);
 
-let tmp_user_card = mch.init('/template/user/user_card.mustache');
+mch.init('/template/user/user_card.mustache');
 
 let users_html = [];
 
 for (let i = 0; i < users_count; i++) {
   let user = users[i];
   
-  let user_html = mch.render(tmp_user_card);
+  let user_html = mch.render();
   array.push(users_html, user_html);
 }
 

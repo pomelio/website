@@ -48,12 +48,12 @@ let likes_count = len(likes);
 
 let likes_html = [];
 
-let tmpl_like = mch.init('/template/like.mustache');
+mch.init('/template/like.mustache');
 
 for (let i = 0; i < len(likes); i++) {
   let like = likes[i];
   let user = array.find(users, |u| => u['id'] == like['user_id']);
-  let like_html = mch.render(tmpl_like);
+  let like_html = mch.render();
   array.push(likes_html, like_html);
 }
 
@@ -110,7 +110,7 @@ if end > blogs_count {
 
 blogs = array.slice(blogs, offset, end);
 
-let tmp_card = mch.init('/template/blog_card.mustache');
+mch.init('/template/blog_card.mustache');
 
 let cards = [];
 
@@ -154,7 +154,7 @@ for (let i = 0; i < blogs_count; i++) {
     
   }
   
-  let card_html = mch.render(tmp_card);
+  let card_html = mch.render();
   array.push(cards, card_html);
 }
 

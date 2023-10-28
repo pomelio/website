@@ -81,12 +81,12 @@ let likes_count = len(likes);
 
 let likes_html = [];
 
-let tmpl_like = mch.init('/template/like.mustache');
+mch.init('/template/like.mustache');
 
 for (let i = 0; i < len(likes); i++) {
   let like = likes[i];
   let user = array.find(users, |u| => u['id'] == like['user_id']);
-  let like_html = mch.render(tmpl_like);
+  let like_html = mch.render();
   array.push(likes_html, like_html);
 }
 
@@ -106,7 +106,7 @@ let comments_count = len(comments);
 
 let comments_html = [];
 
-let tmpl_comment = mch.init_global('/template/comment.mustache');
+mch.init_global('/template/comment.mustache');
 
 for (let i = 0; i < comments_count; i++) {
   let comment = comments[i];
@@ -115,7 +115,7 @@ for (let i = 0; i < comments_count; i++) {
   let metas = md.get_metas(md_comment_result);
   let comment_time = dt.from_now(dt.from_number(comment['create_time']));
   let user = array.find(users, |u| => u['id'] == comment['user_id']);
-  let comment_html = mch.render(tmpl_comment);
+  let comment_html = mch.render();
   array.push(comments_html, comment_html);
 }
 

@@ -65,7 +65,7 @@ let comments_count = len(comments);
 
 let comments_html = [];
 
-let tmpl_comment = mch.init('/template/user/comment.mustache');
+mch.init('/template/user/comment.mustache');
 
 for (let i = 0; i < comments_count; i++) {
   let comment = comments[i];
@@ -75,7 +75,7 @@ for (let i = 0; i < comments_count; i++) {
   let comment_time = dt.from_now(dt.from_number(comment['create_time']));
   let user = array.find(users, |u| => u['id'] == comment['user_id']);
   let comment_link = "/" + comment['clazz'] + "/" + comment['doc'];
-  let comment_html = mch.render(tmpl_comment);
+  let comment_html = mch.render();
   array.push(comments_html, comment_html);
 }
 
