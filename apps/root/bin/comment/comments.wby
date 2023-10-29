@@ -28,23 +28,8 @@ if app_json {
   app = parse_json(app_json);
 }
 
-let links = [];
 
-if app['navi'] {
-  let navi = app['navi'];
-  let keys = keys(navi);
-  array.for_each(keys, |k| => {
-    let title = k;
-    let url = navi[k];
-    let active = false;
-
-    array.push(links, {
-      title, url, active
-    });
-  });
-}
-
-let side_bar_html = mch.render_template('/template/sidebar.mustache');
+let side_bar_html = common.render_sidebar(app);
 
 let users_path = '/users.json';
 let users = [];
@@ -83,23 +68,8 @@ comments_html = array.join(comments_html, '');
 
 let page_count = math.floor(comments_count / PAGE_SIZE) + 1;
 
-let footer_links = [];
-
-if project['footer']['links'] {
-    let f_links = project['footer']['links'];
-    let keys = keys(f_links);
-    array.for_each(keys, |k| => {
-        let title = k;
-        let url = f_links[k];
-       
-        array.push(footer_links, {
-            title, url
-        });
-  });
-}
-
 let header_html = mch.render_global_template('/template/header.mustache');
-let footer_html = mch.render_global_template('/template/footer.mustache');
+let footer_html = common.render_foot_html(project);
 
 let html = mch.render_template('/template/user/comments.mustache');
 
