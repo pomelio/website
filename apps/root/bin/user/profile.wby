@@ -74,7 +74,7 @@ if comments_json {
   comments = parse_json(comments_json);
 }
 
-comments = array.filter(comments, |c| =>   c['user_id'] == user_id);
+comments = array.filter(comments, |c| => c['user_id'] == user_id);
 
 let comments_count = len(comments);
 

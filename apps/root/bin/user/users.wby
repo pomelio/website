@@ -4,6 +4,7 @@ import std.array as array;
 import ext.mustache as mch;
 import std.math as math;
 import std.number as number;
+import modules.common as common;
 
 let PAGE_SIZE = 20;
 
@@ -25,23 +26,7 @@ if app_json {
   app = parse_json(app_json);
 }
 
-let links = [];
-
-if app['navi'] {
-  let navi = app['navi'];
-  let keys = keys(navi);
-  array.for_each(keys, |k| => {
-    let title = k;
-    let url = navi[k];
-    let active = false;
-
-    array.push(links, {
-      title, url, active
-    });
-  });
-}
-
-let side_bar_html = mch.render_template('/template/sidebar.mustache');
+let side_bar_html = common.render_sidebar(app);
 
 let users_path = '/users.json';
 let users = [];
@@ -50,9 +35,6 @@ let users_json = github.get_global_content(users_path);
 if users_json {
   users = parse_json(users_json);
 }
-
-
-
 
 let users_count = len(users);
 let offset = page * PAGE_SIZE;
@@ -81,23 +63,9 @@ users_html = array.join(users_html, '');
 
 let page_count = math.floor(users_count / PAGE_SIZE) + 1;
 
-let footer_links = [];
-
-if project['footer']['links'] {
-    let f_links = project['footer']['links'];
-    let keys = keys(f_links);
-    array.for_each(keys, |k| => {
-        let title = k;
-        let url = f_links[k];
-       
-        array.push(footer_links, {
-            title, url
-        });
-  });
-}
 
 let header_html = mch.render_global_template('/template/header.mustache');
-let footer_html = mch.render_global_template('/template/footer.mustache');
+let footer_html = common.render_foot_html(app);
 
 let html = mch.render_template('/template/user/users.mustache');
 
