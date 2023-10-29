@@ -7,7 +7,7 @@ import std.date as dt;
 import ext.web as web;
 import std.string as str;
 
-fn render_comments_html() {
+fn render_comments_html(clazz, doc, users) {
   let comments = [];
 
   let comments_json = github.get_global_content('/comments.json');
@@ -15,15 +15,7 @@ fn render_comments_html() {
     comments = parse_json(comments_json);
   }
 
-  comments = array.filter(comments, |c| => c['clazz'] == 'cookbook' && c['doc'] == DOC_NAME);
-
-  let users_path = '/users.json';
-  let users = [];
-
-  let users_json = github.get_global_content(users_path);
-  if users_json {
-    users = parse_json(users_json);
-  }
+  comments = array.filter(comments, |c| => c['clazz'] == clazz && c['doc'] == doc);
 
   let comments_html = [];
 
@@ -85,9 +77,7 @@ fn render_sidebar(app) {
 }
 
 
-fn get_doc_name() {
-
-  let web_path = web.path();
+fn get_doc_name(web_path) {
 
   let fidx = str.last_index_of(web_path, '/');
   if fidx == -1 {
