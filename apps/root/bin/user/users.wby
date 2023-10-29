@@ -65,7 +65,7 @@ let page_count = math.floor(users_count / PAGE_SIZE) + 1;
 
 
 let header_html = mch.render_global_template('/template/header.mustache');
-let footer_html = common.render_foot_html(app);
+let footer_html = common.render_foot_html(project);
 
 let html = mch.render_template('/template/user/users.mustache');
 
