@@ -7,7 +7,7 @@ import std.array as array;
 import std.date as dt;
 
 
-fn render_comments_html() {
+fn render_comments_html(clazz, doc, users) {
   let comments = [];
 
   let comments_json = github.get_global_content('/comments.json');
@@ -15,15 +15,7 @@ fn render_comments_html() {
     comments = parse_json(comments_json);
   }
 
-  comments = array.filter(comments, |c| => c['clazz'] == 'cookbook' && c['doc'] == DOC_NAME);
-
-  let users_path = '/users.json';
-  let users = [];
-
-  let users_json = github.get_global_content(users_path);
-  if users_json {
-    users = parse_json(users_json);
-  }
+  comments = array.filter(comments, |c| => c['clazz'] == clazz && c['doc'] == doc);
 
   let comments_html = [];
 
@@ -63,7 +55,7 @@ fn render_foot_html(project) {
   return mch.render_global_template('/template/footer.mustache');
 }
 
-fn render_sidebar(app) {
+fn render_sidebar(app, doc) {
 
   let sections = app['navi'];
 
@@ -76,7 +68,7 @@ fn render_sidebar(app) {
       let topics = section['topics'];
       topics = array.map(topics, |t|=>{
           
-          return {...t, md: '/' + __APP__ + '/' + t['md'], active: t['md'] == doc_name};
+          return {...t, md: '/' + __APP__ + '/' + t['md'], active: t['md'] == doc};
       });
       
       let title = section['title'];
@@ -133,20 +125,32 @@ fn get_doc_name() {
 }
 
 
+let project = {};
+let project_json = github.get_global_content('/project.json');
+if project_json {
+  project = parse_json(project_json);
+}
+
 let doc_name = get_doc_name();
 
 let app = {};
 let app_json = github.get_app_content('/app.json');
 if app_json {
-  app= parse_json(app_json);
+  app = parse_json(app_json);
+}
+
+let users_path = '/users.json';
+let users = [];
+
+let users_json = github.get_global_content(users_path);
+if users_json {
+  users = parse_json(users_json);
 }
 
 let [prev, next] = find_prev_next(app, doc_name);
 
-let side_bar_html = render_sidebar(app);
+let side_bar_html = render_sidebar(app, doc_name);
 
-let project_json = github.get_global_content('/project.json');
-let project = parse_json(project_json);
 
 let header_html = mch.render_global_template('/template/header.mustache');
 let footer_html = render_foot_html(project);
@@ -155,7 +159,7 @@ let footer_html = render_foot_html(project);
 let DOC_NAME = doc_name;
 let HOST_NAME = web.hostname();
 
-let comments_html = render_comments_html();
+let comments_html = render_comments_html('cookbook', doc_name, users);
 
 md.render('/articles/' + doc_name);
 let article_content = md.get_html();
