@@ -102,7 +102,7 @@ fn find_prev_next(app, md) {
   let prev = null;
   let next = null;
   let topics_len = len(topic_list);
-  let md_index = topic_list.find_index(|t| => t['md'] == md);
+  let md_index = array.find_index(topic_list, |t| => t['md'] == md);
   if md_index != -1 {
     if md_index > 0 {
       prev = topic_list[md_index - 1];
