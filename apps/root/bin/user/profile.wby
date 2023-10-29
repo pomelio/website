@@ -5,7 +5,7 @@ import ext.MarkDownIt as md;
 import ext.web as web;
 import std.date as dt;
 
-import common.common as common;
+import common as common;
 
 let project = {};
 let project_json = github.get_global_content('/project.json');
