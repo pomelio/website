@@ -1,0 +1,30 @@
+import std.array as array;
+import ext.mustache as mch;
+
+
+fn render_sidebar(app) {
+
+    let sections = app['navi'];
+
+    let section_html_list = [];
+    mch.init('/template/sidebar_section.mustache');
+
+    for (let i = 0; i < len(sections); i++) {
+        let section = sections[i];
+        
+        let topics = section['topics'];
+        topics = array.map(topics, |t|=>{
+            
+            return {...t, md: '/' + __APP__ + '/' + t['md'], active: t['md'] == doc_name};
+        });
+        
+        let title = section['title'];
+        let section_html = mch.render();
+        array.push(section_html_list, section_html);
+    }
+
+
+    let side_bar_content_html = array.join(section_html_list, '');
+
+    return mch.render_template('/template/sidebar.mustache');
+}

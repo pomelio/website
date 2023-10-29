@@ -54,7 +54,6 @@ if app['navi'] {
 let side_bar_html = mch.render_template('/template/sidebar.mustache');
 
 
-let PAGE_IDENTIFIER = web_path;
 
 let DOC_NAME = doc_name;
 let HOST_NAME = web.hostname();

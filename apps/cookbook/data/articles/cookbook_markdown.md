@@ -177,7 +177,6 @@ let sections_html = array.join(section_html_list, '');
 let side_bar_html = mch.render('/docs/sidebar.mustache');
 
 let PAGE_URL = 'https://' + web.hostname() + web_path;
-let PAGE_IDENTIFIER = web_path;
 
 let md_result = md.render(web_path);
 let title = md.get_meta(md_result, 'title');
