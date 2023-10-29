@@ -174,12 +174,16 @@
 			<div class="px-4 pt-6 markdown-body">
 				{{{article_content}}}
 			</div>
-			<div class="flex justify-between border-t border-gray-200 pt-4 text-gray-700">
+			<div class="flex justify-between border-t border-gray-200 p-4 text-gray-900 dark:text-white">
                 {{#prev}}
 				<div>
                     <a class="font-bold text-cyan-400" href="{{{md}}}">← {{title}}</a>
                 </div>
 				{{/prev}}
+				{{^prev}}
+				<div></div>
+				{{^prev}}
+
 				{{#next}}
                 <div>
                     <a class="font-bold text-cyan-400" href="{{{md}}}">{{title}} →</a>
