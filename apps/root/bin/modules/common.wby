@@ -1,30 +1,99 @@
 import std.array as array;
 import ext.mustache as mch;
+import ext.github as github;
+import ext.mustache as mch;
+import ext.MarkDownIt as md;
+import std.date as dt;
+import ext.web as web;
+import std.string as str;
 
+fn render_comments_html() {
+  let comments = [];
+
+  let comments_json = github.get_global_content('/comments.json');
+  if comments_json {
+    comments = parse_json(comments_json);
+  }
+
+  comments = array.filter(comments, |c| => c['clazz'] == 'cookbook' && c['doc'] == DOC_NAME);
+
+  let users_path = '/users.json';
+  let users = [];
+
+  let users_json = github.get_global_content(users_path);
+  if users_json {
+    users = parse_json(users_json);
+  }
+
+  let comments_html = [];
+
+  mch.init_global('/template/comment.mustache');
+  let comments_count = len(comments);
+
+  for (let i = 0; i < comments_count; i++) {
+    let comment = comments[i];
+    let md_comment_result = md.render_source(comment['value']);
+    let comment_content = md.get_html(md_comment_result);
+    let metas = md.get_metas(md_comment_result);
+    let comment_time = dt.from_now(dt.from_number(comment['create_time']));
+    let user = array.find(users, |u| => u['id'] == comment['user_id']);
+    let comment_html = mch.render();
+    array.push(comments_html, comment_html);
+  }
+
+  return array.join(comments_html, '');
+}
+
+fn render_foot_html(project) {
+  let footer_links = [];
+
+  if project['footer']['links'] {
+      let f_links = project['footer']['links'];
+      let keys = keys(f_links);
+      array.for_each(keys, |k| => {
+          let title = k;
+          let url = f_links[k];
+        
+          array.push(footer_links, {
+              title, url
+          });
+    });
+  }
+
+  return mch.render_global_template('/template/footer.mustache');
+}
 
 fn render_sidebar(app) {
 
-    let sections = app['navi'];
+    let links = [];
 
-    let section_html_list = [];
-    mch.init('/template/sidebar_section.mustache');
+    if app['navi'] {
+        let navi = app['navi'];
+        let keys = keys(navi);
+        array.for_each(keys, |k| => {
+            let title = k;
+            let url = navi[k];
+            let active = false;
 
-    for (let i = 0; i < len(sections); i++) {
-        let section = sections[i];
-        
-        let topics = section['topics'];
-        topics = array.map(topics, |t|=>{
-            
-            return {...t, md: '/' + __APP__ + '/' + t['md'], active: t['md'] == doc_name};
+            array.push(links, {
+                title, url, active
+            });
         });
-        
-        let title = section['title'];
-        let section_html = mch.render();
-        array.push(section_html_list, section_html);
     }
 
-
-    let side_bar_content_html = array.join(section_html_list, '');
-
     return mch.render_template('/template/sidebar.mustache');
+}
+
+
+fn get_doc_name() {
+
+  let web_path = web.path();
+
+  let fidx = str.last_index_of(web_path, '/');
+  if fidx == -1 {
+    throw({
+      message: 'markdown not found.'
+    });
+  }
+  return str.substring(web_path, fidx + 1);
 }
