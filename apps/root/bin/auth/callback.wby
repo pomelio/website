@@ -45,7 +45,7 @@ if project_json {
 }
 
 let header_html = mch.render_global_template('/template/header.mustache');
-let footer_html = common.render_foot_html(proj);
+let footer_html = common.render_foot_html(project);
 
 
 let users_path = '/users.json';
