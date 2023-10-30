@@ -1,5 +1,5 @@
 ---
-id: entry_point
+subject: entry_point
 ---
 # Project entry point
 

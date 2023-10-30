@@ -1,5 +1,5 @@
 ---
-id: std_math
+subject: std_math
 ---
 # math
 > import std.math as math;

@@ -1,5 +1,5 @@
 ---
-id: github_integration
+subject: github_integration
 ---
 
 # Github repository integration

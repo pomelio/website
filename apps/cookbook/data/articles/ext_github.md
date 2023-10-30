@@ -107,7 +107,7 @@ if from == 'google' {
             provider: 'google',
             name: uinfo['name'],
             picture: uinfo['picture'],
-            id: uinfo['id']
+            subject: uinfo['id']
       };
 
 } elsif from == 'github' {
@@ -117,7 +117,7 @@ if from == 'google' {
             provider: 'github',
             name: uinfo['login'],
             picture: uinfo['avatar_url'],
-            id: uinfo['id'] + ''
+            subject: uinfo['id'] + ''
       };
 } else {
       throw({
@@ -155,7 +155,7 @@ if !fuser_info || fuser_info != user_info {
 let user_id = user_info['id'];
 let provider = user_info['provider'];
 let timestamp = date.value_of(date.from_number());
-let user_token = jwt.sign({id: user_id, provider, timestamp});
+let user_token = jwt.sign({subject: user_id, provider, timestamp});
 user_info['token'] = user_token;
 
 let user_info_json = stringify_json(user_info);

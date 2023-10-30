@@ -1,5 +1,5 @@
 ---
-id: cookbook_project
+subject: cookbook_project
 ---
 # Cookbook project
 > This is a demo project to show the classic `document management` web app.

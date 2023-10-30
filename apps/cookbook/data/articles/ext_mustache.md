@@ -1,5 +1,5 @@
 ---
-id: ext_mustache
+subject: ext_mustache
 ---
 # mustache
 > import ext.mustache as m;

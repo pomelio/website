@@ -1,5 +1,5 @@
 ---
-id: std_string
+subject: std_string
 ---
 # string
 

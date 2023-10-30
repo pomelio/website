@@ -1,5 +1,5 @@
 ---
-id: std_date
+subject: std_date
 ---
 # date
 Date represent a single moment in time in a platform-independent format. Date objects encapsulate an integral number that represents milliseconds since the midnight at the beginning of January 1, 1970, UTC (the epoch)

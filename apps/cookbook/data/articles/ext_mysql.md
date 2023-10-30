@@ -1,6 +1,6 @@
 
 ---
-id: ext_mysql
+subject: ext_mysql
 ---
 # mysql
 > import ext.mysql as mysql;

@@ -1,5 +1,5 @@
 ---
-id: response_to_static_file
+subject: response_to_static_file
 ---
 # Response to static file
 > js, css, images These files are placed in the public folder, when accessing these files, the `send_file` of the `web` module can return these files.

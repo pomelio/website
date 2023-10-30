@@ -1,5 +1,5 @@
 ---
-id: ext_squel
+subject: ext_squel
 ---
 # squel
 > import ext.squel as sql;

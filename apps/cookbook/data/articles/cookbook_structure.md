@@ -1,5 +1,5 @@
 ---
-id: project_structure
+subject: project_structure
 ---
 # project structure
 
