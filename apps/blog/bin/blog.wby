@@ -31,6 +31,8 @@ if app['blog'] {
   blog = app['blog'];
 }
 
+
+
 let side_bar_html = common.render_sidebar(app);
 
 
@@ -46,7 +48,14 @@ if users_json {
   users = parse_json(users_json);
 }
 
-let likes_html = common.render_likes_html('blog', doc_name, users, likes);
+let likes = [];
+
+let likes_json = github.get_global_content('/likes.json');
+if likes_json {
+  likes = parse_json(likes_json);
+}
+
+likes_html = common.render_likes_html('blog', doc_name, users, likes);
 
 
 let comments_html = common.render_comments_html('blog', doc_name, users);
