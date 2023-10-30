@@ -4,9 +4,20 @@
 <head>
     <meta charset="utf-8">
 	
+	<title>Blogs - {{blog.name}} &nbsp;|&nbsp; Pagwe Cloud</title>
+    <meta name="og:title" content="Blogs - {{blog.name}}  &nbsp;|&nbsp; Pagwe Cloud">
+	<meta name="twitter:title" content="Blogs - {{blog.name}}  &nbsp;|&nbsp; Pagwe Cloud">
 
+    <meta name="description" content="{{blog.description}}">
+	<meta name="og:description" content="{{blog.description}}">
+	<meta name="twitter:description" content="{{blog.description}}">
 	
-	<title>blogs</title>
+    <meta name="twitter:card" content="summary" />
+	<meta name="twitter:image" content="{{{blog.image}}}">
+
+    <meta name="og:type" content="article" />
+	<meta name="og:url" content="https://www.pagwe.net/blog">
+	<meta name="og:image" content="{{{blog.image}}}">
 
 	<link rel="apple-touch-icon" sizes="180x180" href="/public/images/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="192x192"  href="/android-chrome-192x192.png">

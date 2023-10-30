@@ -9,7 +9,7 @@
     },
     "blog": {
         "name": "Pagwe",
-        "description": "News",
+        "description": "Publishing company and product news to the public and collecting user feedback are important practices for businesses.",
         "image": "/blog/public/images/avatar.png",
         "blogs":[
             "debug.md",
