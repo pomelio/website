@@ -70,7 +70,7 @@ explanation:
 - line 17: the requests will be dispatched to the app's router page when the url matches the app name.
 
 
-## Cookbook router page
+## Cookbook's router page
 All url path starts with `/cookbook` will be dispatched into the cookbook's router page.
 
 📄  [cookbook app's router page](https://github.com/pomelio/website/blob/main/apps/cookbook/bin/index.wby) 
@@ -91,3 +91,5 @@ if str.ends_with(app_path, '.md') {
   web.set_status(404);
 }
 ```
+- line 9: dispatch requests to the `article` page when the url ends with `.md`
+- line 11: send file when the url starts with `/public`
