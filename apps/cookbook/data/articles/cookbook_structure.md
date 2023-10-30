@@ -4,7 +4,7 @@ subject: project_structure
 # project structure
 
 ## files in the github repository
-📄 [https://github.com/pomelio/cookbook/tree/main/](https://github.com/pomelio/cookbook/tree/main/)
+📄 [https://github.com/pomelio/website/tree/main/apps/cookbook](https://github.com/pomelio/website/tree/main/apps/cookbook)
 
 ![project files](/cookbook/public/images/cookbook_files.png)
 
