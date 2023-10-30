@@ -7,9 +7,11 @@ subject: router_page
 
 
 
-# register the cookbook app 
+## register the cookbook app 
 
-📄  [default app's router page]https://github.com/pomelio/website/blob/main/apps/root/bin/index.wby) 
+All http requests will be sent to the default app's router page.
+
+📄  [default app's router page](https://github.com/pomelio/website/blob/main/apps/root/bin/index.wby) 
 
 ```
 import ext.web as web;
@@ -63,4 +65,29 @@ if app {
 ```
 
 explanation:
-- line 5: add the `cookbook` to the app list.
+- line 7: add the `cookbook` to the app list.
+- line 14: match the app with the url path.
+- line 17: the requests will be dispatched to the app's router page when the url matches the app name.
+
+
+## Cookbook router page
+All url path starts with `/cookbook` will be dispatched into the cookbook's router page.
+
+📄  [cookbook app's router page](https://github.com/pomelio/website/blob/main/apps/cookbook/bin/index.wby) 
+
+```
+import ext.web as web;
+import std.string as str;
+
+let web_path = web.path();
+let app_len = len('/' + __APP__);
+let app_path = str.substring(web_path, app_len);
+
+if str.ends_with(app_path, '.md') {
+  dispatch(__APP__, '/article', {});
+} elsif str.starts_with(app_path, '/public') {
+  web.send_file(__APP__, app_path);
+} else {
+  web.set_status(404);
+}
+```
