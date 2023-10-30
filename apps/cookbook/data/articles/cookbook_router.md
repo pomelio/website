@@ -9,7 +9,7 @@ subject: router_page
 
 ## register the cookbook app 
 
-All http requests will be sent to the default app's router page.
+All HTTP requests are directed to the default web app's router page. Therefore, we must dispatch HTTP requests that start with `/cookbook` to the `cookbook` webapp.
 
 📄  [default app's router page](https://github.com/pomelio/website/blob/main/apps/root/bin/index.wby) 
 

@@ -1,6 +1,7 @@
 ---
 subject: markdown_page
 ---
+
 # Markdown Page
 > The `markdown` page is for generating a html page from a markdown document on the right side and a side bar on the left side.
 
