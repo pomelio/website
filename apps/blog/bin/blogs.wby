@@ -45,7 +45,7 @@ if likes_json {
 }
 
 
-let likes_html = common.render_likes_html('blog', 'follower', users, likes);
+let {html: likes_html, count: likes_count} = common.render_likes_html('blog', 'follower', users, likes);
 
 let side_bar_html = common.render_sidebar(app);
 

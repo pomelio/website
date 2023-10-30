@@ -10,20 +10,21 @@ import std.string as str;
 fn render_likes_html(clazz, doc, users, likes) {
   likes = array.filter(likes, |c| => c['clazz'] == clazz && c['doc'] == doc);
 
-  let likes_count = len(likes);
+  let count = len(likes);
 
   let likes_html = [];
 
   mch.init('/template/like.mustache');
 
-  for (let i = 0; i < len(likes); i++) {
+  for (let i = 0; i < count; i++) {
     let like = likes[i];
     let user = array.find(users, |u| => u['id'] == like['user_id']);
     let like_html = mch.render();
     array.push(likes_html, like_html);
   }
 
-  return array.join(likes_html, '');
+  let html = array.join(likes_html, '');
+  return {html, count};
 }
 
 fn render_comments_html(clazz, doc, users) {
@@ -39,9 +40,9 @@ fn render_comments_html(clazz, doc, users) {
   let comments_html = [];
 
   mch.init_global('/template/comment.mustache');
-  let comments_count = len(comments);
+  let count = len(comments);
 
-  for (let i = 0; i < comments_count; i++) {
+  for (let i = 0; i < count; i++) {
     let comment = comments[i];
     let md_comment_result = md.render_source(comment['value']);
     let comment_content = md.get_html(md_comment_result);
@@ -52,7 +53,8 @@ fn render_comments_html(clazz, doc, users) {
     array.push(comments_html, comment_html);
   }
 
-  return array.join(comments_html, '');
+  let html = array.join(comments_html, '');
+  return {html, count};
 }
 
 fn render_foot_html(project) {
