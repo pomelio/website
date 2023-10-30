@@ -46,7 +46,7 @@ if users_json {
   users = parse_json(users_json);
 }
 
-likes_html = common.render_likes_html('blog', doc_name, users, likes);
+let likes_html = common.render_likes_html('blog', doc_name, users, likes);
 
 
 let comments_html = common.render_comments_html('blog', doc_name, users);
