@@ -6,15 +6,12 @@ import ext.github as github;
 import std.array as array;
 import std.date as dt;
 
+import modules.common as common;
+
 let web_path = web.path();
 
-let fidx = str.last_index_of(web_path, '/');
-if fidx == -1 {
-  throw({
-    message: 'markdown not found.'
-  });
-}
-let doc_name = str.substring(web_path, fidx + 1);
+
+let doc_name = common.get_doc_name(web_path);
 
 
 let project = {};
@@ -35,24 +32,8 @@ if app['blog'] {
 }
 
 
-let links = [];
 
-if app['navi'] {
-  let navi = app['navi'];
-  let keys = keys(navi);
-  array.for_each(keys, |k| => {
-    let title = k;
-    let url = navi[k];
-    let active = false;
-
-    array.push(links, {
-      title, url, active
-    });
-  });
-}
-
-let side_bar_html = mch.render_template('/template/sidebar.mustache');
-
+let side_bar_html = common.render_sidebar(app);
 
 
 let DOC_NAME = doc_name;
@@ -92,59 +73,16 @@ for (let i = 0; i < len(likes); i++) {
 likes_html = array.join(likes_html, '');
 
 
-let comments = [];
-
-let comments_json = github.get_global_content('/comments.json');
-if comments_json {
-  comments = parse_json(comments_json);
-}
-
-comments = array.filter(comments, |c| => c['clazz'] == 'blog' && c['doc'] == DOC_NAME);
-
-let comments_count = len(comments);
-
-let comments_html = [];
-
-mch.init_global('/template/comment.mustache');
-
-for (let i = 0; i < comments_count; i++) {
-  let comment = comments[i];
-  let md_comment_result = md.render_source(comment['value']);
-  let comment_content = md.get_html(md_comment_result);
-  let metas = md.get_metas(md_comment_result);
-  let comment_time = dt.from_now(dt.from_number(comment['create_time']));
-  let user = array.find(users, |u| => u['id'] == comment['user_id']);
-  let comment_html = mch.render();
-  array.push(comments_html, comment_html);
-}
-
-comments_html = array.join(comments_html, '');
+let comments_html = common.render_comments_html('blog', doc_name, users);
 
 let md_result = md.render('/blogs/' + doc_name);
 let blog_content = md.get_html(md_result);
 let metas = md.get_metas(md_result);
 
-let footer_links = [];
-
-if project['footer']['links'] {
-    let f_links = project['footer']['links'];
-    let keys = keys(f_links);
-    array.for_each(keys, |k| => {
-        let title = k;
-        let url = f_links[k];
-       
-        array.push(footer_links, {
-            title, url
-        });
-  });
-}
-
 let header_html = mch.render_global_template('/template/header.mustache');
-let footer_html = mch.render_global_template('/template/footer.mustache');
+let footer_html = common.render_foot_html(project);
 
 
 let html = mch.render_template('/template/blog.mustache');
-
-
 
 web.body(html);
