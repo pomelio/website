@@ -5,7 +5,7 @@ import std.array as array;
 import ext.jwt as jwt;
 import ext.mustache as mch;
 import std.date as date;
-
+import modules.common as common;
 
 let {code} = web.query();
 
@@ -44,24 +44,8 @@ if project_json {
       project = parse_json(project_json);
 }
 
-
-let footer_links = [];
-
-if project['footer']['links'] {
-    let f_links = project['footer']['links'];
-    let keys = keys(f_links);
-    array.for_each(keys, |k| => {
-        let title = k;
-        let url = f_links[k];
-       
-        array.push(footer_links, {
-            title, url
-        });
-  });
-}
-
 let header_html = mch.render_global_template('/template/header.mustache');
-let footer_html = mch.render_global_template('/template/footer.mustache');
+let footer_html = common.render_foot_html(proj);
 
 
 let users_path = '/users.json';
