@@ -2,11 +2,11 @@
 subject: cookbook_project
 ---
 # Cookbook project
-> This is a demo project to show the classic `document management` web app.
+> This is a classic `document management` web app.
 
 ## The open source cookbook repository
 
-[https://github.com/pomelio/cookbook](https://github.com/pomelio/cookbook)
+[https://github.com/pomelio/website/tree/main/apps/cookbook](https://github.com/pomelio/website/tree/main/apps/cookbook)
 
 
 ## simillar projects:
@@ -21,7 +21,7 @@ subject: cookbook_project
 ## advantages:
 - simple, small, beauty.
 - program source code lines number less than 100.
-- based on `bootstrap` and traditional `js` and `css`, without other complex development knowleges.
+- based on `alpine js` and `tailwindcss`, without other complex development knowleges.
 - `markdown` documents and source codes hosted and managed by `github`.
 - speed fast.
 - project website hosted with it's own `domain name` and `ssl certificate` installation automatically.

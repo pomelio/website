@@ -9,12 +9,8 @@ subject: project_structure
 ![project files](/cookbook/public/images/cookbook_files.png)
 
 - the `/bin` folder is for containing the programs
-- the `/docs` folder is for containing the private documents such as `json, md` files
-- the `/public` folder is for containing the public documents such as `js, css, png, jpeg` files
+- the `/data/articles` folder is for containing the markdown files.
+- the `/data/public/images` folder is for containing the images
+- the `/data/pubiic/template` folder is for containing the mustach template files.
+- the `/data/app.json` is the web app config files which include the sidebar titles and links of the markdown files.
 
-
-## integration with github
-The project environment needs to access program code and document resources, and these resources are stored on github, so the project needs to be integrated with github.
-
-
-[integration document](https://cookbook.chatsarah.com/docs/github_integration.md)
