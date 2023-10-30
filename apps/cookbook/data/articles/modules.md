@@ -19,9 +19,9 @@ There are 2 kinds of modules:
 The module `std.global` doesn't need to be imported and the functions and variables in this module can be referenced directly.
 
 ## app modules
-> The extension of a user defined module file is `.wby`. Functions and variables can be defined in the module, and all these functions and variables can be referenced by other modules and pages.
+> The extension of a user defined app module file is `.wby`. Functions and variables can be defined in the module, and all these functions and variables can be referenced by other app modules and pages.
 
-- the module files must be saved under the folder `/bin/modules`
+- the app module files must be saved under the folder `/bin/modules`
 
 the following is an example module saved under `/bin/modules/abc.wby` 
 
