@@ -7,6 +7,25 @@ import std.date as dt;
 import ext.web as web;
 import std.string as str;
 
+fn render_likes_html(clazz, doc, users, likes) {
+  likes = array.filter(likes, |c| => c['clazz'] == clazz && c['doc'] == doc);
+
+  let likes_count = len(likes);
+
+  let likes_html = [];
+
+  mch.init('/template/like.mustache');
+
+  for (let i = 0; i < len(likes); i++) {
+    let like = likes[i];
+    let user = array.find(users, |u| => u['id'] == like['user_id']);
+    let like_html = mch.render();
+    array.push(likes_html, like_html);
+  }
+
+  return array.join(likes_html, '');
+}
+
 fn render_comments_html(clazz, doc, users) {
   let comments = [];
 

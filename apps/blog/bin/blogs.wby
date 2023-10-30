@@ -7,6 +7,8 @@ import ext.MarkDownIt as md;
 import std.math as math;
 import std.number as number;
 
+import modules.common as common;
+
 let PAGE_SIZE = 20;
 
 let query = web.query();
@@ -42,49 +44,15 @@ if likes_json {
   likes = parse_json(likes_json);
 }
 
-likes = array.filter(likes, |c| => c['clazz'] == 'blog' && c['doc'] == 'follower');
 
-let likes_count = len(likes);
+let likes_html = common.render_likes_html('blog', 'follower', users, likes);
 
-let likes_html = [];
-
-mch.init('/template/like.mustache');
-
-for (let i = 0; i < len(likes); i++) {
-  let like = likes[i];
-  let user = array.find(users, |u| => u['id'] == like['user_id']);
-  let like_html = mch.render();
-  array.push(likes_html, like_html);
-}
-
-likes_html = array.join(likes_html, '');
-
-
-
-let links = [];
-
-if app['navi'] {
-  let navi = app['navi'];
-  let keys = keys(navi);
-  array.for_each(keys, |k| => {
-    let title = k;
-    let url = navi[k];
-    let active = false;
-
-    array.push(links, {
-      title, url, active
-    });
-  });
-}
-
-let side_bar_html = mch.render_template('/template/sidebar.mustache');
+let side_bar_html = common.render_sidebar(app)
 
 let blog = {};
 if app['blog'] {
   blog = app['blog'];
 }
-
-
 
 let blogs = [];
 if blog['blogs'] {
@@ -160,23 +128,8 @@ for (let i = 0; i < blogs_count; i++) {
 
 let blogs_content = array.join(cards, '');
 
-let footer_links = [];
-
-if project['footer']['links'] {
-    let f_links = project['footer']['links'];
-    let keys = keys(f_links);
-    array.for_each(keys, |k| => {
-        let title = k;
-        let url = f_links[k];
-       
-        array.push(footer_links, {
-            title, url
-        });
-  });
-}
-
 let header_html = mch.render_global_template('/template/header.mustache');
-let footer_html = mch.render_global_template('/template/footer.mustache');
+let footer_html = common.render_foot_html(project);
 
 let html = mch.render_template('/template/blogs.mustache');
 
