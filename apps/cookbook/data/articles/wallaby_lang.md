@@ -16,7 +16,7 @@ The Wallaby programming language is a functional language. When designing Wallab
 
 - Extensibility. The Wallaby runtime is easily extensible. Users are encouraged to suggest new features, and the development team will consider and add appropriate extensions to meet these requirements.
 
-For example, this is a page program to render a markdown document into a webpage.
+For example, this is a page program to render the current markdown document into a webpage.
 
 📄 [https://github.com/pomelio/website/blob/main/apps/cookbook/bin/article.wby](https://github.com/pomelio/website/blob/main/apps/cookbook/bin/article.wby) 
 
