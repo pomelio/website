@@ -21,7 +21,7 @@ subject: cookbook_project
 ## advantages:
 - simple, small, beauty.
 - program source code lines number less than 100.
-- based on [alpine js](https://alpinejs.dev/)` and [tailwindcss](https://tailwindcss.com/), without other complex development knowleges.
+- based on [alpine js](https://alpinejs.dev/) and [tailwindcss](https://tailwindcss.com/), without other complex development knowleges.
 - `markdown` documents and source codes hosted and managed by `github`.
 - speed fast.
 - project website hosted with it's own `domain name` and `ssl certificate` installation automatically.
