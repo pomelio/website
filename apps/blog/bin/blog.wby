@@ -1,5 +1,5 @@
 import ext.web as web;
-import ext.MarkDownIt as md;
+import ext.markdownit as md;
 import std.string as str;
 import ext.mustache as mch;
 import ext.github as github;

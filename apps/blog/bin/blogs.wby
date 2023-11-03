@@ -3,7 +3,7 @@ import std.string as string;
 import ext.web as web;
 import std.array as array;
 import ext.mustache as mch;
-import ext.MarkDownIt as md;
+import ext.markdownit as md;
 import std.math as math;
 import std.number as number;
 

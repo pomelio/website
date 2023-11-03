@@ -1,7 +1,7 @@
 ---
 subject: ext_markdownit
 ---
-# MarkDownIt
+# markdownit
 > Markdown parser, done right. 100% CommonMark support, extensions, syntax plugins & high speed
 
 

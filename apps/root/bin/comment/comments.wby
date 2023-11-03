@@ -4,7 +4,7 @@ import std.array as array;
 import ext.mustache as mch;
 import std.math as math;
 import std.number as number;
-import ext.MarkDownIt as md;
+import ext.markdownit as md;
 import std.date as dt;
 import modules.common as common;
 

@@ -99,7 +99,7 @@
                     "md": "ext_mustache.md"
                 },
                 {
-                    "title": "MarkDownIt",
+                    "title": "markdownit",
                     "md": "ext_mark_down_it.md"
                 },
                 {

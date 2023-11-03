@@ -1,7 +1,7 @@
 import ext.github as github;
 import std.array as array;
 import ext.mustache as mch;
-import ext.MarkDownIt as md;
+import ext.markdownit as md;
 import ext.web as web;
 import std.date as dt;
 
