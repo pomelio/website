@@ -59,11 +59,6 @@ if blog['blogs'] {
   blogs = blog['blogs'];
 }
 
-let {page} = web.query();
-
-if !page {
-    page = 0;
-}
 
 let HOST_NAME = web.hostname();
 
