@@ -4,7 +4,7 @@
     "image": "/public/images/pagwe-logo.png",
     "homepage": {
         "app": "root",
-        "path": "/home"
+        "path": "/template"
     },
     
     "footer":{
