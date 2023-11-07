@@ -8,12 +8,22 @@ let apps = [
   'blog'
 ];
 
+
+
 let web_path = web.path();
 let method = web.method();
 
 let app = array.find(apps, |a| => str.starts_with(web_path, '/' + a));
 
-if app {
+if web_path == '/' {
+  let project = {};
+  let project_json = github.get_global_content('/project.json');
+  if project_json {
+      project = parse_json(project_json);
+  }
+
+  dispatch(project['home']['app'], project['home']['path'], {});
+}elsif app {
   dispatch(app, '/index', {});
 } elsif web_path == '/login' {
   dispatch(__APP__, '/auth/login', {});

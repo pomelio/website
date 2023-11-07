@@ -12,11 +12,6 @@ if len(web_path) == 0 {
 
 let page_name = string.substring(web_path, 1);
 
-if (page_name == "") {
-    page_name = "home";
-}
-
-
 
 let project = {};
 let project_json = github.get_global_content('/project.json');
