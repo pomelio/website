@@ -22,7 +22,7 @@ if web_path == '/' {
       project = parse_json(project_json);
   }
 
-  dispatch(project['home']['app'], project['home']['path'], {});
+  dispatch(project['homepage']['app'], project['homepage']['path'], {});
 }elsif app {
   dispatch(app, '/index', {});
 } elsif web_path == '/login' {
