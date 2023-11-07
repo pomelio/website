@@ -5,13 +5,7 @@ import ext.mustache as mch;
 import std.string as string;
 
 let web_path = web.path();
-
-if len(web_path) == 0 {
-    web_path = "/home";
-}
-
 let page_name = string.substring(web_path, 1);
-
 
 let project = {};
 let project_json = github.get_global_content('/project.json');
