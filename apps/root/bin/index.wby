@@ -1,7 +1,7 @@
 import ext.web as web;
 import std.string as str;
 import std.array as array;
-
+import ext.github as github;
 
 let apps = [
   'cookbook',
