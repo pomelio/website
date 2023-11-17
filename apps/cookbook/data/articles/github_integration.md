@@ -13,13 +13,15 @@ To access and modify the contents of a GitHub repository, your project will requ
 
 - Generate an `access_token` from [personal-access-tokens](https://github.com/settings/personal-access-tokens/new)
 - Put the `Expiration` long enough, because the platform needs to sync github resources through this access token
-- Select the project, only allow to read the resources of the Reposit you specify
-- Grant Permissions, Contents read-only permission
+- Select the project, allow to readwrite the resources of the Reposit you specify
+- Grant Permissions, Contents read-write permission
 - Generate `acess token` and save it
+
+The reason why the `readwrite` permission is required is that the program needs to store data on GitHub. For example, profile information after user login, website message information, like information, etc. The program uses GitHub as a hard disk, write permission is required.
 
 ![webhook](/cookbook/public/images/access_token_repository.png)
 
-![webhook](/cookbook/public/images/access_token_content_readonly.png)
+![webhook](/cookbook/public/images/access_token_content_readwrite.png)
 
 ## Webhook Integration:
 
