@@ -10,6 +10,8 @@ This information can be GitHub repostory tokens, webhook secrets, or database us
 
 The following is an example, including the information required for GitHub repository integration, Github identity authentication information, and Google identity authentication information.
 
+`https://github.com/pomelio/website`
+
 ```
 github_user=pomelio
 github_repo=website
