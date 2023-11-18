@@ -15,7 +15,7 @@ To access and modify the contents of a GitHub repository, your project will requ
 - Put the `Expiration` long enough, because the platform needs to sync github resources through this access token
 - Select the project, allow to readwrite the resources of the Reposit you specify
 - Grant Permissions, Contents read-write permission
-- Generate `acess token` and save it
+- Generate `acess token` and save it in the [porject secrets](/cookbook/project_secrets.md)
 
 The reason why the `readwrite` permission is required is that the program needs to store data on GitHub. For example, profile information after user login, website message information, like information, etc. The program uses GitHub as a hard disk, write permission is required.
 
@@ -35,6 +35,6 @@ To stay synchronized with changes in your GitHub repository, you can set up a we
 - Configure any other webhook settings as needed.
 
 - Set the `content Type` of the webhook to `application/json`
-- Save the `Secret`. This secret is used for webhook signature verification
+- Save the [porject secrets](/cookbook/project_secrets.md). This secret is used for webhook signature verification
 
 ![webhook](/cookbook/public/images/webhook.png)

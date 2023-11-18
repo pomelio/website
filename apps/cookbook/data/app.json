@@ -28,6 +28,11 @@
                     "md": "github_integration.md"
                 },
                 {
+                    "title": "project secrets",
+                    "md": "project_secrets.md"
+                    
+                },
+                {
                     "title": "debug project",
                     "md": "debug.md"
                 }
