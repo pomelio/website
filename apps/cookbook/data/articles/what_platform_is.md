@@ -18,7 +18,7 @@ These components together make up the Pagwe platform, providing a flexible and e
 
 
 
-![platform structure](/cookbook/public/images/platform_diagram.png)
+![platform structure](/cookbook/public/images/platform_diagram.jpg)
 
 
 That's great to know! It's impressive that Pagwe.net runs on the Pagwe platform, and the fact that all the program source code and template files are open source on GitHub at the following address: [https://github.com/pomelio/website](https://github.com/pomelio/website). This open approach to development can foster collaboration, transparency, and community involvement, making it easier for others to explore, contribute, and benefit from your work. If you have any specific questions or need assistance with anything related to the Pagwe platform or your project, please feel free to ask.

@@ -26,4 +26,4 @@ if web_path == '/' || str.ends_with(web_path, '.md') {
 }
 ```
 
-- line 9 - 10: when the `web_path` variable value starts with the `/public`, it sends the specified resources. such as `/public/images/entry_point.png`
+- line 9 - 10: when the `web_path` variable value starts with the `/public`, it sends the specified resources. such as `/public/images/entry_point.jpg`

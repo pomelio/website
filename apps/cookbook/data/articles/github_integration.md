@@ -19,9 +19,9 @@ To access and modify the contents of a GitHub repository, your project will requ
 
 The reason why the `readwrite` permission is required is that the program needs to store data on GitHub. For example, profile information after user login, website message information, like information, etc. The program uses GitHub as a hard disk, write permission is required.
 
-![webhook](/cookbook/public/images/access_token_repository.png)
+![webhook](/cookbook/public/images/access_token_repository.jpg)
 
-![webhook](/cookbook/public/images/access_token_content_readwrite.png)
+![webhook](/cookbook/public/images/access_token_content_readwrite.jpg)
 
 ## Webhook Integration:
 
@@ -37,4 +37,4 @@ To stay synchronized with changes in your GitHub repository, you can set up a we
 - Set the `content Type` of the webhook to `application/json`
 - Save the [porject secrets](/cookbook/project_secrets.md). This secret is used for webhook signature verification
 
-![webhook](/cookbook/public/images/webhook.png)
+![webhook](/cookbook/public/images/webhook.jpg)

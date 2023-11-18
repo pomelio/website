@@ -6,7 +6,7 @@ subject: project_structure
 ## files in the github repository
 📄 [https://github.com/pomelio/website/tree/main/apps/cookbook](https://github.com/pomelio/website/tree/main/apps/cookbook)
 
-![project files](/cookbook/public/images/cookbook_files.png)
+![project files](/cookbook/public/images/cookbook_files.jpg)
 
 - the `/bin` folder is for containing the programs
 - the `/data/articles` folder is for containing the markdown files.
