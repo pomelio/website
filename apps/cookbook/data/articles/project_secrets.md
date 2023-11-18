@@ -27,3 +27,22 @@ google_auth_client_id=296504895747-2vbqkq1fbp9t1hv2rslssn4a4fssluf.apps.googleus
 google_auth_secret=GOCSPX-khbygUEIhz3it457N1jZDUxC9uN
 google_auth_redirect_url=https://www.pagwe.net/auth/google/callback
 ```
+
+- line 1 - 4 are for reading and writing of github repository
+    - line 1: the github user name
+    - line 2: the github repository name
+    - line 3: the repository branch name
+    - line 4: the repository access token. This access token allows reading and writing data to the repository
+
+- line 5 is for notification of changes when repository contents are change.
+    - line 5: webhook secrets
+    
+- line 7 - 9 are for Github login
+    - line 7: github auth client id
+    - line 8: github auth secrets
+    - line 9: github auth redirect url
+
+- line 11 - 13 are for google login
+    - line 11: google auth client id
+    - line 12: google auth secrets
+    - line 13: google auth redirect url.
