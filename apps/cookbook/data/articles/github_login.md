@@ -26,7 +26,7 @@ set the value to `true` in the file `/apps/root/data/app.json`. This will result
 
 ![enable Github login](/cookbook/public/images/login_enabled.jpg)
 
-![enable Github login button](/cookbook/public/images/login_screen.jpg)
+![enable Github login button](/cookbook/public/images/login-screen.jpg)
 
 
 
