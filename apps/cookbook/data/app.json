@@ -28,6 +28,10 @@
                     "md": "github_integration.md"
                 },
                 {
+                    "title": "github login",
+                    "md": "github_login.md"
+                },
+                {
                     "title": "project secrets",
                     "md": "project_secrets.md"
                     
