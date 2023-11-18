@@ -15,9 +15,17 @@ You need to upload a logo and website name and description to remind user to log
 
 ![Github Auth application](/cookbook/public/images/github-auth-settings.jpg)
 
+# login secrets
 You need to copy the github auth `client id` and `secrets`  and save them into the [project secrets](/cookbook/project_secrets.md).
 
+# login data saved
 The login users' profile will be saved at the `/data/users.json` file.
+
+# enable github login
+set the value to `true` in the file `/apps/root/data/app.json`
+
+![enable Github login](/cookbook/public/images/login_enabled.jpg)
+
 
 
 
