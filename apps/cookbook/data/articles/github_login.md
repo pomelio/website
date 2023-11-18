@@ -22,10 +22,11 @@ You need to copy the github auth `client id` and `secrets`  and save them into t
 The login users' profile will be saved at the `/data/users.json` file.
 
 ## enable github login
-set the value to `true` in the file `/apps/root/data/app.json`
+set the value to `true` in the file `/apps/root/data/app.json`. This will result the `github login` button is showed.
 
 ![enable Github login](/cookbook/public/images/login_enabled.jpg)
 
+![enable Github login button](/cookbook/public/images/login_screen.jpg)
 
 
 
