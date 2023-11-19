@@ -16,6 +16,7 @@ Please beware, your website's google login callback url is `https://yourdomain/a
 ![APIs & Service](/cookbook/public/images/google_oauth_screen.jpg)
 - create `credentials` oauth client id
 ![APIs & Service](/cookbook/public/images/google_oauth_client_id.jpg)
+![OAuth](/cookbook/public/images/google_oauth.jpg)
 - enable google login by set the value to `true`.
 ![enable Github login](/cookbook/public/images/login_enabled.jpg)
 
