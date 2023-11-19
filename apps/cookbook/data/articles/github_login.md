@@ -3,7 +3,7 @@ subject: github_login
 ---
 
 # explain the github login from programming viewpoint.
-when a http request hits your website, the project secrets will be decrypted and loaded into the current varaiables. The built-in module can access these variables. The github module can access these github secrets such as `github client id`, `github secrets` and the `callback url`. 
+when a http request hits your website, the project secrets will be decrypted and loaded into the current varaiables by the serverless cloud automatically. The built-in modules can access these variables. The github module can access these github secrets such as `github client id`, `github secrets` and the `callback url`.  That is the reason when your program calling the built-in API, you don't need to specify these parameters but the API still is working as expected.
 
 ### login url
 Github API generates a Login URL. When the github login button is clicked, the browser will be redirected to this URL.
