@@ -36,6 +36,10 @@
                     "md": "google_integration.md"
                 },
                 {
+                    "title": "google login",
+                    "md": "google_login.md"
+                },
+                {
                     "title": "project secrets",
                     "md": "project_secrets.md"
                     
