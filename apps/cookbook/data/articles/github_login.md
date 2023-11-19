@@ -106,6 +106,6 @@ let html = mch.render_template('/template/auth/login_callback.mustache');
 web.body(html);
 ```
 
-- line 10: The github redirect browser to your callback webpage and providing the `code` parameter and the github api can generate the `access token` by this `code` value.
-- line 25: The github built-in module generate `access token` and set it in a `varabile` and can be used later.
-- line 26: The github built-in module retrieves the github user info by the saved `access token`. These user info will be saved into github repository [user.json](https://github.com/pomelio/website/blob/main/data/users.json) afterwards.
+- line 10: The github redirects the user's browser to your callback webpage with the `code` parameter.
+- line 25: The github built-in module generates `access token` by the `code` paramter and set the `access token` in a varabile and can be used afterwards.
+- line 26: The github built-in module retrieves the github user info by the saved `access token` varaible. These user info will be saved into github repository [user.json](https://github.com/pomelio/website/blob/main/data/users.json) afterwards.
