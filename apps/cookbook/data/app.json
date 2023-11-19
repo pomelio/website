@@ -32,6 +32,10 @@
                     "md": "github_login.md"
                 },
                 {
+                    "title": "google integration",
+                    "md": "google_integration.md"
+                },
+                {
                     "title": "project secrets",
                     "md": "project_secrets.md"
                     
