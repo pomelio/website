@@ -22,9 +22,9 @@ let url = google.authorize_url(scopes, {});
 web.body({url});
 ```
 
-- line 4: the `scope` which allow the website to read the user info.
+- line 4: the `scopes` which allow the website to read the user's profile.
 - line 6: calling the google module which reads the `google client id, secrets and callback url` and generate a login url. The `client id, secrets and callback url` are saved into the [project's secrets](/cookbook/project_secrets.md).
-- line 8: response with the json data including the url.
+- line 8: response with the json data including the google login url.
 
 ### login callback
 When the user permits your website to read the user info, google will redirect the browser into the callback url of your website. This is the web [page we developed](https://github.com/pomelio/website/blob/main/apps/root/bin/auth/callback.wby). 
@@ -109,5 +109,5 @@ web.body(html);
 ```
 
 - line 10: The google redirects the user's browser to your callback webpage with the `code` parameter.
-- line 25: The google built-in module generates `access token` by the `code` paramter and set the `access token` in a varabile and can be used afterwards.
-- line 26: The google built-in module retrieves the google user info by the saved `access token` varaible. These user info will be saved into github repository [user.json](https://github.com/pomelio/website/blob/main/data/users.json) afterwards.
+- line 15: The google built-in module generates `access token` by the `code` paramter and set the `access token` in a varabile and can be used afterwards.
+- line 16: The google built-in module retrieves the google user info by the saved `access token` varaible. These user info will be saved into github repository [user.json](https://github.com/pomelio/website/blob/main/data/users.json) afterwards.
