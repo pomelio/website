@@ -22,7 +22,7 @@ if from == 'google' {
       };
 
 } elsif from == 'github' {
-      let auth_result = github.handle_auth_result(code, {});
+      github.handle_auth_result(code, {});
       let uinfo = github.get_user_info();
       user_info = {
             provider: 'github',

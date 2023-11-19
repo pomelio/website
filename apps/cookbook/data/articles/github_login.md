@@ -28,5 +28,19 @@ set the value to `true` in the file `/apps/root/data/app.json`. This will result
 
 ![enable Github login button](/cookbook/public/images/login-screen.jpg)
 
+## login url
+Github API generates Login URL. When the button is clicked, jump to this URL
+[github source code](https://github.com/pomelio/website/blob/main/apps/root/bin/auth/github.wby)
+```
+import ext.github as github;
+import ext.web as web;
+
+let scope = 'read:user';
+
+let url = github.authorize_url(scope, {});
+
+web.body({url});
+```
+
 
 
