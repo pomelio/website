@@ -2,37 +2,12 @@
 subject: github_login
 ---
 
-# Github Login
-This article describes how to add Github login support to your application.
-
-Create a [Github Auth application](https://github.com/settings/applications/new)
-
-![Github Auth application](/cookbook/public/images/github-auth-new.jpg)
-
-Your App `github Authorization callback URL` should be: `https://yourdomainname/auth/github/callback`.  such as `https://creek.pagwe.net/auth/github/callback1`
-
-You need to upload a logo and website name and description to remind user to login to your website.
-
-![Github Auth application](/cookbook/public/images/github-auth-settings.jpg)
-
-## login secrets
-You need to copy the github auth `client id` and `secrets`  and save them into the [project secrets](/cookbook/project_secrets.md).
-
-## login data saved
-The login users' profile will be saved at the `/data/users.json` file.
-
-## enable github login
-set the value to `true` in the file `/apps/root/data/app.json`. This will result the `github login` button is showed.
-
-![enable Github login](/cookbook/public/images/login_enabled.jpg)
-
-![enable Github login button](/cookbook/public/images/login-screen.jpg)
-
-
-## explain the github login from programming viewpoint.
+# explain the github login from programming viewpoint.
+when a http request hits your website, the project secrets will be decrypted and loaded into the current varaiables. The built-in module can access these variables. The github module can access these github secrets such as `github client id`, `github secrets` and the `callback url`. 
 
 ### login url
-Github API generates Login URL. When the button is clicked, jump to this URL
+Github API generates a Login URL. When the github login button is clicked, the browser will be redirected to this URL.
+
 [github source code](https://github.com/pomelio/website/blob/main/apps/root/bin/auth/github.wby)
 ```
 import ext.github as github;
@@ -50,7 +25,7 @@ web.body({url});
 - line 8: response with the json data including the url.
 
 ### login callback
-When the user permit your website to read the user info, github will redirect the website to your callback web page. This is the web [page we developed](https://github.com/pomelio/website/blob/main/apps/root/bin/auth/callback.wby). You need to provide this url when you create the github auth app.
+When the user permits your website to read the user info, github will redirect the browser into the callback url of your website. This is the web [page we developed](https://github.com/pomelio/website/blob/main/apps/root/bin/auth/callback.wby). You need to provide this url when you create the github auth app.
 
 ```
 import ext.web as web;
