@@ -1,7 +1,7 @@
 {
     "title": "pagwe",
     "website": "https://www.pagwe.net",
-    "image": "/public/images/pagwe-logo.jpg",
+    "image": "/public/images/pagwe-logo.jpeg",
     "homepage": {
         "app": "root",
         "path": "/template"
