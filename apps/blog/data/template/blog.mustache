@@ -163,6 +163,10 @@
             <div x-data="{
 
                 async toggle_like() {
+					if (!this.my_account) {
+						window.location.replace("/login?redirect=" + encodeURIComponent(window.location.href));
+						return;
+					}
 
                     let data = {
                         clazz: 'blog',
@@ -235,6 +239,11 @@
 				current_comment_id: null,
 
 				async save_comment() {
+					if (!this.my_account) {
+						window.location.replace("/login?redirect=" + encodeURIComponent(window.location.href));
+						return;
+					}
+					
 					let data = {
 						doc: '{{{DOC_NAME}}}',
 						clazz: 'blog',
