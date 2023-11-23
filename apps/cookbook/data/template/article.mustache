@@ -190,6 +190,12 @@
 				current_comment_id: null,
 
 				async save_comment() {
+					if (!this.my_account) {
+						let redirect_url = '/login?redirect=' + encodeURIComponent(window.location.href);
+						window.location.replace(redirect_url);
+						return;
+					}
+					
 					let data = {
 						doc: '{{{DOC_NAME}}}',
 						clazz: 'cookbook',
