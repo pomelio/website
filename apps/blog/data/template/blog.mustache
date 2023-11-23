@@ -164,7 +164,8 @@
 
                 async toggle_like() {
 					if (!this.my_account) {
-						window.location.replace("/login?redirect=" + encodeURIComponent(window.location.href));
+						let redirect_url = '/login?redirect=' + encodeURIComponent(window.location.href);
+						window.location.replace(redirect_url);
 						return;
 					}
 
@@ -240,10 +241,11 @@
 
 				async save_comment() {
 					if (!this.my_account) {
-						window.location.replace("/login?redirect=" + encodeURIComponent(window.location.href));
+						let redirect_url = '/login?redirect=' + encodeURIComponent(window.location.href);
+						window.location.replace(redirect_url);
 						return;
 					}
-					
+
 					let data = {
 						doc: '{{{DOC_NAME}}}',
 						clazz: 'blog',
