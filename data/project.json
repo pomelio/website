@@ -10,7 +10,8 @@
     "footer":{
         "links":{
             "Terms and conditions": "/terms",
-            "Privacy Policy": "/privacy"
+            "Privacy Policy": "/privacy",
+            "Contact Us": "/contact"
         },
         "socials": {
             "twitter": "https://twitter.com/pagwego",
